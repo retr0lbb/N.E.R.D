@@ -1,3 +1,10 @@
+# .gitignore (pasta server)
+
+# Ignorar o arquivo dotenv
 .env
-node_modules
-/uploads
+
+# Ignorar a pasta node_modules
+node_modules/
+
+# Ignorar a pasta uploads
+uploads/
