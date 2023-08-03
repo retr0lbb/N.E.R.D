@@ -9,9 +9,9 @@ esse é um projeto de conclusao de curso. o tema de nosso projeto é um e-comerc
 
 #
 
-## documentação da api e do projeto
+### documentação da api e do projeto
 
-### disclaimer! 
+#### disclaimer! 
 
 ao instalar esse projeto devera se criar uma pasta com o nome de uploads dentro da pasta server `mkdir uploads`.
 tambem deve se criar um arquivo de configuração de *dotenv*
