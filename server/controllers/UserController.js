@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const fs = require('fs');
+const upload = require('../config/multer.js')
 
 exports.create = async (req, res) => {
     try {
@@ -45,7 +46,6 @@ exports.delet = async (req, res) => {
       }
   
       fs.unlinkSync(user.image.src);
-      await user.remove();
   
       res.json({ message: "Usuario removido com sucesso" });
     } catch (error) {
@@ -54,26 +54,32 @@ exports.delet = async (req, res) => {
     }
   };
 
+
   exports.update = async (req, res) => {
     try {
-        const userId = req.params.id;
-        const {name, email, pass} = req.body;
+        const id = req.params.id;
+        const updates = req.body
+        const file = req.file;
+        const user = await User.findById(id);
+        if(file){
+            if(user.image && user.image.src){
+                fs.unlinkSync(user.image.src);
+            }
 
-        const data = {
-            name: name,
-            email: email,
-            pass: pass,
-            image: {
-                imgName: "icarus",
-                src: "none"
+            user.image={
+                imgName: file.originalname,
+                src: file.path
             }
         }
-        const updatePerson = await User.updateOne({_id: userId}, data)
+        user.name = updates.name || user.name;
+        user.email = updates.email || user.email;
+        user.pass = updates.pass || user.pass;
 
 
-        res.status(200).json(updatePerson)
+        await User.findByIdAndUpdate(id, user);
+        res.json({message: "Usuario alterado com sucesso"})
     } catch (error) {
-        console.log(error);
-        res.status(500).json({message: "Erro ao atualizar usuario"})
+        console.error(error);
+        res.status(500).json({message: "erro ao alterar usuario"})
     }
-  };
+  }
