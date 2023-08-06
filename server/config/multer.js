@@ -10,7 +10,5 @@ const storage = multer.diskStorage({
     }
 })
 
-const readForms = multer().fields([])
-
 const upload = multer({storage}) 
 module.exports = upload

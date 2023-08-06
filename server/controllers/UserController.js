@@ -1,7 +1,21 @@
 const User = require('../models/User');
 const fs = require('fs');
 const upload = require('../config/multer.js')
+const bcript = require("bcrypt");
 
+
+const encriptPass =  (pass) =>{
+    const salth = 10
+    try {
+        if(!pass) return;
+        if(pass === undefined) return;
+        return  bcript.hashSync(pass, salth)
+        
+    } catch (error) {
+        console.log("Erro ao hasear a senha")
+    }
+
+}
 exports.create = async (req, res) => {
     try {
         const {name, email, pass} = req.body
@@ -11,7 +25,7 @@ exports.create = async (req, res) => {
         const user = new User({
             name: name,
             email: email,
-            pass: pass,
+            pass: encriptPass(pass),
             image: {
                 imgName: imgName,
                 src: src.path
@@ -21,9 +35,31 @@ exports.create = async (req, res) => {
         res.json({user, msg: "Deu certo porra"});
     } catch (error) {
         res.status(500).json({ message: "Erro ao salvar usuario" });
+        console.log(error)
     }
 }
+//to fix
+/**  exports.login = async (req, res) =>{
+    const pass = req.body
+    const id = req.params.id
 
+    try {
+        const user = await User.findById(id)
+        if(!user) {
+            res.status(404).json({ message: " Usuario não encontrado "})
+            return;
+        }
+        console.log(req.body)
+        if(bcript.compareSync(pass, user.pass)){
+            res.status(200).json({message: "Usuario logado com sucesso"})
+        }
+    } catch (error) {
+        if(error){
+            console.log(error)
+            res.status(500).json({ message: "Erro ao logar o usuario"});
+        }
+    }  
+} */
 exports.findAll = async (req, res) => {
     try {
         const user = await User.find();
@@ -54,13 +90,15 @@ exports.delet = async (req, res) => {
     }
   };
 
-
   exports.update = async (req, res) => {
     try {
         const id = req.params.id;
         const updates = req.body
         const file = req.file;
         const user = await User.findById(id);
+        if(!user) {
+            res.status(404).json({ message: "Usuario não encontrado"})
+        }
         if(file){
             if(user.image && user.image.src){
                 fs.unlinkSync(user.image.src);
