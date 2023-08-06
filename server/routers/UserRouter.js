@@ -12,7 +12,7 @@ router.delete("/:id", userController.delet)
 
 router.patch("/:id", upload.single("file"),userController.update)
 
-router.get("/login/:id", userController.login)
+//router.get("/login/:id", userController.login)
 
 
 
