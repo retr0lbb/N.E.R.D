@@ -5,14 +5,10 @@ const userController = require('../controllers/UserController')
 
 
 router.post("/",upload.single("file"), userController.create)
-
 router.get("/", userController.findAll)
-
 router.delete("/:id", userController.delet)
-
 router.patch("/:id", upload.single("file"),userController.update)
-
-//router.get("/login/:id", userController.login)
+router.post("/login/:id", userController.login)
 
 
 

@@ -21,11 +21,13 @@ exports.create = async (req, res) => {
         const {name, email, pass} = req.body
         const{imgName} = req.body
         const src = req.file
+        let type = false;
 
         const user = new User({
             name: name,
             email: email,
             pass: encriptPass(pass),
+            type: type,
             image: {
                 imgName: imgName,
                 src: src.path
@@ -38,8 +40,7 @@ exports.create = async (req, res) => {
         console.log(error)
     }
 }
-//to fix
-/**  exports.login = async (req, res) =>{
+  exports.login = async (req, res) =>{
     const pass = req.body
     const id = req.params.id
 
@@ -59,7 +60,7 @@ exports.create = async (req, res) => {
             res.status(500).json({ message: "Erro ao logar o usuario"});
         }
     }  
-} */
+}
 exports.findAll = async (req, res) => {
     try {
         const user = await User.find();
@@ -70,6 +71,18 @@ exports.findAll = async (req, res) => {
         res.json({user});
     } catch (error) {
         res.status(500).json({ message: "Erro ao listar usuarios"})
+    }
+}
+exports.findByUsername = async(req, res) =>{
+    try{
+        const username = req.body
+        const listOffindedUsers = User//todo
+
+        if(!listOffindedUsers){
+            return(res.status(404).json({message: "usuario não encontrado"}))
+        }
+    }catch (err){
+        if(err) res.status(500).json({message: "falha no servidor"})
     }
 }
 exports.delet = async (req, res) => {
