@@ -6,10 +6,16 @@ require('dotenv').config();
 mongoose.set('strictQuery', true)
 
 
-async function connect(){
-    await mongoose.connect(`mongodb://127.0.0.1:27017/users`);
+let connection;
 
-    console.log('Conectado com sucesso')
+
+async function connect(){
+    if(!connection){
+        connection = await mongoose.connect(`mongodb://127.0.0.1:27017/users`);
+        console.log(connection)
+    }
+    return connection
+
 }
 connect().catch(err =>{
     console.error(err)

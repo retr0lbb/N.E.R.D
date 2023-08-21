@@ -76,11 +76,12 @@ exports.findAll = async (req, res) => {
 exports.findByUsername = async(req, res) =>{
     try{
         const username = req.body
-        const listOffindedUsers = User//todo
-
+        const listOffindedUsers = User.findOne({"name": username})
         if(!listOffindedUsers){
             return(res.status(404).json({message: "usuario não encontrado"}))
         }
+
+        
     }catch (err){
         if(err) res.status(500).json({message: "falha no servidor"})
     }
@@ -125,7 +126,6 @@ exports.delet = async (req, res) => {
         user.name = updates.name || user.name;
         user.email = updates.email || user.email;
         user.pass = updates.pass || user.pass;
-
 
         await User.findByIdAndUpdate(id, user);
         res.json({message: "Usuario alterado com sucesso"})
