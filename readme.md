@@ -20,4 +20,6 @@ tambem deve se criar um arquivo de configuração de *dotenv*
 |---------|---------|------------------------|------------|-------------------------------------|
 |Cadastrar|  POST   |`localhost:3000/users/` | Nenhum     |name, email, pass, type, imgName, src|
 |Listar| GET | `localhost:3000/users/`| Nenhum | Nenhum |
-
+|Deletar| DELET | `localhost:3000/users/:id` | ID | Nenhum |
+|Alterar| PACH | `localhost:3000/users/:id` | ID | name, email, pass, type, imgName, src|
+|Logar| POST | `localhost:3000/users/login/:id` | ID | email, pass|
