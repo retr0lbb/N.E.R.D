@@ -16,7 +16,8 @@ esse é um projeto de conclusao de curso. o tema de nosso projeto é um e-comerc
 ao instalar esse projeto devera se criar uma pasta com o nome de uploads dentro da pasta server `mkdir uploads`.
 tambem deve se criar um arquivo de configuração de *dotenv*
 
-| Nome    | Métodos |     Url               | Params |     body                            |
-|---------|---------|-----------------------|--------|-------------------------------------|
-|Cadastrar|  POST   |`localhost:300\users\` | none   |name, email, pass, type, imgName, src|
+| Nome    | Métodos |     Url                | Parametros |     body                            |
+|---------|---------|------------------------|------------|-------------------------------------|
+|Cadastrar|  POST   |`localhost:3000/users/` | Nenhum     |name, email, pass, type, imgName, src|
+|Listar| GET | `localhost:3000/users/`| Nenhum | Nenhum |
 
