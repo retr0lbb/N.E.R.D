@@ -11,7 +11,7 @@ let connection;
 
 async function connect(){
     if(!connection){
-        connection = await mongoose.connect(`mongodb://127.0.0.1:27017/users`);
+        mongoose.connect(`mongodb+srv://retr0lbb:<password>@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority`)
         console.log(connection)
     }
     return connection
