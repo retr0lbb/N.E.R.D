@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
     pass:{type: String, required: true},
     type: {type: Boolean, required: true},
     image: {
-        imgName: {type: String, required: true},
-        src: {type: String, required: true}
+        imgName: {type: String},
+        src: {type: String}
     }
 
 });
