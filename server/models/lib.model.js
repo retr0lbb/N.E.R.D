@@ -5,3 +5,6 @@ const lib = new mongoose.Schema({
     games: {type: Array, required: false},
     downloadedGames: {type: Array, required: true}
 })
+
+
+
