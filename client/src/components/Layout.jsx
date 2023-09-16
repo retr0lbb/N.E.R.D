@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/system'
+import bg from '../assets/img/bg.jpg'
 
 export default function Layout({ children }) {
   return (
@@ -7,7 +8,7 @@ export default function Layout({ children }) {
         height: '100vh',
         width: '100vw',
         overflow: 'auto',
-        background: '#fff'
+        background: '#001C30'
     }}>
         {children} 
     </Box>

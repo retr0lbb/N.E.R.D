@@ -4,6 +4,7 @@ const upload = require('../config/multer.js')
 const bcript = require("bcrypt");
 
 
+
 const encriptPass =  (pass) =>{
     const salth = 10
     try {
@@ -34,6 +35,7 @@ exports.create = async (req, res) => {
             }
         })
         await user.save()
+        
         res.json({user, msg: "Deu certo porra"});
     } catch (error) {
         res.status(500).json({ message: "Erro ao salvar usuario" });
