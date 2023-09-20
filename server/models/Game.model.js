@@ -10,6 +10,10 @@ const gameSchema = new mongoose.Schema({
     gameFiles: {
         src: {type: String, required: true},
         gameImageName: {type: String, required: true}
+    },
+    Image: {
+        src: {type: String, required: true},
+        ImageName: {type: String, required: true}
     }
     
 })
