@@ -11,7 +11,7 @@ let connection;
 
 async function connect(){
     if(!connection){
-        connection =mongoose.connect(`mongodb://127.0.0.1:27017/Nerd`)
+        //connection =mongoose.connect(`mongodb://127.0.0.1:27017/Nerd`)
         console.log(connection)
     }
     return connection
