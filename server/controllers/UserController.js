@@ -64,6 +64,9 @@ exports.create = async (req, res) => {
     }  
 }
 exports.findAll = async (req, res) => {
+    res.send("ola mundo")
+
+    /* 
     try {
         const user = await User.find();
 
@@ -74,6 +77,7 @@ exports.findAll = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Erro ao listar usuarios"})
     }
+    */
 }
 exports.findByUsername = async(req, res) =>{
     try{
