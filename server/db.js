@@ -1,26 +1,28 @@
-const mongoose = require('mongoose');
+const {MongoClient} = require("mongodb")
 require('dotenv').config();
 
 
-
-mongoose.set('strictQuery', true)
-
-
 let connection;
+let DBPASS = "DztTLNaMZqZKkUDS";
+let uri = `mongodb+srv://retr0:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority`;
 
 
-async function connect(){
-    if(!connection){
-        //connection =mongoose.connect(`mongodb://127.0.0.1:27017/Nerd`)
-        console.log(connection)
+async function connect(cb){
+    if(connection){
+        cb(connection);
+        return;
     }
-    return connection
+    try {
+        const client = await MongoClient.connect(uri);
+        connection = client.db();
+        cb(connection)
 
+        if(error){
+            console.log(error);
+        }
+    } catch (error){
+        console.log(error);
+    }
 }
-connect().catch(err =>{
-    console.error(err)
-    return;
-})
 
-
-module.exports = connect;
+connect()
