@@ -2,9 +2,13 @@ const User = require('../models/User');
 const fs = require('fs');
 const upload = require('../config/multer.js')
 const bcript = require("bcrypt");
+const connect = require("../db");
+const mongoose = require('mongoose')
 
 
 
+
+//utils
 const encriptPass =  (pass) =>{
     const salth = 10
     try {
@@ -17,6 +21,8 @@ const encriptPass =  (pass) =>{
     }
 
 }
+
+//main
 exports.create = async (req, res) => {
     try {
         const {name, email, pass} = req.body
@@ -24,22 +30,41 @@ exports.create = async (req, res) => {
         const src = req.file
         let type = false;
 
+        if(!name || !email ||!pass){
+            return res.status(400).send("Insira as informações corretamente")
+        }
+
+        let imageData
+        if(src){
+            imageData = {
+                imgName: imgName,
+                src: src.path
+            }
+        }else{
+            imageData ={
+                imgName: null,
+                src: null
+            }
+            
+        }
         const user = new User({
             name: name,
             email: email,
             pass: encriptPass(pass),
             type: type,
-            image: {
-                imgName: imgName,
-                src: src.path
-            }
+            image: imageData
         })
+
         await user.save()
         
-        res.json({user, msg: "Deu certo porra"});
+        res.json({user, msg: "Usuario inserido com sucesso"});
     } catch (error) {
+
+            if(error.code === 11000 & error.keyPattern.email){
+                return res.status(400).send("Email ja cadastrado")
+            }
         res.status(500).json({ message: "Erro ao salvar usuario" });
-        console.log(error)
+        console.log(error.code)
     }
 }
   exports.login = async (req, res) =>{
@@ -63,21 +88,22 @@ exports.create = async (req, res) => {
         }
     }  
 }
-exports.findAll = async (req, res) => {
-    res.send("ola mundo")
+exports.findAll = async (req, res) => {    
+    try {        
+        
+        await connect(async(connection) =>{
+            const data = await connection.collection("users").find().toArray();
 
-    /* 
-    try {
-        const user = await User.find();
+            if (!data || data.length <= 0) {
+                return res.status(404).json({ message: "Usuários não encontrados" });
+            }
 
-        if(!user){
-            return res.status(404).json({message: " Usuario não existente"})
-        }
-        res.json({user});
+            res.json({ data });
+        });
+        
     } catch (error) {
-        res.status(500).json({ message: "Erro ao listar usuarios"})
+        res.status(500).json({ message: "Erro ao listar usuarios"});
     }
-    */
 }
 exports.findByUsername = async(req, res) =>{
     try{

@@ -1,10 +1,10 @@
-const {MongoClient} = require("mongodb")
+const mongoose = require("mongoose")
 require('dotenv').config();
 
 
 let connection;
 let DBPASS = "DztTLNaMZqZKkUDS";
-let uri = `mongodb+srv://retr0:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority`;
+let uri = `mongodb+srv://retr0:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority&wtimeoutMS=30000`;
 
 
 async function connect(cb){
@@ -13,16 +13,14 @@ async function connect(cb){
         return;
     }
     try {
-        const client = await MongoClient.connect(uri);
-        connection = client.db();
-        cb(connection)
+        const dbConnection = await mongoose.connect(uri);
 
-        if(error){
-            console.log(error);
-        }
+        connection = dbConnection.connection;
+        cb(connection)
     } catch (error){
         console.log(error);
     }
 }
 
-connect()
+
+module.exports = connect;
