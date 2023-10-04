@@ -3,7 +3,7 @@ const Game = require('../models/Game.model')
 exports.create = async(req, res) =>{
     try {
         const {name, title, developer, description, price, gameImageName} = req.body;
-        const file = req.file;
+        const {file1, file2} = req.file;
 
         const game = new Game({
             name: name,
@@ -11,9 +11,12 @@ exports.create = async(req, res) =>{
             developer:developer,
             description: description,
             price: price,
-            gameFiles: {
-                gameImageName: gameImageName,
-                src: file.path
+            GameFiles: {
+                src: file1.path
+            },
+            GameImage: {
+                src: file2.path,
+                ImageName: "none"
             }
         })
 

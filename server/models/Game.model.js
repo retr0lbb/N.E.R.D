@@ -8,15 +8,15 @@ const gameSchema = new mongoose.Schema({
     description: {type: String},
     price: {type: Number, required: true},
     achivements:{Type: Number},
-    
-    gameFiles: {
+    GameFiles: {
         src: {type: String, required: true},
     },
     GameImage: {
         src: {type: String, required: true},
-        ImageName: {type: String, required: true}
+        ImageName: {type: String}
     }
     
 })
 
+gameSchema.index({ title: 1 }, { unique: true });
 module.exports = mongoose.model('Games', gameSchema);

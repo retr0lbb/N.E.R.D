@@ -4,7 +4,7 @@ const uploadGame = require('../config/gameMulter');
 const gameController = require('../controllers/GameController')
 
 
-router.post("/", uploadGame.single('file'), gameController.create)
+router.post("/", gameController.create)
 
 
 module.exports = router;
