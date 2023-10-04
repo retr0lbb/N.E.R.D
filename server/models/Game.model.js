@@ -7,11 +7,12 @@ const gameSchema = new mongoose.Schema({
     developer: {type: String, required: true},
     description: {type: String},
     price: {type: Number, required: true},
+    achivements:{Type: Number},
+    
     gameFiles: {
         src: {type: String, required: true},
-        gameImageName: {type: String, required: true}
     },
-    Image: {
+    GameImage: {
         src: {type: String, required: true},
         ImageName: {type: String, required: true}
     }
