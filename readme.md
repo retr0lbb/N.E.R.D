@@ -5,8 +5,6 @@ esse é um projeto de conclusao de curso. o tema de nosso projeto é um e-comerc
 
 
 
-
-
 #
 
 ### documentação da api e do projeto
