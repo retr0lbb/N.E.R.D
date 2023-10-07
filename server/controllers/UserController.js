@@ -22,7 +22,8 @@ const encriptPass =  (pass) =>{
 
 }
 
-//main
+
+//Função de criar o usuario
 exports.create = async (req, res) => {
     try {
         const {name, email, pass} = req.body
@@ -67,6 +68,7 @@ exports.create = async (req, res) => {
         console.log(error.code)
     }
 }
+//função de login do usuario
   exports.login = async (req, res) =>{
     const pass = req.body
     const id = req.params.id
@@ -88,6 +90,7 @@ exports.create = async (req, res) => {
         }
     }  
 }
+//acha todos os usuarios cadastrados(Para grupo de amigos)
 exports.findAll = async (req, res) => {    
     try {        
         
@@ -105,6 +108,7 @@ exports.findAll = async (req, res) => {
         res.status(500).json({ message: "Erro ao listar usuarios"});
     }
 }
+//achar um usuario especifico por nome de usuario
 exports.findByUsername = async(req, res) =>{
     try{
         const username = req.body
@@ -118,6 +122,7 @@ exports.findByUsername = async(req, res) =>{
         if(err) res.status(500).json({message: "falha no servidor"})
     }
 }
+//deleta um usuario
 exports.delet = async (req, res) => {
     try {
       const userId = req.params.id;
@@ -134,9 +139,9 @@ exports.delet = async (req, res) => {
       console.error(error);
       res.status(500).json({ message: "Erro ao remover usuario" });
     }
-  };
-
-  exports.update = async (req, res) => {
+};
+//Atualiza as informações do usuario
+exports.update = async (req, res) => {
     try {
         const id = req.params.id;
         const updates = req.body
@@ -165,4 +170,4 @@ exports.delet = async (req, res) => {
         console.error(error);
         res.status(500).json({message: "erro ao alterar usuario"})
     }
-  }
+}

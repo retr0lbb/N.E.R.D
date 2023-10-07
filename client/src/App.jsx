@@ -13,7 +13,7 @@ export default function App() {
       <ThemeProvider theme={authTheme}>
         <Routes>
           <Route element={<Login />} path="/" exact />
-          <Route element={<Home />} path="/home" />
+          <Route element={<Home />} path="home" />
           <Route path="*" element={<Navigate to='/' />} />
         </Routes>
       </ThemeProvider>
