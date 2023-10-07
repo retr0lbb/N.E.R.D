@@ -4,23 +4,10 @@ const upload = require('../config/multer.js')
 const bcript = require("bcrypt");
 const connect = require("../db");
 const mongoose = require('mongoose')
+const encriptPass = require("./utils/encryptPass/encriptPass")
 
 
 
-
-//utils
-const encriptPass =  (pass) =>{
-    const salth = 10
-    try {
-        if(!pass) return;
-        if(pass === undefined) return;
-        return  bcript.hashSync(pass, salth)
-        
-    } catch (error) {
-        console.log("Erro ao hasear a senha")
-    }
-
-}
 
 
 //Função de criar o usuario
@@ -51,7 +38,7 @@ exports.create = async (req, res) => {
         const user = new User({
             name: name,
             email: email,
-            pass: encriptPass(pass),
+            pass: encriptPass(pass),//OwO
             type: type,
             image: imageData
         })
