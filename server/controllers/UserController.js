@@ -1,28 +1,32 @@
-const User = require('../models/User');
+//uso do pacote fs para gerenciamento de aquivos.
 const fs = require('fs');
-const upload = require('../config/multer.js')
-const bcript = require("bcrypt");
-const connect = require("../db");
-const mongoose = require('mongoose')
+
+//importações de funções em outras pastas.
+const unlinkSyncFs = require("./utils/fs/unlink")
 const encriptPass = require("./utils/encryptPass/encriptPass")
-
-
-
+const compare = require("./utils/encryptPass/comparepass")
+const User = require('../models/User');
 
 
 //Função de criar o usuario
 exports.create = async (req, res) => {
+    //função try/catch para que mesmo se der erro ele não pare a execução do servidor.
     try {
+        //armazenando os dados do corpo da requisição e os armazena.
         const {name, email, pass} = req.body
         const{imgName} = req.body
         const src = req.file
+
+        //variavel de tipo de usuario ainda não implementada.
         let type = false;
 
+        //checa os campos para ver se eles tem valores escritos caso o contrario ele retorna um erro.
         if(!name || !email ||!pass){
             return res.status(400).send("Insira as informações corretamente")
         }
 
-        let imageData
+        //variavel para armazenar o objeto da imagem.
+        let imageData;
         if(src){
             imageData = {
                 imgName: imgName,
@@ -35,41 +39,65 @@ exports.create = async (req, res) => {
             }
             
         }
+
+        // instanciamos o modelo do usuario.
         const user = new User({
             name: name,
             email: email,
-            pass: encriptPass(pass),//OwO
+            //encriptamos a senha antes de enviar para a base de dados 
+            pass: encriptPass(pass, 10),
             type: type,
             image: imageData
         })
 
+        //enviamos para a base de dados
         await user.save()
-        
-        res.json({user, msg: "Usuario inserido com sucesso"});
-    } catch (error) {
 
-            if(error.code === 11000 & error.keyPattern.email){
+        //se tudo der certo ele exibe o json dos dados do usuario cadastrado e uma mensagem de sucesso
+        res.json({user, msg: "Usuario inserido com sucesso"});
+
+        //caso de erro essa função lidara com o erro
+    } catch (error) {
+        //caso o cógido do erro for 11000 erro relacionado a campos unicos ja cadastrados
+            if(error.code === 11000){
+                //retorna uma mensagem de erro dizendo que o email ja foi cadastrado
                 return res.status(400).send("Email ja cadastrado")
             }
+
+        //em outros casos apenas retorna uma mensagem de erro padrão
         res.status(500).json({ message: "Erro ao salvar usuario" });
+
+        //vemos o codigo do erro e o erro no terminal
         console.log(error.code)
+        console.log(error)
     }
 }
-//função de login do usuario
-  exports.login = async (req, res) =>{
-    const pass = req.body
-    const id = req.params.id
 
+//função de login do usuario.
+  exports.login = async (req, res) =>{
+
+    //armazenando os dados do corpo da requisição e os armazena.
+    const {email, pass} = req.body
+
+    //função try/catch para que mesmo se der erro ele não pare a execução do servidor.
     try {
-        const user = await User.findById(id)
+        //fazemos uma busca no banco de dados fornecendo o email do usuario.
+        const user = await User.findOne({"email": email});
+        
+        //se não encontrar o usuario ele retorna o erro 404.
         if(!user) {
-            res.status(404).json({ message: " Usuario não encontrado "})
-            return;
+            return(res.status(404).json({ message: " Usuario não encontrado "}));
         }
-        console.log(req.body)
-        if(bcript.compareSync(pass, user.pass)){
-            res.status(200).json({message: "Usuario logado com sucesso"})
+        //compara a senha digitada com a senha salva no banco de dados.
+        if(compare(pass, user.pass)){
+            //se tudo der certo ele retorna uma mensagem de usuario logado com sucesso.
+            return(res.status(200).json({message: "Usuario logado com sucesso", data: user}));
+        }else{
+            //caso as senhas não batam ele retorna um erro.
+            return res.status(403).send("senhas não batem");
         }
+
+        //caso de erro, essa função lida com eles.
     } catch (error) {
         if(error){
             console.log(error)
@@ -80,17 +108,11 @@ exports.create = async (req, res) => {
 //acha todos os usuarios cadastrados(Para grupo de amigos)
 exports.findAll = async (req, res) => {    
     try {        
-        
-        await connect(async(connection) =>{
-            const data = await connection.collection("users").find().toArray();
-
-            if (!data || data.length <= 0) {
-                return res.status(404).json({ message: "Usuários não encontrados" });
-            }
-
-            res.json({ data });
-        });
-        
+        const user = await User.find();
+        if(!user || user.length === 0){
+            return res.status(404).send("Usuarios não encontrados");
+        }
+        res.status(200).send(user);
     } catch (error) {
         res.status(500).json({ message: "Erro ao listar usuarios"});
     }
@@ -112,15 +134,19 @@ exports.findByUsername = async(req, res) =>{
 //deleta um usuario
 exports.delet = async (req, res) => {
     try {
+        //recebe um parametro de id para excluir um usuario.
       const userId = req.params.id;
       const user = await User.findByIdAndDelete(userId);
-  
+
+        //se não achar usuario retorna um erro.
       if (!user) {
         return res.status(404).json({ message: "Usuario não encontrado" });
       }
-  
-      fs.unlinkSync(user.image.src);
-  
+
+      // retira a imagem do usuario da pasta uploads
+      unlinkSyncFs(user.image.src);
+
+      //se tudo der certo retorna uma mensagem
       res.json({ message: "Usuario removido com sucesso" });
     } catch (error) {
       console.error(error);
@@ -139,7 +165,7 @@ exports.update = async (req, res) => {
         }
         if(file){
             if(user.image && user.image.src){
-                fs.unlinkSync(user.image.src);
+                unlinkSyncFs(user.image.src);
             }
 
             user.image={
