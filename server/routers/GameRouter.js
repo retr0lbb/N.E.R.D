@@ -11,5 +11,7 @@ router.post("/", uploads.fields([
   { name: "file1", maxCount: 1 },
   { name: "file2", maxCount: 1 },
 ]), gameController.create);
+router.get("/", gameController.showAll)
+router.post("/name/:name", gameController.findByName)
 
 module.exports = router;

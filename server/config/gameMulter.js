@@ -4,9 +4,14 @@ const fs = require("fs");
 const path = require("path")
 
 
+const rootDir = path.join(__dirname, "../../")
+console.log(rootDir)
+
+
+
 const storage = multer.diskStorage({
   destination: (req, file, cb)=>{
-      const uploadsDir = path.join(__dirname, "../../uploads/Gamefiles");
+      const uploadsDir = path.join(rootDir, "/uploads/Gamefiles");
 
 
       if (!fs.existsSync(uploadsDir)) {

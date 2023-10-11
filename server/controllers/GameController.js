@@ -32,18 +32,59 @@ exports.create = async(req, res) =>{
             }
         })
         //salva o nosso jogo no servidor
-        await game.save()
+        await game.save();
 
         //manda uma mensagem de sucesso para a requisição
-        res.status(200).send("Jogo enviado com sucesso")
+        res.status(200).send("Jogo enviado com sucesso");
 
         //lida com os erros da nossa requisição
     } catch (error) {
         if(error){
             res.status(500).send("Erro no servidor");
             //da um log para nosso erro
-            console.log(error)
+            console.log(error);
             return;
+        }
+    }
+}
+exports.showAll = async(req,res) =>{
+    try{
+        const games = await Game.find();
+
+
+        if(!games){
+            return res.status(404).send("Jogos não encontrados ou em falta");
+        }
+
+        res.status(200).json({data: games});
+        console.log("Processo finalizado 1");
+
+
+    }catch(error){
+        if(error){
+            res.status(500).send("Erro ao mostrar jogos");
+        }
+    }finally{
+        console.log("processo finalizado");
+    }
+}
+exports.findByName = async(req, res) =>{
+    const gamename = req.params.name
+    try {
+
+        const game = await Game.findOne({"name": gamename});
+
+        if(!game){
+            return res.status(404).send("Jogo não encontado");
+        }
+
+
+        res.status(200).send("jogo encontrado");
+        console.log(game)
+
+    } catch (error) {
+        if(error){
+            res.status(500).send("Erro ao buscar jogos");
         }
     }
 }
