@@ -1,8 +1,11 @@
+// importa o mongoose
 const mongoose = require("mongoose")
 require('dotenv').config();
 
-
+//cria uma variavel de conexão com o banco de dados
 let connection;
+
+//
 let DBPASS = "DztTLNaMZqZKkUDS";
 let uri = `mongodb+srv://retr0:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority&wtimeoutMS=30000`;
 
