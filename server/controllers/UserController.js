@@ -24,7 +24,6 @@ exports.create = async (req, res) => {
         if(!name || !email ||!pass){
             return res.status(400).send("Insira as informações corretamente")
         }
-
         //variavel para armazenar o objeto da imagem.
         let imageData;
         if(src){
@@ -72,7 +71,6 @@ exports.create = async (req, res) => {
         console.log(error)
     }
 }
-
 //função de login do usuario.
   exports.login = async (req, res) =>{
 
