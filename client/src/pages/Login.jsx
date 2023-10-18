@@ -104,9 +104,9 @@ export default function Login() {
                   </Button>
                   <Typography mt={2.5}>
                   <p>
-                    Não possui uma conta?????
+                    Não possui uma conta?
                   </p>
-                    <a href="qhome">
+                    <a href="home">
                       Clique aqui
                     </a>
                   </Typography>
