@@ -5,7 +5,7 @@ export default function SingUp(){
 
     return(
         <Box>
-            Hello
+            Hello 2
         </Box>
     )
 }
