@@ -106,7 +106,7 @@ export default function Login() {
                   <p>
                     Não possui uma conta?
                   </p>
-                    <a href="qhome">
+                    <a href="home">
                       Clique aqui
                     </a>
                   </Typography>
