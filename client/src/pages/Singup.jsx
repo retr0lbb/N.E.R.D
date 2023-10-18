@@ -1,7 +1,14 @@
+import react from "react"
+import { useState, useRef } from "react"
+import {Wrapper} from "./styles"
+
 export default function Singup(){
-    return(<>
 
 
-    nsei
-    </>)
+    const [step, setStep] = useState("");
+    return(
+        <Wrapper>
+
+        </Wrapper>
+    )
 }
