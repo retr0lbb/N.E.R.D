@@ -26,12 +26,16 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = () =>{
+  const handleSubmit = async() =>{
     if(!email || !pass){
       console.log("Insira os campos corretamente");
+        setEmail("");
+        setPass("");
       return;
     }
-    axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+      setEmail(""); 
+      setPass("");  
       window.location.href = "/home";
     }).catch(error => {
       if(error){
@@ -89,6 +93,7 @@ export default function Login() {
                   </Box>
                   <Box color={"white"}>
                     <TextField
+                    value={email}
                       fullWidth
                       InputLabelProps={{ required: false }}
                       variant="standard"
@@ -103,6 +108,7 @@ export default function Login() {
                     />
 
                     <TextField
+                    value={pass}
                       fullWidth
                       variant="standard"
                       label="Pass"
