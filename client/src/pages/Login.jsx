@@ -31,14 +31,16 @@ export default function Login() {
       console.log("Insira os campos corretamente");
       return;
     }
-
-    axios.get("http://localhost/3000/users", {email}).then(result => {
-      console.log(result)
+    axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+      window.location.href = "/home";
     }).catch(error => {
       if(error){
         alert(error)
+        setEmail("");
+        setPass("");
       }
     })
+    
   }
 
 
