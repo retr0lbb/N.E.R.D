@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           <Route element={<Login />} path="/" exact />
           <Route element={<Home />} path="home" />
-          <Route element={<SingUp />} path='cadastro' />
+          <Route element={<SingUp />} path='cadastro0' />
           <Route path="*" element={<Navigate to='/' />} />
         </Routes>
       </ThemeProvider>
