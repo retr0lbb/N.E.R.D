@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios"
 
 import mario from "../assets/img/mario.webp"
 import red from "../assets/img/red.jpg"
@@ -22,6 +23,25 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../global.css";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+
+  const handleSubmit = () =>{
+    if(!email || !pass){
+      console.log("Insira os campos corretamente");
+      return;
+    }
+
+    axios.get("http://localhost/3000/users", {email}).then(result => {
+      console.log(result)
+    }).catch(error => {
+      if(error){
+        alert(error)
+      }
+    })
+  }
+
+
   return (
     <Layout>
       <Box display="flex" justifyContent="space-around" alignItems="center">
@@ -72,6 +92,10 @@ export default function Login() {
                       variant="standard"
                       label="Email"
                       type={"email"}
+                      onChange={ e => {
+                        setEmail(e.target.value)
+                        console.log("Email " + email)
+                      }}
                       sx={{ mt: 2.5, mb: 2.5 }}
                       required
                     />
@@ -82,6 +106,10 @@ export default function Login() {
                       label="Pass"
                       type={"password"}
                       InputLabelProps={{ required: false }}
+                      onChange={ (e) => {
+                        setPass(e.target.value)
+                        console.log(e.target.value)
+                      }}
                       sx={{
                         mt: 2.5,
                         mb: 2.5,
@@ -98,6 +126,7 @@ export default function Login() {
                       alignItems: "center",
                       color: "primary.light",
                     }}
+                    onClick={handleSubmit}
                     variant="contained"
                   >
                     Entrar
@@ -106,7 +135,7 @@ export default function Login() {
                   <p>
                     Não possui uma conta?
                   </p>
-                    <a href="home">
+                    <a href="cadastro0">
                       Clique aqui
                     </a>
                   </Typography>

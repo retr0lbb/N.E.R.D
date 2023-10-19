@@ -29,6 +29,17 @@ export const Ascii = styled.pre`
     justify-content: center;
     color: white;
     text-align: center;
+    animation: ascii 1.5s linear infinite;
+
+
+    @keyframes ascii {
+        0%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
 `
 export const PText = styled.p`
     width: 100%;
@@ -66,6 +77,7 @@ export const HightLight = styled.strong`
     -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(20, 20, 20, .3));
     line-height: 0.70em;
     animation: animate 3s linear infinite;
+    padding-left: 6px;
 
 
 
