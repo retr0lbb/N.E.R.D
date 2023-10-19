@@ -1,6 +1,6 @@
 import react from "react"
 import { useState, useRef } from "react"
-import {Wrapper} from "./styles"
+import {Wrapper} from "../components/styles"
 
 export default function Singup(){
 
