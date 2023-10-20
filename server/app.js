@@ -1,5 +1,6 @@
 //importa bibliotecas padrão para o nosso servidor como: Express, body-parser, dotev
 const express = require('express');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -23,6 +24,11 @@ app.use(express.json());
 //tambem ultiliza o body-parser como middleware.
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cors({
+    origin: "https://5173-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io",
+    methods: "GET,POST,PATCH,DELETE",
+    allowedHeaders: "Content-Type"
+}));
 //ultiliza nosso roteadores como middleware também
 app.use("/users", userRouter);
 app.use("/games", gameRouter);

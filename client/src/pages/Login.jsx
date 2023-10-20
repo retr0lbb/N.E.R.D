@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios"
 
 import mario from "../assets/img/mario.webp"
 import red from "../assets/img/red.jpg"
@@ -22,6 +23,31 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../global.css";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+
+  const handleSubmit = async() =>{
+    if(!email || !pass){
+      console.log("Insira os campos corretamente");
+        setEmail("");
+        setPass("");
+      return;
+    }
+    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+      setEmail(""); 
+      setPass("");  
+      window.location.href = "/home";
+    }).catch(error => {
+      if(error){
+        alert(error)
+        setEmail("");
+        setPass("");
+      }
+    })
+    
+  }
+
+
   return (
     <Layout>
       <Box display="flex" justifyContent="space-around" alignItems="center">
@@ -67,21 +93,31 @@ export default function Login() {
                   </Box>
                   <Box color={"white"}>
                     <TextField
+                    value={email}
                       fullWidth
                       InputLabelProps={{ required: false }}
                       variant="standard"
                       label="Email"
                       type={"email"}
+                      onChange={ e => {
+                        setEmail(e.target.value)
+                        console.log("Email " + email)
+                      }}
                       sx={{ mt: 2.5, mb: 2.5 }}
                       required
                     />
 
                     <TextField
+                    value={pass}
                       fullWidth
                       variant="standard"
                       label="Pass"
                       type={"password"}
                       InputLabelProps={{ required: false }}
+                      onChange={ (e) => {
+                        setPass(e.target.value)
+                        console.log(e.target.value)
+                      }}
                       sx={{
                         mt: 2.5,
                         mb: 2.5,
@@ -98,6 +134,7 @@ export default function Login() {
                       alignItems: "center",
                       color: "primary.light",
                     }}
+                    onClick={handleSubmit}
                     variant="contained"
                   >
                     Entrar
@@ -106,7 +143,7 @@ export default function Login() {
                   <p>
                     Não possui uma conta?
                   </p>
-                    <a href="home">
+                    <a href="cadastro0">
                       Clique aqui
                     </a>
                   </Typography>
