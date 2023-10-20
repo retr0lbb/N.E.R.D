@@ -38,19 +38,26 @@ export default function Singup(){
     
 `;
 
-    const [step, setStep] = useState("");
+    const [step, setStep] = useState(1);
     const [labelText, setLabelText] = useState("");
     const text = {
         1: "Por favor insira o seu email: ",
         2: "Insira o seu nome de usuario: ",
         3: "Insira sua senha: "
     }
+
+
+    const handleSubmit = () =>{
+        
+    }
     return(
         <styled.Wrapper>
             <styled.Span>
-                <styled.Ascii>
-                    {asciiArt}
-                </styled.Ascii>
+                <styled.AsciiWrapper>
+                    <styled.Ascii>
+                        {asciiArt}
+                    </styled.Ascii>
+                </styled.AsciiWrapper>
                 <styled.PText>
                     insira o seu<styled.HightLight>Email</styled.HightLight>
                 </styled.PText>

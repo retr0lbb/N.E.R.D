@@ -21,8 +21,13 @@ export const Span = styled.span`
     padding: 10px;
     flex-direction: column;
 `;
-export const Ascii = styled.pre`
+export const AsciiWrapper = styled.div`
     width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+`;
+export const Ascii = styled.pre`
     height: 100%;
     display: flex;
     align-items: center;
@@ -30,7 +35,7 @@ export const Ascii = styled.pre`
     color: white;
     text-align: center;
     font-size: 7px;
-    animation: ascii 1.5s linear infinite;
+    animation: ascii2 1.5s linear infinite;
     font-weight: 900;
     font-family: 'Azeret Mono', monospace;
     font-weight: bolder;
@@ -44,6 +49,18 @@ export const Ascii = styled.pre`
         }
         100%{
             transform: rotate(2deg);
+        }
+    }
+
+    @keyframes ascii2 {
+        0%{
+            transform: translateY(-3px);
+        }
+        50%{
+            transform: translateY(3px);
+        }
+        100%{
+            transform: translateY(-3px);
         }
     }
 `
