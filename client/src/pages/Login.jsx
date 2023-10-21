@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios"
+//import dotenv from "dotenv"
+//dotenv.config()
 
 import mario from "../assets/img/mario.webp"
 import red from "../assets/img/red.jpg"
@@ -33,7 +35,9 @@ export default function Login() {
         setPass("");
       return;
     }
-    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+    const secondHttp = "http://localhost:3000";
+    //const primeHttp = process.env.HTTPURL;
+    await axios.post("http://localhost:3000/users/login", {email, pass}).then(result => {
       setEmail(""); 
       setPass("");  
       window.location.href = "/home";

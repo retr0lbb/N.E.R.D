@@ -1,51 +1,44 @@
-//importa bibliotecas padrão para o nosso servidor como: Express, body-parser, dotev
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const connection = require('./db');
 
-//importa o nosso arquivo de conexão com banco de dados
-const connection = require("./db");
-
-//ultiliza o express para a criação do servidor.
 const app = express();
-
-//pega a porta que estiver no nosso arquivo de configuração ou a porta 3000.
 const port = process.env.PORT || 3000;
 
-//usa o nosso router do express para colocar o sulfixo / e o nome do roteador
-//fica assim por exemplo http://localhost:3000/users/
-const userRouter = require("./routers/UserRouter.js");
-//fica assim por exemplo http://localhost:3000/games/
-const gameRouter = require("./routers/GameRouter.js");
+const userRouter = require('./routers/UserRouter.js');
+const gameRouter = require('./routers/GameRouter.js');
 
-//ultiliza o json como middleware para a comunicação das requisições.
 app.use(express.json());
-//tambem ultiliza o body-parser como middleware.
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors({
-    origin: "https://5173-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io",
-    methods: "GET,POST,PATCH,DELETE",
+const validOrigins = ["https://5173-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io", "http://localhost:3000", "http://localhost:5173"];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || validOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Acesso não permitido por CORS'));
+      }
+    },
+    methods: "GET, POST, PATCH, DELETE",
     allowedHeaders: "Content-Type"
-}));
-//ultiliza nosso roteadores como middleware também
-app.use("/users", userRouter);
-app.use("/games", gameRouter);
+  })
+);
 
+app.use('/users', userRouter);
+app.use('/games', gameRouter);
 
-
-//função asyncrona de conexão com o banco de dados ela tem como parametro os dados da nossa conexão em forma de callback.
-connection(connection =>{
-    //ele executa o nosso servidor apenas se executarmos com sucesso a conexão com o banco de dados
-    app.listen(port, () =>{
-        //escreve no terminal se a conexão for bem sucedida
-        console.log(`Server running on port ${port}`);
-        console.log("conectado a base de dados");
-    });
-    //lida com os erros do servidor
-}).catch(err =>{
-    if(err){
-        console.log("não foi possivel conectao o servidor");
-    }
+connection((connection) => {
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+    console.log('Conectado à base de dados');
+  });
+}).catch((err) => {
+  if (err) {
+    console.log('Não foi possível conectar o servidor');
+  }
 });

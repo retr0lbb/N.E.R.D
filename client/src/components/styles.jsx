@@ -28,13 +28,14 @@ export const Ascii = styled.pre`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: ${prop => prop.cor || "white"};
     text-align: center;
-    font-size: 7px;
+    font-size: 9px;
     animation: ascii2 1.5s linear infinite;
     font-weight: 900;
     font-family: 'Azeret Mono', monospace;
     font-weight: bolder;
+    text-shadow: 10px 10px 10px purple;
 
     @keyframes ascii {
         0%{
@@ -87,14 +88,13 @@ export const TerminalInput = styled.input`
     border:none;
     outline: none;
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
 `;
 
-export const HightLight = styled.strong`
-    color: #ff3366;
+ export const HightLight = styled.strong`
+    color: ${(prop)=> prop.cor || "red"};
     line-height: 0.70em;
-    text-shadow: 0px 0px 10px #ff3366,
-            0px 0px 20px #ff3366;
+    text-shadow: 0px 0px 100px ${(prop) => prop.cor || "red"},
+            0px 0px 200px ${(prop)=> prop.cor || "red"};
             padding-left: 6px;
-
 `
