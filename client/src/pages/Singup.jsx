@@ -84,7 +84,7 @@ export default function Singup(){
         if(!userName || !email || !pass){
             return(alert("Faltam dados"));
         }
-        axios.post("http://localhost:3000/users", {email: email, name: userName, pass: pass}).then(response => {
+        axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users", {email: email, name: userName, pass: pass}).then(response => {
             if(response.status==200){
                 setInputValue("");
                 setStep(200);
@@ -152,7 +152,7 @@ export default function Singup(){
         <styled.Wrapper>
             <styled.Span>
                 <styled.AsciiWrapper>
-                    <styled.Ascii cor={hasError === true ? "red": changeAsciiColor("gold")}>
+                    <styled.Ascii cor={hasError === true ? "red": changeAsciiColor("pink")}>
                         {asciiArt}
                     </styled.Ascii>
                 </styled.AsciiWrapper>
@@ -164,7 +164,7 @@ export default function Singup(){
                 value={inputValue} 
                 onKeyDown={handleKeyPressed} 
                 onChange={(event) => {setInputValue(event.target.value)}}
-                type={step === 3? "password": "text"}
+                type={step === 1? "email": "text"}
                 >
                     
                 </styled.TerminalInput>
