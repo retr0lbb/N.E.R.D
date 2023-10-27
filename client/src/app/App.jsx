@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { ThemeProvider } from '@mui/material'
-import { authTheme } from './themes/authTheme'
+import { authTheme } from './shared/themes/authTheme'
 import { AddRoutes } from './routes/Addroutes'
 
 

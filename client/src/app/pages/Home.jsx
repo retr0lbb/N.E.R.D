@@ -15,7 +15,7 @@ import {
 import { MoreHoriz, SearchOutlined, VideogameAsset } from "@mui/icons-material";
 import { styled, alpha } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import Layout from "../components/Layout";
+import Layout from "../shared/components/Layout";
 import { Link } from "react-router-dom";
 
 

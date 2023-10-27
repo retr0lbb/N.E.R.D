@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import axios from "axios"
 
-import mario from "../assets/img/mario.webp"
-import red from "../assets/img/red.jpg"
-import nerdLogo from "../assets/img/nerdLogo.png"
+import mario from "../shared/assets/img/mario.webp"
+import red from "../shared/assets/img/red.jpg"
+import nerdLogo from "../shared/assets/img/nerdLogo.png"
 
 import {
   Avatar,
@@ -17,7 +17,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { Layout, Slide } from '../components'
+import { Layout, Slide } from '../shared/components'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default function Login() {
