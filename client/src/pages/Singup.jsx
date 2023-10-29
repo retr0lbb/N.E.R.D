@@ -84,7 +84,7 @@ export default function Singup(){
         if(!userName || !email || !pass){
             return(alert("Faltam dados"));
         }
-        axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users", {email: email, name: userName, pass: pass}).then(response => {
+        try {axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users", {email: email, name: userName, pass: pass}).then(response => {
             if(response.status==200){
                 setInputValue("");
                 setStep(200);
@@ -96,8 +96,15 @@ export default function Singup(){
         }).catch((err)=>{
             if(err){
                 console.log(err)
+                alert("DEU ERRO")
             }
         })
+            
+        } catch (error) {
+            console.log(error);
+            alert("DEU ERRo")
+        }
+        
     }
     const handleKeyPressed = (event) =>{
         if(event.key === "Enter"){

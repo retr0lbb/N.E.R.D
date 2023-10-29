@@ -3,6 +3,7 @@ import Login from './pages/Login'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from './pages/Home'
 import SingUp from './pages/Singup'
+import Profile from "./pages/profile" 
 import './global.css'
 import { ThemeProvider } from '@mui/material'
 import { authTheme } from './themes/authTheme'
@@ -16,6 +17,7 @@ export default function App() {
           <Route element={<Login />} path="/" exact />
           <Route element={<Home />} path="home" />
           <Route element={<SingUp />} path='cadastro0' />
+          <Route element={<Profile />} path='profile'/>
           <Route path="*" element={<Navigate to='/' />} />
         </Routes>
       </ThemeProvider>

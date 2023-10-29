@@ -97,4 +97,16 @@ export const TerminalInput = styled.input`
     text-shadow: 0px 0px 100px ${(prop) => prop.cor || "red"},
             0px 0px 200px ${(prop)=> prop.cor || "red"};
             padding-left: 6px;
+`;
+
+export const BannerWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+`
+export const ProfileMainWrapper = styled.section`
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center
 `
