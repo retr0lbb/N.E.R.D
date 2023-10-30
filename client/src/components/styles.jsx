@@ -106,7 +106,8 @@ export const BannerWrapper = styled.div`
 `
 export const ProfileMainWrapper = styled.section`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
-    justify-content: center
+    justify-content: center;
+    flex-direction: column;
 `

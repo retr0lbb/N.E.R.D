@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
+//navdivs
 export const NavMainWrapper = styled.nav`
     width: 4%;
-    height: 90%;
+    height: 100%;
     background-color: rebeccapurple;
-    border-radius: 0px 0px 20px 20px;
-    position: absolute;
-    left: 0;
+    position: sticky;
 `
 export const NavLinkList = styled.ul`
     width: 100%;
@@ -14,12 +13,12 @@ export const NavLinkList = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 40px;
     padding-top: 30px;
     padding-bottom: 30px;
+    list-style: none;
 `
 export const ALink = styled.a`
-    width: 100%;
-    height: 100%;
     text-decoration: none;
     align-items: center;
     justify-content: center;
@@ -32,10 +31,14 @@ export const ImgLINK = styled.img`
 
 `
 export const LinkContent = styled.li`
-    width: 100%;
-    height: 100%;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-decoration: none;
+`
+
+
+//header divs
+export const HeaderMainWrapper = styled.div`
+    width: 100vw;
+    height: 7vh;
+    background-color: teal;
+
 `
