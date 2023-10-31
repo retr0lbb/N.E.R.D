@@ -10,6 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { MoreHoriz } from "@mui/icons-material";
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -35,6 +36,7 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
+      
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -62,22 +64,23 @@ export default function SwipeableTemporaryDrawer() {
       </List>
     </Box>
   );
-
+ 
   return (
     <div>
-      {['left'].map((anchor) => (
+      {[''].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)}><MoreHoriz fontSize="large" color="inherit"/>{anchor}</Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
             onOpen={toggleDrawer(anchor, true)}
-          >
+            >
             {list(anchor)}
           </SwipeableDrawer>
         </React.Fragment>
       ))}
     </div>
+    
   );
 }
