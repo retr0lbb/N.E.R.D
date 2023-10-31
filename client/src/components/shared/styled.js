@@ -5,7 +5,9 @@ export const NavMainWrapper = styled.nav`
     width: 4%;
     height: 100%;
     background-color: rebeccapurple;
-    position: sticky;
+    position: fixed;
+    left:0;
+    top: 9vh;
 `
 export const NavLinkList = styled.ul`
     width: 100%;
@@ -38,7 +40,9 @@ export const LinkContent = styled.li`
 //header divs
 export const HeaderMainWrapper = styled.div`
     width: 100vw;
-    height: 7vh;
+    height: 9vh;
     background-color: teal;
+    position:fixed;
+    top:0
 
 `
