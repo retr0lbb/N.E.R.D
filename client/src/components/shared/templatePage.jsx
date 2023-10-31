@@ -9,7 +9,7 @@ export default function TemplatePage(){
         <TemplateWrapper>
             <Header></Header>
             <NavBar></NavBar>
-            <ContentWrapper>
+            <ContentWrapper>dasdasd
                 <BorderDiv>
                     <p>aodaoldoasldoadl</p>
                 </BorderDiv>
