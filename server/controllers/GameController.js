@@ -88,3 +88,19 @@ exports.findByName = async(req, res) =>{
         }
     }
 }
+exports.findById = async(id)=>{
+    const GameId = id
+    try {
+        const game = await Game.findById(GameId);
+        if(!game){
+            return console.log("jogo não encontrado")
+        }
+
+        return game
+    } catch (error) {
+        if(error){
+            console;log(error)
+            return;
+        }
+    }
+} 

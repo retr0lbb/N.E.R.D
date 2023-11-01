@@ -3,8 +3,7 @@ import Login from './pages/Login'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from './pages/Home'
 import SingUp from './pages/Singup'
-import Profile from "./pages/profile" 
-import TemplatePage from './components/shared/templatePage'
+import TemplatePage from "./components/shared/template/templatePage"
 import './global.css'
 import { ThemeProvider } from '@mui/material'
 import { authTheme } from './themes/authTheme'

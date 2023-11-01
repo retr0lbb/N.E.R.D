@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 
 const userRouter = require('./routers/UserRouter.js');
 const gameRouter = require('./routers/GameRouter.js');
+const paymentRouter = require("./routers/PaymentRouter.js")
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -31,6 +32,7 @@ app.use(
 
 app.use('/users', userRouter);
 app.use('/games', gameRouter);
+app.use("/pay", paymentRouter)
 
 connection((connection) => {
   app.listen(port, () => {

@@ -13,5 +13,6 @@ router.post("/", uploads.fields([
 ]), gameController.create);
 router.get("/", gameController.showAll)
 router.post("/name/:name", gameController.findByName)
+router.post("/findId/:id", gameController.findById)
 
 module.exports = router;
