@@ -2,6 +2,7 @@ const Payment = require("../models/payment.model")
 const gameController = require("./GameController")
 require("dotenv").config()
 const SECRET_KEY = process.env.SECRET_KEY
+const PUBLIC_KEY = ""
 const Stripe = require("stripe")(SECRET_KEY);
 
 exports.createPayment = async(req, res) =>{
