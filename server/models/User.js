@@ -1,6 +1,7 @@
 //importa nosso framework de requisições com o banco de dados mongodb.
 const mongoose= require('mongoose');
 
+
 //cria um novo Schema pra usuario que é como se fosse uma classe.
 const userSchema = new mongoose.Schema({
     //cria campos como: nome, email, pass, type e um objeto de imagem.
@@ -8,6 +9,7 @@ const userSchema = new mongoose.Schema({
     //cria um tipo unico de email assim 2 usuarios não podem ter o mesmo email.
     email:{type: String, required: true, unique: true},
     pass:{type: String, required: true},
+    description:{type: String},
     type: {type: Boolean, required: true},
     image: {
         imgName: {type: String},

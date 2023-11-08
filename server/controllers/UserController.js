@@ -6,13 +6,14 @@ const unlinkSyncFs = require("./utils/fs/unlink")
 const encriptPass = require("./utils/encryptPass/encriptPass")
 const compare = require("./utils/encryptPass/comparepass")
 const User = require('../models/User');
+const libModel = require('../models/lib.model');
 
 //Função de criar o usuario
 exports.create = async (req, res) => {
     //função try/catch para que mesmo se der erro ele não pare a execução do servidor.
     try {
         //armazenando os dados do corpo da requisição e os armazena.
-        const {name, email, pass} = req.body
+        const {name, email, pass, description} = req.body
         const{imgName} = req.body
         const src = req.file
 
@@ -38,6 +39,12 @@ exports.create = async (req, res) => {
             
         }
 
+        const lib = new libModel({
+            downloadedGames: [],
+            myGames: [],
+            games: []
+        })
+
         // instanciamos o modelo do usuario.
         const user = new User({
             name: name,
@@ -46,10 +53,8 @@ exports.create = async (req, res) => {
             pass: encriptPass(pass, 10),
             type: type,
             image: imageData,
-            lib: {
-                games: [],
-                dowloadedGames: [],
-            }
+            lib: lib,
+            description: description
         })
 
         //enviamos para a base de dados

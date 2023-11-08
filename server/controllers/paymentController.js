@@ -4,6 +4,7 @@ require("dotenv").config()
 const SECRET_KEY = process.env.SECRET_KEY
 const PUBLIC_KEY = ""
 const Stripe = require("stripe")(SECRET_KEY);
+const user = require("../models/User")
 
 exports.createPayment = async(req, res) =>{
     const {user, products} = req.body;
@@ -31,12 +32,11 @@ exports.createPayment = async(req, res) =>{
         })
 
         //stripe rules
-
-        const userPaymentSession = await Stripe.checkout.sessions.create({
+         const userPaymentSession = await Stripe.checkout.sessions.create({
             payment_method_types: ["card"],
             line_items: gameBundle.map((game)=> ({
                 price_data: {
-                    currency: "usd",
+                    currency: "brl",
                     product_data: {
                         name: game.name
                     },
@@ -59,3 +59,30 @@ exports.createPayment = async(req, res) =>{
         }
     }
 }
+
+exports.createWebHook = async(req, res)=>{
+    const corpo = req.body;
+    try {
+      // Acessando o ID da sessão de pagamento
+      const sessionId = corpo.data.object.id;
+  
+      // Acessando o status do pagamento
+      const paymentStatus = corpo.data.object.payment_status;
+  
+      // Aqui, você pode realizar ações com base nas informações do pagamento
+      if (paymentStatus === "paid") {
+        // O pagamento foi bem-sucedido, faça o que for necessário, como atualizar o usuário ou registrar a compra.
+        console.log(`Pagamento bem-sucedido para a sessão: ${sessionId}`);
+      } else {
+        // O pagamento não foi bem-sucedido, trate de acordo.
+        console.log(`Pagamento não foi bem-sucedido para a sessão: ${sessionId}`);
+      }
+  
+      res.status(200).send("Webhook recebido com sucesso");
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Erro ao processar o webhook");
+    }
+  };
+
+
