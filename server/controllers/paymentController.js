@@ -5,10 +5,25 @@ const SECRET_KEY = process.env.SECRET_KEY
 const PUBLIC_KEY = ""
 const Stripe = require("stripe")(SECRET_KEY);
 const user = require("../models/User")
+const { set } = require("mongoose")
+
+
+async function filterGameBundle(gameBundle, UserId){
+    try {
+        const usuario = await user.findById(UserId)
+        console.log(usuario.lib)
+
+        let semNoDuplicatesGameArray = new set(gameBundle)
+        let
+    } catch (error) {
+        
+    }
+}
 
 exports.createPayment = async(req, res) =>{
     const {user, products} = req.body;
     try {
+        filterGameBundle(null, user)
         if(!products || !user){
             return res.status(404).send("Erro ao encontrar produtps selecionados")
         }
@@ -18,6 +33,8 @@ exports.createPayment = async(req, res) =>{
         })
         const gameResults = await Promise.all(gamePromises)
         const gameBundle = gameResults.filter((e)=> e !== null)
+
+
 
        
         var totalPrice = 0;
@@ -48,9 +65,7 @@ exports.createPayment = async(req, res) =>{
             success_url: "https://www.youtube.com/",
             cancel_url: "https://www.amazon.com.br/ref=nav_logo",
         })
-
-        console.log(userPaymentSession)
-        res.status(200).json({session: userPaymentSession.id})
+        res.status(200).json({session: userPaymentSession.id, products: payment, url: userPaymentSession.url})
 
     } catch (error) {
         if(error){
