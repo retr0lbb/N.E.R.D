@@ -43,6 +43,7 @@ export default function Singup(){
     const [email, setEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [pass, setPass] = useState("");
+    const [confirmPass, setConfirmPass] = useState("")
     const [inputValue, setInputValue] = useState("");
 
 
@@ -62,8 +63,12 @@ export default function Singup(){
             main: "Por Favor insira sua",
             light: "Senha: "
         },
+        4:{
+            main: "Insira novamente a sua",
+            light: "Senha"
+        },
         18: {
-            main: "Suas informações estão corretas? ",
+            main: "Suas informações estão corretas? [S/N]",
             light: `${email}, ${userName}, ${generateAsterisks(pass.length)}`
         },
         200: {
@@ -111,22 +116,39 @@ export default function Singup(){
             if(!inputValue){
                 return alert("insira os dados corretamente") 
             }
-            setStep(step + 1)
-            if(step >= 3){
+            if(step === 5){
+                if(pass != confirmPass){
+                    alert("As senhas não batem");
+                    setStep(3)
+                    console.log(pass, " espaço", confirmPass)
+                    setInputValue("")
+                    return;
+                }
                 setStep(18)
             }
+            setStep(step + 1)
             switch (step) {
                 case 1:
                     setEmail(inputValue)
                     setInputValue("")
+                    console.log(step)
                     break;
                 case 2:
                     setUserName(inputValue)
                     setInputValue("")
+                    console.log(step)
                     break
                 case 3:
                     setPass(inputValue)
                     setInputValue("")
+                    console.log(step)
+                    break;
+                case 4:
+                    setConfirmPass(inputValue)
+                    console.log(inputValue)
+                    console.log(step)
+                    setInputValue("")
+                    setStep(5)
                     break;
             }
             if(step == 18){
@@ -164,7 +186,7 @@ export default function Singup(){
                     </styled.Ascii>
                 </styled.AsciiWrapper>
                 <styled.PText>
-                    {text[`${step}`].main}<styled.HightLight cor={step === 18 ? "#761DF2": "#EE05F2"}>{text[`${step}`].light}</styled.HightLight>
+                    {text[`${step}`].main || ""}<styled.HightLight cor={step === 18 ? "#761DF2": "#EE05F2"}>{text[`${step}`].light || ""}</styled.HightLight>
                 </styled.PText>
             </styled.Span>
             <styled.TerminalInput 
