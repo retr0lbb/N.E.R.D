@@ -6,7 +6,9 @@ const gameSchema = new mongoose.Schema({
     developer: {type: String, required: true},
     description: {type: String},
     price: {type: Number, required: true},
-    achivements:{Type: Number},
+    tags: {Type: Array, required: true},
+    achivements:{Type: Array},
+    rating: {Type: Number},
     GameFiles: {
         src: {type: String, required: true},
     },

@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+
+export const terminalBody = styled.body`
+    width: 100%;
+    height: 100vh;
+    background-color: #0d1321;
+
+`
+
 export const Wrapper = styled.div`
     width: 100%;
     height: 100vh;
@@ -7,9 +15,13 @@ export const Wrapper = styled.div`
     background-color: #0d1321;
     align-items: center;
     flex-direction:column;
+    border: 5px solid white;
+    border-top: 70px solid white;
+    border-radius: 25px;
 `;
 
 export const Span = styled.span`
+
     width: 100%;
     display: flex;
     align-items: center;
@@ -99,6 +111,64 @@ export const TerminalInput = styled.input`
             padding-left: 6px;
 `;
 
+
+
+///parte do negocio ai
+
+export const borderTerminal = styled.div`
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 5px solid white;
+    border-top: 70px solid white;
+    border-radius: 15px;
+`
+export const navBarTerminal = styled.nav`
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+export const buttonWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+`
+export const buttonExit = styled.button`
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    color: black;
+    font-size: 32px;
+    border: 2px solid black;
+    margin-left: auto;
+`
+export const interiorNavBartTerminal = styled.div`
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+`
+export const interiorNavBartTerminalminText = styled.p`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    float: left;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: gray;
+`
+
+
 export const BannerWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -111,3 +181,5 @@ export const ProfileMainWrapper = styled.section`
     justify-content: center;
     flex-direction: column;
 `
+
+
