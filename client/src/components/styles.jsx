@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 
 export const terminalBody = styled.body`
@@ -35,6 +35,24 @@ export const AsciiWrapper = styled.div`
     align-self: center;
     justify-content: center;
 `;
+//blink effect
+
+const blink = keyframes`
+    0%, 100%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+`;
+
+ export const blinkingCursor = styled.span`
+     font-size: 1.2em;
+  color: #fff;
+  animation: ${blink} 1s step-end infinite;
+`
+
+
 export const Ascii = styled.pre`
     height: 100%;
     display: flex;

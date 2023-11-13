@@ -117,62 +117,7 @@ export default function Singup(){
         }
         
     }
-    const handleKeyPressed = (event) => {
-        if (event.key === "Enter") {
-            if (!inputValue) {
-                return alert("insira os dados corretamente");
-            }
-            switch (step) {
-                case 1:
-                    setEmail(inputValue);
-                    setInputValue("");
-                    setStep(step + 1);
-                    break;
-                case 2:
-                    setUserName(inputValue);
-                    setInputValue("");
-                    setStep(step + 1);
-                    break;
-                case 3:
-                    setPass(inputValue);
-                    setInputValue("");
-                    setStep(step + 1);
-                    break;
-                case 4:
-                    setConfirmPass(inputValue);
-                    setStep(step + 1);
-                    setInputValue("");
-                    break;
-                case 5:
-                    if(confirmPass != pass){
-                        alert("mohhamed "+ confirmPass + " " + pass)
-                    }
-                    switch (inputValue.toLowerCase()) {
-                        case "s":
-                            try {
-                                handleAxiosHTTP();
-                            } catch (error) {
-                                if (error) {
-                                    alert(error);
-                                }
-                            }
-                            break;
-                        case "n":
-                            alert("revertendo dados");
-                            setStep(1);
-                            setInputValue("");
-                            break;
-                        default:
-                            alert("Digite um valor valido");
-                            console.log(inputValue.toLowerCase());
-                            break;
-                    }
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
+
     
     
     return(
@@ -188,7 +133,7 @@ export default function Singup(){
         </styled.navBarTerminal>
             <styled.Span>
                 <styled.AsciiWrapper>
-                    <styled.Ascii cor={hasError === true ? "red": changeAsciiColor("white")}>
+                    <styled.Ascii cor={changeAsciiColor("white")}>
                         {asciiArt}
                     </styled.Ascii>
                 </styled.AsciiWrapper>
@@ -199,7 +144,7 @@ export default function Singup(){
             <styled.TerminalInput
                 ref={inputRef}
                 value={inputValue} 
-                onKeyDown={handleKeyPressed} 
+                onKeyDown={(e) => console.log(e)} 
                 onChange={(event) => {setInputValue(event.target.value)}}
                 type={step === 1? "email": "text"}
                 >
