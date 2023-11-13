@@ -8,7 +8,7 @@ export default function Layout({ children }) {
         height: '100vh',
         width: '100vw',
         overflow: 'auto',
-        background: '#001C30'
+        background: 'gray'
     }}>
         {children} 
     </Box>
