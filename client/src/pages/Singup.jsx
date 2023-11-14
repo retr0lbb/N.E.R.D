@@ -56,32 +56,6 @@ export default function Singup(){
     function generateAsterisks(length) {
         return '*'.repeat(length);
       }
-    const text = {
-        1: {
-            main: "Por Favor insira o seu",
-            light: "Email: "
-        },
-        2:{
-            main: "Por Favor insira o seu",
-            light: "Nome De Usuario: "
-        },
-        3: {
-            main: "Por Favor insira sua",
-            light: "Senha: "
-        },
-        4:{
-            main: "Insira novamente a sua",
-            light: "Senha"
-        },
-        5: {
-            main: "Suas informações estão corretas? [S/N]",
-            light: `${email}, ${userName}, ${generateAsterisks(pass.length)}`
-        },
-        200: {
-            main: "Usuario cadastrado com ",
-            light: "Exito!"
-        }
-    }
     const changeAsciiColor = (color, shadowColor) =>{
         let asciiColor;
         asciiColor = color
@@ -118,6 +92,80 @@ export default function Singup(){
         
     }
 
+    const handleEnter = ()=>{
+        if(step == 1){
+            if(!inputValue){
+                alert("insira dados validos");
+                return;
+            }
+            setUserName(inputValue);
+            setStep(2);
+            setInputValue("")
+            inputRef.current.focus()
+        }
+        if(step === 2){
+            if(!inputValue){
+                alert("insira dados validos");
+                return;
+            }
+            setEmail(inputValue);
+            setStep(3);
+            setInputValue("");
+            console.log("nome de usuario", userName);
+            console.log("Email: ", email);
+            inputRef.current.focus();
+        }
+        if(step === 3){
+            if(!inputValue){
+                alert("insira dados validos");
+                return;
+            }
+            setPass(inputValue);
+            setStep(4);
+            setInputValue("");
+        }
+        if(step === 4){
+            if(!inputValue){
+                alert("insira dados validos");
+                return;
+            }
+            let confirmPass;
+            confirmPass = inputValue;
+            if(confirmPass != pass){
+                alert(confirmPass + " As senhas não batem "+ pass);
+                setInputValue("");
+                setStep(3);
+                return;
+            }
+            setStep(5)
+            setInputValue("");
+        }
+        if(step === 5){
+            if(!inputValue){
+                alert("insira dados validos");
+                return;
+            }
+
+            switch (inputValue.toLocaleLowerCase()) {
+                case "s":
+                    alert("passou");
+                    setInputValue("");
+                    handleAxiosHTTP();
+                    break;
+                case "n":
+                    alert("retornando dados");
+                    setStep(1);
+                    setInputValue("")
+                    break;
+                default:
+                    alert("commando não reconhecido");
+                    console.log(inputValue.toLocaleLowerCase())
+                    setInputValue("")
+                    break;
+            }
+        }
+
+    }
     
     
     return(
@@ -138,15 +186,23 @@ export default function Singup(){
                     </styled.Ascii>
                 </styled.AsciiWrapper>
                 <styled.PText>
-                    {text[`${step}`].main || ""}<styled.HightLight cor={step === 18 ? "#761DF2": "#EE05F2"}>{text[`${step}`].light || ""}</styled.HightLight>
+                {step === 1 && `Insira o seu Nome de usuario`}
+                {step === 2 && "Insira o seu email"}
+                {step === 3 && "Insira sua senha"}
+                {step === 4 && "Confirme sua senha"}
+                {step === 5 && `Os dados estão corretos?[S/N]: ${userName}, ${email}, ${generateAsterisks(pass.length)}`}
                 </styled.PText>
             </styled.Span>
             <styled.TerminalInput
                 ref={inputRef}
                 value={inputValue} 
-                onKeyDown={(e) => console.log(e)} 
+                onKeyDown={(e) => 
+                {
+                    if(e.key === "Enter"){
+                        handleEnter();
+                    }
+                }} 
                 onChange={(event) => {setInputValue(event.target.value)}}
-                type={step === 1? "email": "text"}
                 >
                     
                 </styled.TerminalInput>
