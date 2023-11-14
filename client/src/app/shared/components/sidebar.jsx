@@ -15,6 +15,7 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import ChatIcon from '@mui/icons-material/Chat';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { IconButton } from '@mui/material';
 
 
 export default function SwipeableTemporaryDrawer() {
@@ -124,9 +125,17 @@ export default function SwipeableTemporaryDrawer() {
     <div>
       {['left'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)} sx={{":hover":{backgroundColor:'transparent'}}}>
-            <MenuIcon sx={{color:'white'}}/> {/* Substitua "MenuIcon" pelo ícone desejado */}
-          </Button>
+          
+          <IconButton onClick={toggleDrawer(anchor, true)}
+            size="lg"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit" 
+            sx={{":hover":{backgroundColor:'transparent',}}}>
+            <MenuIcon sx={{color:'white'}} fontSize='large'/> {/* Substitua "MenuIcon" pelo ícone desejado */}
+          </IconButton>
+
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}

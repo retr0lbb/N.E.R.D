@@ -4,16 +4,13 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MenuIcon from '@mui/icons-material/Menu';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import SwipeableTemporaryDrawer from './sidebar';
+import BasicModal from './CartModal';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -22,11 +19,11 @@ const Search = styled('div')(({ theme }) => ({
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginRight: theme.spacing(2),
+  marginRight: theme.spacing(1),
   marginLeft: 0,
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
+    marginLeft: theme.spacing(25),
     width: 'auto',
   },
 }));
@@ -44,7 +41,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 35, 1, 0),
+    padding: theme.spacing(1, 55, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -80,7 +77,8 @@ export default function PrimarySearchAppBar() {
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
-    <Menu
+    <Menu 
+      
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: 'top',
@@ -90,7 +88,7 @@ export default function PrimarySearchAppBar() {
       keepMounted
       transformOrigin={{
         vertical: 'top',
-        horizontal: 'right',
+        horizontal: 'left',
       }}
       open={isMenuOpen}
       onClose={handleMenuClose}
@@ -125,7 +123,7 @@ export default function PrimarySearchAppBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -143,21 +141,9 @@ export default function PrimarySearchAppBar() {
             aria-haspopup="true"
             color="inherit"
           >
-            <SwipeableTemporaryDrawer />
+            <SwipeableTemporaryDrawer/>
           </IconButton>
-
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: 'flex' }}>
-            <IconButton
+          <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -167,21 +153,23 @@ export default function PrimarySearchAppBar() {
               color="inherit"
               sx={{ marginLeft: 2 }}
             >
-              <AccountCircle />
+              <AccountCircle fontSize='large'/>
             </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
+          <Search sx={{marginLeft: 7}}>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Pesquisar…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+          <IconButton
+            sx={{ marginLeft: 30 }}>
+            <BasicModal/>
+          </IconButton>
+          
+          
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
