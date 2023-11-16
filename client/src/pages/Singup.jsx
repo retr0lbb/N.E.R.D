@@ -1,10 +1,13 @@
 import react from "react"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { UserContext } from "../components/userContext"
 import {BsFillTerminalFill} from "react-icons/bs"
 import {styled} from "../components/index"
 import axios from "axios"
 
 export default function Singup(){
+    const navigate = useNavigate()
     
     const asciiArt = `                                                                                                                          
                                      .....                                      
@@ -69,13 +72,13 @@ export default function Singup(){
         if(!userName || !email || !pass){
             return(alert("Faltam dados"));
         }
-        try {axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users", {email: email, name: userName, pass: pass}).then(response => {
+        try {axios.post("http://localhost:3000/users", {email: email, name: userName, pass: pass}).then(response => {
             if(response.status==200){
                 setInputValue("");
                 setStep(200);
                 setTimeout(() => {
-
-                    window.location.href = "/home";
+                    localStorage.setItem("user", JSON.stringify(response.data.user))
+                    navigate("/home")
                   }, 1500);
             }
         }).catch((err)=>{

@@ -6,9 +6,9 @@ require('dotenv').config();
 let connection;
 
 //
-const DBPASS = process.env.DBPASS || "2jdeN8aAEy80TozH"
-const DBNAME = process.env.DBNAME || "oval2";
-const uri = `mongodb+srv://${DBNAME}:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority&wtimeoutMS=30000`;
+const DBPASS = "2jdeN8aAEy80TozH"
+const DBNAME =  "oval2";
+const uri = `mongodb+srv://${DBNAME}:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority`;
 
 
 console.log(DBPASS, "name", DBNAME)

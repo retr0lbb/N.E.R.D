@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import axios from "axios"
+import { BrowserRouter as Router, Route, useNavigate } from "react-router-dom"
 //import dotenv from "dotenv"
 //dotenv.config()
 
@@ -25,8 +26,19 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../global.css";
 
 export default function Login() {
+  const history = useNavigate()
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+
+  useEffect(() => {
+    // Verifica se há um usuário no localStorage ao carregar o componente
+    const userFromStorage = localStorage.getItem("user");
+
+    if (userFromStorage) {
+      // Se existir, redireciona para a página home
+      history("/home");
+    }
+  }, [])
 
   const handleSubmit = async() =>{
     if(!email || !pass){
@@ -35,12 +47,14 @@ export default function Login() {
         setPass("");
       return;
     }
-    const secondHttp = "http://localhost:3000";
+    const secondHttp = "localhost:3000";
+    const prymaryHttp = "3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io";
     //const primeHttp = process.env.HTTPURL;
-    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+    await axios.post(`http://${secondHttp}/users/login`, {email, pass}).then(result => {
       setEmail(""); 
-      setPass("");  
-      window.location.href = "/home";
+      setPass("");
+        localStorage.setItem("user", JSON.stringify(result.data.data))
+      history("/home")
     }).catch(error => {
       if(error){
         alert(error)

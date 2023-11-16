@@ -62,7 +62,7 @@ exports.create = async (req, res) => {
 
 
         //se tudo der certo ele exibe o json dos dados do usuario cadastrado e uma mensagem de sucesso
-        res.json({user, msg: "Usuario inserido com sucesso"});
+        res.json({data: user, msg: "Usuario inserido com sucesso"});
 
         //caso de erro essa função lidara com o erro
     } catch (error) {
