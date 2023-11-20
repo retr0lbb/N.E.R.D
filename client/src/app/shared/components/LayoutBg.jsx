@@ -1,14 +1,16 @@
 import React from 'react'
 import { Box } from '@mui/system'
-import bg from '../assets/img/bg.jpg'
+import tcc from '../assets/img/tcc.jpg'
 
 export default function LayoutBg({ children }) {
   return (
     <Box sx={{
         height: '100vh',
         width: '100vw',
-        overflow: 'auto',
-        background: `url(${bg})`
+        flexShrink: 0,
+        background: `url(${tcc}),lightgray 50% / cover no-repeat`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
     }}>
         {children} 
     </Box>

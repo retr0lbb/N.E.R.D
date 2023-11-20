@@ -1,9 +1,11 @@
 import React, {useState} from "react";
 import axios from "axios"
+//import dotenv from "dotenv"
+//dotenv.config()
 
 import mario from "../shared/assets/img/mario.webp"
 import red from "../shared/assets/img/red.jpg"
-import nerdLogo from "../shared/assets/img/nerdLogo.png"
+import NerdLogo from "../shared/assets/img/NerdLogo.png"
 
 import {
   Avatar,
@@ -12,6 +14,7 @@ import {
   Card,
   CardContent,
   Container,
+  Grid,
   TextField,
   Typography,
 } from "@mui/material";
@@ -23,26 +26,55 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = () =>{
+  const handleSubmit = async() =>{
     if(!email || !pass){
       console.log("Insira os campos corretamente");
+        setEmail("");
+        setPass("");
       return;
     }
-
-    axios.get("http://localhost/3000/users", {email}).then(result => {
-      console.log(result)
+    const secondHttp = "http://localhost:3000";
+    //const primeHttp = process.env.HTTPURL;
+    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+      setEmail(""); 
+      setPass("");  
+      window.location.href = "/home";
     }).catch(error => {
       if(error){
         alert(error)
+        setEmail("");
+        setPass("");
       }
     })
+    
   }
 
 
   return (
     <Layout>
-      <h1>ola</h1>
       <Box display="flex" justifyContent="space-around" alignItems="center">
+        <Box>
+          <Carousel
+            width={750}
+            autoPlay
+            centerMode
+            centerSlidePercentage={75}
+            autoFocus
+            infiniteLoop
+            interval={3000}
+            transitionTime={1000}
+            showArrows={false}
+            showThumbs={false}
+            showStatus={false}
+            showIndicators={false}
+          >
+            <Slide src={red} />
+            <Slide src={mario} />
+            <Slide src={red} />
+            <Slide src={mario} />
+            <Slide src={red} />
+          </Carousel>
+        </Box>
         <Box>
           <form>
             <Container
@@ -57,14 +89,14 @@ export default function Login() {
               <Card sx={{ width: "90%", minHeight: "80%" }}>
                 <CardContent
                   sx={{
-                    borderRadius: 2,
+                    height: '100vh',
+                    overflow: 'hidden',
                     textAlign: "center",
                     pt: 3.75,
                     pd: 3.75,
                     pl: 2,
                     pr: 2,
-                    background: "rgba(225, 225, 225, 0.133)",
-                    border: "1px solid ",
+                    background: 'linear-gradient(180deg, #48317A 18.99%, #131636 100%)',
                     backdropFilter: "blur(3px)",
                     boxShadow: "0 0 6px 0 rgba(29, 29, 29, 0.203)",
                   }}
@@ -79,12 +111,13 @@ export default function Login() {
                       }}
                     >
                       <Typography mb={1} variant="h3" pt={3} >
-                        <img src={nerdLogo} width={150} className="logo" />
+                        <img src={NerdLogo} width={150} className="logo" />
                       </Typography>
                     </Container>
                   </Box>
                   <Box color={"white"}>
                     <TextField
+                    value={email}
                       fullWidth
                       InputLabelProps={{ required: false }}
                       variant="standard"
@@ -99,6 +132,7 @@ export default function Login() {
                     />
 
                     <TextField
+                    value={pass}
                       fullWidth
                       variant="standard"
                       label="Pass"
@@ -141,23 +175,6 @@ export default function Login() {
               </Card>
             </Container>
           </form>
-        </Box>
-        <Box>
-          <Carousel
-            width={750}
-            autoPlay
-            infiniteLoop
-            showArrows={false}
-            showThumbs={false}
-            showStatus={false}
-            showIndicators={false}
-          >
-            <Slide src={red} />
-            <Slide src={mario} />
-            <Slide src={red} />
-            <Slide src={mario} />
-            <Slide src={red} />
-          </Carousel>
         </Box>
       </Box>
     </Layout>

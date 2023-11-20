@@ -1,7 +1,7 @@
 import react from "react"
 import { useState, useRef } from "react"
 import {styled} from "../shared/components/index"
-import ned from "../shared/assets/img/nerd.png"
+import ned from "../shared/assets/img/NerdLogo.png"
 
 export default function Singup(){
     
