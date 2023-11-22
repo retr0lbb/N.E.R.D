@@ -2,9 +2,9 @@
 const fs = require('fs');
 
 //importações de funções em outras pastas.
-const unlinkSyncFs = require("./utils/fs/unlink")
-const encriptPass = require("./utils/encryptPass/encriptPass")
-const compare = require("./utils/encryptPass/comparepass")
+const unlinkSyncFs = require("./utils/fs/unlink");
+const encriptPass = require("./utils/encryptPass/encriptPass");
+const compare = require("./utils/encryptPass/comparepass");
 const User = require('../models/User');
 const libModel = require('../models/lib.model');
 
@@ -80,12 +80,11 @@ exports.create = async (req, res) => {
         console.log(error)
     }
 }
+
 //função de login do usuario.
   exports.login = async (req, res) =>{
-
     //armazenando os dados do corpo da requisição e os armazena.
     const {email, pass} = req.body
-
     //função try/catch para que mesmo se der erro ele não pare a execução do servidor.
     try {
         //fazemos uma busca no banco de dados fornecendo o email do usuario.
