@@ -1,11 +1,12 @@
 import react from "react"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
+import {BsFillTerminalFill} from "react-icons/bs"
 import {styled} from "../shared/components/index"
 import ned from "../shared/assets/img/NerdLogo.png"
 
 export default function Singup(){
-    const navigate = useNavigate()
     
+
     const asciiArt = `                                                                                                                          
                                      .....                                      
                              .:-====-------====-:.                              

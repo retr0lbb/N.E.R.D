@@ -23,7 +23,6 @@ import { Layout, Slide } from '../shared/components'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default function Login() {
-  const history = useNavigate()
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
