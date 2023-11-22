@@ -1,13 +1,11 @@
-import react from "react"
-import { useState, useRef, useEffect } from "react"
-import {BsFillTerminalFill} from "react-icons/bs"
-import {styled} from "../shared/components/index"
-import ned from "../shared/assets/img/NerdLogo.png"
-import { useNavigate } from "react-router-dom"
+import react from "react";
+import { useState, useRef, useEffect } from "react";
+import {BsFillTerminalFill} from "react-icons/bs";
+import * as styled from "./styles";
 
 export default function Singup(){
-    const navigate = useNavigate()
     
+
     const asciiArt = `                                                                                                                          
                                      .....                                      
                              .:-====-------====-:.                              

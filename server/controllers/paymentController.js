@@ -1,17 +1,25 @@
 const Payment = require("../models/payment.model")
 const gameController = require("./GameController")
 require("dotenv").config()
-const SECRET_KEY = process.env.SECRET_KEY
+const SECRET_KEY = process.env.SECRET_KEY || "sk_test_51NNHwlByYleOMp8r9a2pDNQzMHeVuatq3vnZN6AwWjmag7XJ6rUEZgC46soOuVzoQwRkq3jcfpLCuLNwmwHOwJ3b00djiZzEqL"
 const PUBLIC_KEY = ""
 const Stripe = require("stripe")(SECRET_KEY);
-const user = require("../models/User")
+const User = require("../models/User")
 
+
+
+let gamelist;
+let user;
 exports.createPayment = async(req, res) =>{
-    const {user, products} = req.body;
+    const {userId, products} = req.body;
     try {
         
-        if(!products || !user){
+        if(!products || !userId){
             return res.status(404).send("Erro ao encontrar produtps selecionados")
+        }
+        user = await User.findById(userId);
+        if(!user){
+            return res.status(404).send("usuario não encontrado")
         }
 
         const gamePromises = products.map( element =>{
@@ -26,6 +34,9 @@ exports.createPayment = async(req, res) =>{
         gameBundle.forEach((val) =>{
             totalPrice += val.price
         })
+
+
+        gamelist = gameBundle;
         const payment = new Payment({
             User: user,
             Product: gameBundle,
@@ -61,6 +72,7 @@ exports.createPayment = async(req, res) =>{
 }
 
 exports.createWebHook = async(req, res)=>{
+    console.log("ping")
     const corpo = req.body;
     try {
       // Acessando o ID da sessão de pagamento
@@ -72,7 +84,10 @@ exports.createWebHook = async(req, res)=>{
       // Aqui, você pode realizar ações com base nas informações do pagamento
       if (paymentStatus === "paid") {
         // O pagamento foi bem-sucedido, faça o que for necessário, como atualizar o usuário ou registrar a compra.
-        console.log(`Pagamento bem-sucedido para a sessão: ${sessionId}`);
+
+        user.lib.games.push(gamelist)
+
+        await User.findByIdAndUpdate(user._id, user)
       } else {
         // O pagamento não foi bem-sucedido, trate de acordo.
         console.log(`Pagamento não foi bem-sucedido para a sessão: ${sessionId}`);
