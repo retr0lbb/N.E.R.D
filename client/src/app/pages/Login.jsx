@@ -1,4 +1,5 @@
-import React, {useContext, useState, useEffect} from "react";
+import React, {useContext, useState, useEffect, } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios"
 //import dotenv from "dotenv"
 //dotenv.config()
@@ -30,6 +31,7 @@ export default function Login() {
   const handleSubmit = async() =>{
     if(!email || !pass){
       console.log("Insira os campos corretamente");
+      alert("Insira os campos corretamente");
         setEmail("");
         setPass("");
       return;
