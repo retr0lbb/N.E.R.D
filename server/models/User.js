@@ -15,8 +15,9 @@ const userSchema = new mongoose.Schema({
         imgName: {type: String},
         src: {type: String}
     },
-    lib: {type: Object, required: true}
-
+    lib: {type: Object, required: true},
+    PermitirConteudoAdulto: {type: Boolean},
+    FriendList: {type: Object}
 });
 //cria um indice para o mongodb atlas saber que o campo email é unico
 userSchema.index({ email: 1 }, { unique: true });

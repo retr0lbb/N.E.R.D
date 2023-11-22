@@ -1,8 +1,8 @@
 const Payment = require("../models/payment.model")
 const gameController = require("./GameController")
 require("dotenv").config()
-const SECRET_KEY = process.env.SECRET_KEY || "sk_test_51NNHwlByYleOMp8r9a2pDNQzMHeVuatq3vnZN6AwWjmag7XJ6rUEZgC46soOuVzoQwRkq3jcfpLCuLNwmwHOwJ3b00djiZzEqL"
-const PUBLIC_KEY = ""
+const SECRET_KEY = process.env.SECRET_KEY;
+const PUBLIC_KEY = "";
 const Stripe = require("stripe")(SECRET_KEY);
 const User = require("../models/User")
 
@@ -10,19 +10,27 @@ const User = require("../models/User")
 
 let gamelist;
 let user;
+
+function limparItensRepetidos(array){
+    return array.filter((item, index, self) =>{
+        return !self.includes(item, index + 1)
+    })
+}
+
 exports.createPayment = async(req, res) =>{
     const {userId, products} = req.body;
     try {
-        
         if(!products || !userId){
             return res.status(404).send("Erro ao encontrar produtps selecionados")
         }
+        const cleanProducts = limparItensRepetidos(products)
+
         user = await User.findById(userId);
         if(!user){
             return res.status(404).send("usuario não encontrado")
         }
 
-        const gamePromises = products.map( element =>{
+        const gamePromises = cleanProducts.map( element =>{
             return gameController.findById(element)
         })
         const gameResults = await Promise.all(gamePromises)
