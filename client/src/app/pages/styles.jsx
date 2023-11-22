@@ -5,6 +5,7 @@ export const terminalBody = styled.body`
     width: 100%;
     height: 100vh;
     background-color: #0d1321;
+    overflow-x: hidden;
 
 `
 
