@@ -13,6 +13,7 @@ import SwipeableTemporaryDrawer from './sidebar';
 import BasicModal from './CartModal';
 
 const Search = styled('div')(({ theme }) => ({
+  
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
@@ -23,7 +24,7 @@ const Search = styled('div')(({ theme }) => ({
   marginLeft: 0,
   width: '100%',
   [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(25),
+    marginLeft: theme.spacing(1),
     width: 'auto',
   },
 }));
@@ -41,8 +42,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 55, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    padding: theme.spacing(1),
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
@@ -132,48 +132,46 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ background: 'linear-gradient(to right, #330057, #2A018C, #941DE8 )', }}>
-        <Toolbar>
-          <IconButton
-            size="small"
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-          >
-            <SwipeableTemporaryDrawer/>
-          </IconButton>
-          <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-              sx={{ marginLeft: 2 }}
-            >
-              <AccountCircle fontSize='large'/>
-            </IconButton>
-          <Search sx={{marginLeft: 7}}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Pesquisar…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <IconButton
-            sx={{ marginLeft: 30 }}>
-            <BasicModal/>
-          </IconButton>
-          
-          
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
-  );
+    <AppBar position="static" sx={{ background: 'linear-gradient(to right, #330057, #2A018C, #941DE8 )' }}>
+      <Toolbar>
+        <IconButton
+          size="small"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <SwipeableTemporaryDrawer />
+        </IconButton>
+        <IconButton
+          size="large"
+          edge="end"
+          aria-label="account of current user"
+          aria-controls={menuId}
+          aria-haspopup="true"
+          onClick={handleProfileMenuOpen}
+          color="inherit"
+        >
+          <AccountCircle fontSize="large" />
+        </IconButton>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Pesquisar…"
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </Search>
+        <Box sx={{ flexGrow: 1 }} />
+        <IconButton>
+          <BasicModal />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
+    {renderMobileMenu}
+    {renderMenu}
+  </Box>
+);
+
 }
