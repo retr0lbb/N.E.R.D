@@ -5,14 +5,13 @@ require('dotenv').config();
 //cria uma variavel de conexão com o banco de dados
 let connection;
 
-//
-const DBPASS = "2jdeN8aAEy80TozH"
-const DBNAME =  "oval2";
+//Strings de conexão com o banco de dados
+const DBPASS = process.env.DBPASS;
+const DBNAME =  process.env.DBNAME;
 const uri = `mongodb+srv://${DBNAME}:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWrites=true&w=majority`;
 
 
-console.log(DBPASS, "name", DBNAME)
-
+//funcção asincrona que aceita uma callback de conexão
 async function connect(cb){
     if(connection){
         cb(connection);

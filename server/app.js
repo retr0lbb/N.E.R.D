@@ -41,6 +41,6 @@ connection((connection) => {
   });
 }).catch((err) => {
   if (err) {
-    console.log('Não foi possível conectar o servidor');
+    throw err;
   }
 });

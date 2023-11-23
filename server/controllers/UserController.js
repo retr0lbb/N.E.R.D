@@ -1,5 +1,7 @@
 //uso do pacote fs para gerenciamento de aquivos.
 const fs = require('fs');
+const jwt = require("jsonwebtoken")
+require("dotenv").config()
 
 //importações de funções em outras pastas.
 const unlinkSyncFs = require("./utils/fs/unlink");
@@ -82,9 +84,10 @@ exports.create = async (req, res) => {
 }
 
 //função de login do usuario.
-  exports.login = async (req, res) =>{
+exports.login = async (req, res) =>{
     //armazenando os dados do corpo da requisição e os armazena.
     const {email, pass} = req.body
+    const TOKENSECRET = process.env.TOKENSECRET
     //função try/catch para que mesmo se der erro ele não pare a execução do servidor.
     try {
         //fazemos uma busca no banco de dados fornecendo o email do usuario.
@@ -96,13 +99,16 @@ exports.create = async (req, res) => {
         }
         //compara a senha digitada com a senha salva no banco de dados.
         if(compare(pass, user.pass)){
+
+            const token = jwt.sign({userId: user._id, email: user.email}, `${TOKENSECRET}`, {expiresIn: '5h'})
+
+
             //se tudo der certo ele retorna uma mensagem de usuario logado com sucesso.
-            return(res.status(200).json({message: "Usuario logado com sucesso", data: user}));
+            return(res.status(200).json({message: "Usuario logado com sucesso", data: user, token: token}));
         }else{
             //caso as senhas não batam ele retorna um erro.
             return res.status(403).send("senhas não batem");
         }
-
         //caso de erro, essa função lida com eles.
     } catch (error) {
         if(error){
