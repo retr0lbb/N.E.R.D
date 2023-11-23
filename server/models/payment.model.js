@@ -3,8 +3,9 @@ const mongoose = require("mongoose")
 const payment = new mongoose.Schema({
     User: {type: Object, required: true},
     Product: {type: Array, required: true},
-    details:{},
-    totalValue: {type: Number, require: true}
+    details:{type: String},
+    totalValue: {type: Number, required: true},
+    status: {type: String, required: true}
 });
 
 

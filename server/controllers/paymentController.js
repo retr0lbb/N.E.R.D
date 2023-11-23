@@ -1,7 +1,7 @@
 const Payment = require("../models/payment.model");
 const gameController = require("./GameController");
 require("dotenv").config();
-const SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = "sk_test_51NNHwlByYleOMp8r9a2pDNQzMHeVuatq3vnZN6AwWjmag7XJ6rUEZgC46soOuVzoQwRkq3jcfpLCuLNwmwHOwJ3b00djiZzEqL";
 const PUBLIC_KEY = "";
 const Stripe = require("stripe")(SECRET_KEY);
 const User = require("../models/User");
@@ -17,6 +17,14 @@ function limparItensRepetidos(array){
     })
 }
 
+function checkIfuserAlreadyHaveTheGame(user, array){
+    for(i=0; i<=array.length; i++){
+        for(j=0; j<= user['lib']['games'].length; j++){
+
+        }
+    }
+}
+
 exports.createPayment = async(req, res) =>{
     const {userId, products} = req.body;
     try {
@@ -26,6 +34,8 @@ exports.createPayment = async(req, res) =>{
         const cleanProducts = limparItensRepetidos(products);
 
         user = await User.findById(userId);
+        let arraysad = [1,2,3,4,5,6]
+        console.log(user["lib"]["games"].length)
         if(!user){
             return res.status(404).send("usuario não encontrado");
         }
@@ -47,9 +57,10 @@ exports.createPayment = async(req, res) =>{
         const payment = new Payment({
             User: user,
             Product: gameBundle,
-            details: "jogos novos e atualizados",
-            totalValue: totalPrice
-        })
+            details: `Jogos comprados pelo usuario ${user.name}, enviado o email de confirmação`,
+            totalValue: totalPrice,
+            status: "waiting payment"
+        });
 
         //stripe rules
          const userPaymentSession = await Stripe.checkout.sessions.create({
@@ -69,6 +80,8 @@ exports.createPayment = async(req, res) =>{
             cancel_url: "https://www.amazon.com.br/ref=nav_logo",
         })
         res.status(200).json({session: userPaymentSession.id, products: payment, url: userPaymentSession.url})
+
+        await payment.save()
 
     } catch (error) {
         if(error){
