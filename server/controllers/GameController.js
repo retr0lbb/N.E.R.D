@@ -8,7 +8,7 @@ exports.create = async(req, res) =>{
         //pega informações da nossa requisição que são essenciais para o jogo.
         const {name, title, developer, description, price} = req.body;
         //pega 2 arquivos de jogo um executavel e um arquivo de imagem.
-        const {file1, file2} = req.files;
+
 
         if(!name || !title || !developer || !description || !price){
             return res.status(404).send("Insira as informações corretamente");
@@ -24,10 +24,10 @@ exports.create = async(req, res) =>{
 
             //lida com as duas imagens diferentes no servidor
             GameFiles: {
-                src: file1[0].path
+                src: req.file.path
             },
             GameImage: {
-                src: file2[0].path,
+                src: "none",
                 ImageName: "none"
             }
         })
@@ -35,7 +35,7 @@ exports.create = async(req, res) =>{
         await game.save();
 
         //manda uma mensagem de sucesso para a requisição
-        res.status(200).send("Jogo enviado com sucesso");
+        res.status(200).json({message: "Jogo enviado com sucesso", game});
 
         //lida com os erros da nossa requisição
     } catch (error) {

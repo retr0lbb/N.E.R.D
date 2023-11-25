@@ -1,5 +1,4 @@
 //uso do pacote fs para gerenciamento de aquivos.
-const fs = require('fs');
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
 
@@ -156,7 +155,7 @@ exports.delet = async (req, res) => {
       }
 
       // retira a imagem do usuario da pasta uploads
-      unlinkSyncFs(user.image.src);
+      //unlinkSyncFs(user.image.src);
 
       //se tudo der certo retorna uma mensagem
       res.json({ message: "Usuario removido com sucesso" });
@@ -194,5 +193,38 @@ exports.update = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({message: "erro ao alterar usuario"})
+    }
+}
+
+//friends
+exports.addFriends = async(req, res) =>{
+    const {frieds, userId} = req.body
+    
+    try {
+        if(!frieds){
+            return res.status(404).send("usuario não encontrado");
+        }
+        const user = await User.findById(userId);
+
+        for(const friendId of frieds){
+            const friend = await User.findById(friendId);
+            if(friend){
+                user.FriendList.push(friend.name);
+            }
+        }
+        console.log(user.FriendList)
+
+       await User.findByIdAndUpdate(userId, user);
+
+        res.status(200).json({message: "Amigos adicionados com sucesso", frieds: user.FriendList})
+
+        if(!user){
+            return res.status(404).send("Usuario não encontrado por favor faça o login");
+        }
+        
+    } catch (error) {
+        if(error){
+            throw error
+        }
     }
 }

@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     },
     lib: {type: Object, required: true},
     PermitirConteudoAdulto: {type: Boolean},
-    FriendList: {type: Object}
+    FriendList: {type: Array}
 });
 //cria um indice para o mongodb atlas saber que o campo email é unico
 userSchema.index({ email: 1 }, { unique: true });
