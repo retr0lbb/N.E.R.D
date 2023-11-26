@@ -7,7 +7,7 @@ const gameController = require('../controllers/GameController');
 
 
 
-router.post("/",uploads.single('file'), gameController.create);
+router.post("/",uploads.fields([{name: "gameFile", maxCount: 1},{name: "assets", maxCount: 9}, {name: "image", maxCount: 1}]), gameController.create);
 router.get("/", gameController.showAll)
 router.post("/name/:name", gameController.findByName)
 router.post("/findId/:id", gameController.findById)

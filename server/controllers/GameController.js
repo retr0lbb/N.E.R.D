@@ -7,7 +7,10 @@ exports.create = async(req, res) =>{
     try {
         //pega informações da nossa requisição que são essenciais para o jogo.
         const {name, title, developer, description, price} = req.body;
-        //pega 2 arquivos de jogo um executavel e um arquivo de imagem.
+        //pega 2 arquivos de jogo um executavel e um arquivo de imagem
+        const {gameFile, image ,assets } = req.files
+
+
 
 
         if(!name || !title || !developer || !description || !price){
@@ -24,12 +27,13 @@ exports.create = async(req, res) =>{
 
             //lida com as duas imagens diferentes no servidor
             GameFiles: {
-                src: req.file.path
+                src: gameFile[0].path
             },
             GameImage: {
-                src: "none",
-                ImageName: "none"
-            }
+                src: image[0].path,
+                ImageName: image[0].name
+            },
+            AditionalAssets: assets[0].path
         })
         //salva o nosso jogo no servidor
         await game.save();

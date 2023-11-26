@@ -14,7 +14,6 @@ const gameSchema = new mongoose.Schema({
     },
     GameImage: {
         src: { type: String, required: true },
-        ImageName: { type: String }
     },
     AditionalAssets:[]
 });
