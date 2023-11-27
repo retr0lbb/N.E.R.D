@@ -1,5 +1,6 @@
 //importa o nosso modelo do jogo.
 const Game = require('../models/Game.model');
+const path = require("path")
 
 //cria um novo jogo na nossa base de dados.
 exports.create = async(req, res) =>{
@@ -28,6 +29,7 @@ exports.create = async(req, res) =>{
             //lida com as duas imagens diferentes no servidor
             GameFiles: {
                 src: gameFile[0].path
+                src: path.normalize(file1[0].path)
             },
             GameImage: {
                 src: image[0].path,

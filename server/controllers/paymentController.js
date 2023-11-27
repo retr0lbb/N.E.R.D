@@ -34,7 +34,6 @@ exports.createPayment = async(req, res) =>{
         const cleanProducts = limparItensRepetidos(products);
 
         user = await User.findById(userId);
-        let arraysad = [1,2,3,4,5,6]
         console.log(user["lib"]["games"].length)
         if(!user){
             return res.status(404).send("usuario não encontrado");
