@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         src: {type: String}
     },
     lib: {type: Object, required: true},
-    PermitirConteudoAdulto: {type: Boolean},
+    allowAdultContent: {type: Boolean},
     FriendList: {type: Array},
     SimpleAge: {type: Number, required: true}
 });
