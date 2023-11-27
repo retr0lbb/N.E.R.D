@@ -15,7 +15,6 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const validOrigins = ["https://5173-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io", "http://localhost:3000", "http://localhost:5173"];
-
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -34,6 +33,11 @@ app.use('/users', userRouter);
 app.use('/games', gameRouter);
 app.use("/pay", paymentRouter)
 
+
+
+app.get("/", async(req, res)=>{
+   res.send("Bemvindo a api N.E.R.D versão Alpha: 0.3.1");
+});
 connection((connection) => {
   app.listen(port, () => {
     console.log(`Server running on port ${port}`);

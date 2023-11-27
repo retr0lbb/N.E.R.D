@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     //cria um tipo unico de email assim 2 usuarios não podem ter o mesmo email.
     email:{type: String, required: true, unique: true},
     pass:{type: String, required: true},
-    description:{type: String},
+    biografy:{type: String},
     type: {type: Boolean, required: true},
     image: {
         imgName: {type: String},
@@ -17,7 +17,8 @@ const userSchema = new mongoose.Schema({
     },
     lib: {type: Object, required: true},
     PermitirConteudoAdulto: {type: Boolean},
-    FriendList: {type: Array}
+    FriendList: {type: Array},
+    SimpleAge: {type: Number, required: true}
 });
 //cria um indice para o mongodb atlas saber que o campo email é unico
 userSchema.index({ email: 1 }, { unique: true });

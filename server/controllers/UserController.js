@@ -14,8 +14,7 @@ exports.create = async (req, res) => {
     //função try/catch para que mesmo se der erro ele não pare a execução do servidor.
     try {
         //armazenando os dados do corpo da requisição e os armazena.
-        const {name, email, pass, description} = req.body
-        const{imgName} = req.body
+        const {name, email, pass, biografy, age} = req.body
         const src = req.file
 
         //variavel de tipo de usuario ainda não implementada.
@@ -55,7 +54,8 @@ exports.create = async (req, res) => {
             type: type,
             image: imageData,
             lib: lib,
-            description: description
+            biografy: biografy,
+            SimpleAge: age
         })
 
         //enviamos para a base de dados

@@ -15,7 +15,8 @@ const gameSchema = new mongoose.Schema({
     GameImage: {
         src: { type: String, required: true },
     },
-    AditionalAssets:[]
+    AditionalAssets:[],
+    parentalRating: { type: Number, required: false}
 });
 
 gameSchema.index({ title: 1 }, { unique: true });
