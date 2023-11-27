@@ -28,14 +28,13 @@ exports.create = async(req, res) =>{
 
             //lida com as duas imagens diferentes no servidor
             GameFiles: {
-                src: gameFile[0].path
-                src: path.normalize(file1[0].path)
+                src: path.normalize(gameFile[0].path)
             },
             GameImage: {
-                src: image[0].path,
+                src: path.normalize(image[0].path),
                 ImageName: image[0].name
             },
-            AditionalAssets: assets[0].path
+            AditionalAssets: path.normalize(assets[0].path)
         })
         //salva o nosso jogo no servidor
         await game.save();
