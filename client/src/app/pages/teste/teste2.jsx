@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-
+import Layout from "../../shared/components/Layout";
+import { dataDigitalBestSeller } from '../teste carousel/data';
 export default class AsNavFor extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +20,7 @@ export default class AsNavFor extends Component {
 
   render() {
     return (
+    <Layout>
       <div className="App">
         <h2>Slider Syncing (AsNavFor)</h2>
         <h4>First Slider</h4>
@@ -26,24 +28,9 @@ export default class AsNavFor extends Component {
           asNavFor={this.state.nav2}
           ref={slider => (this.slider1 = slider)}
         >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
+          {
+            dataDigitalBestSeller.map(video)
+          }
         </Slider>
         <h4>Second Slider</h4>
         <Slider
@@ -73,6 +60,7 @@ export default class AsNavFor extends Component {
           </div>
         </Slider>
       </div>
+    </Layout>
     );
   }
 }

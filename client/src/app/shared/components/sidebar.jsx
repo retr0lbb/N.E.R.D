@@ -38,7 +38,7 @@ export default function SwipeableTemporaryDrawer() {
   const list = (anchor) => (
     <Box sx={{
       width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 200,
-      background: 'linear-gradient(to left, #8E2DE2, #8B178B )', // Gradiente roxo
+      background: 'linear-gradient(to left, #330057, #2A018C, #941DE8 )', // Gradiente roxo
       color: 'white', // Cor do texto
       height: '100%', // Adicionando 100% de altura para cobrir todo o espaço disponível
       display: 'flex', // Usando display flex para que a altura 100% funcione corretamente
