@@ -13,7 +13,16 @@ const gameSchema = new mongoose.Schema({
         src: { type: String, required: true },
     },
     GameImage: {
-        src: { type: String, required: true },
+        MainImage: { 
+            src: {type: String, required: true}
+         },
+        BannerImage: {
+            src:{type: String, required: true}
+        },
+        MicroImage: {src: {type: String, required: false}},
+        GroupOfImagesForSlider: {
+            src: {type: Array}
+        }
     },
     AditionalAssets:[],
     parentalRating: { type: Number, required: false}

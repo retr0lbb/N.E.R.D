@@ -9,7 +9,7 @@ exports.create = async(req, res) =>{
         //pega informações da nossa requisição que são essenciais para o jogo.
         const {name, title, developer, description, price} = req.body;
         //pega 2 arquivos de jogo um executavel e um arquivo de imagem
-        const {gameFile, image ,assets } = req.files
+        const {gameFile, image ,assets, bannerImg, microImg, groupImg, mainImage } = req.files
 
 
 
@@ -31,8 +31,10 @@ exports.create = async(req, res) =>{
                 src: path.normalize(gameFile[0].path)
             },
             GameImage: {
-                src: path.normalize(image[0].path),
-                ImageName: image[0].name
+                BannerImage: {src: path.normalize(bannerImg[0].path)},
+                MainImage: {src: path.normalize(mainImage[0].path)},
+                MicroImage: {src: path.normalize(microImg[0].path)},
+                GroupOfImagesForSlider: {src: path.normalize(groupImg[0].path)}
             },
             AditionalAssets: path.normalize(assets[0].path)
         })
@@ -55,12 +57,9 @@ exports.create = async(req, res) =>{
 exports.showAll = async(req,res) =>{
     try{
         const games = await Game.find();
-
-
         if(!games){
             return res.status(404).send("Jogos não encontrados ou em falta");
         }
-
         res.status(200).json({data: games});
         console.log("Processo finalizado 1");
 
