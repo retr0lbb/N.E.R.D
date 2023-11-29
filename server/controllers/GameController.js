@@ -1,6 +1,7 @@
 //importa o nosso modelo do jogo.
 const Game = require('../models/Game.model');
 const path = require("path")
+const normalize = require("./utils/NormalizePath/normalize")
 
 //cria um novo jogo na nossa base de dados.
 exports.create = async(req, res) =>{
@@ -31,12 +32,12 @@ exports.create = async(req, res) =>{
                 src: path.normalize(gameFile[0].path)
             },
             GameImage: {
-                BannerImage: {src: path.normalize(bannerImg[0].path)},
-                MainImage: {src: path.normalize(mainImage[0].path)},
-                MicroImage: {src: path.normalize(microImg[0].path)},
-                GroupOfImagesForSlider: {src: path.normalize(groupImg[0].path)}
+                BannerImage: {src: normalize(bannerImg[0].path)},
+                MainImage: {src: normalize(mainImage[0].path)},
+                MicroImage: {src: normalize(microImg[0].path)},
+                GroupOfImagesForSlider: {src: normalize(groupImg[0].path)}
             },
-            AditionalAssets: path.normalize(assets[0].path)
+            AditionalAssets: assets[0].path
         })
         //salva o nosso jogo no servidor
         await game.save();
