@@ -62,7 +62,7 @@ export default function Teste(){
     return (
       <div className="App">
         <Slider {...settings}>
-          {dataDigitalBestSeller.map((item) => (
+         {dataDigitalBestSeller.map((item) => (
             <div className="card">
               <div className="card-top">
                 <img

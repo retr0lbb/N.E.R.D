@@ -28,9 +28,21 @@ export default class AsNavFor extends Component {
           asNavFor={this.state.nav2}
           ref={slider => (this.slider1 = slider)}
         >
-          {
-            dataDigitalBestSeller.map(video)
-          }
+            {dataDigitalBestSeller.map((capa) => (
+            <div className="card">
+              <div className="cardimagem">
+                <img
+                  src={capa.linkImg}
+                  alt={capa.title}
+      
+                />
+                <h1>{capa.title}</h1>
+              </div>
+
+            </div>
+          ))}
+          
+          
         </Slider>
         <h4>Second Slider</h4>
         <Slider
@@ -40,24 +52,24 @@ export default class AsNavFor extends Component {
           swipeToSlide={true}
           focusOnSelect={true}
         >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
+                  {dataDigitalBestSeller.map((capa) => (
+            <div className="card">
+              <div className="card-top">
+                <img
+                  src={capa.linkImg}
+                  alt={capa.title}
+      
+                />
+                <h1>{capa.title}</h1>
+              </div>
+              <div className="card-bottom">
+                <h3>{capa.price}</h3>
+                <span className="category">{capa.category}</span>
+              </div>
+            </div>
+          ))}
+         
+
         </Slider>
       </div>
     </Layout>
