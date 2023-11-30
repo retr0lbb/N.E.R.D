@@ -21,7 +21,7 @@ export default function Teste(){
       dots: true,
       slidesToScroll: 3,
       initialSlide: 0,
-      autoplay: true,
+      autoplay: false,
       spees: 500,
       responsive: [
         {

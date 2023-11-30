@@ -3,8 +3,13 @@ import { Box } from "@mui/system";
 import PrimarySearchAppBar from "../shared/components/appBar";
 import Teste from "./teste carousel/teste";
 import { Container } from "../shared/components/Container/Container";
+import { Category } from "../shared/components/Category";
+import { dataDigitalBestSeller } from './teste carousel/data';
 
 
+function filterCategory() {
+  return dataDigitalBestSeller.filter(video => video.category)
+}
 
 export default function Home() {
   return (
@@ -15,7 +20,9 @@ export default function Home() {
       }}>
         <PrimarySearchAppBar />
         <Container>
-          <Teste/>
+            
+            <Teste/>
+          
         </Container>
      
       </Box> 
