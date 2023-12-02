@@ -1,10 +1,12 @@
-body {
-    background: #ccc;
+  .cardimagem > img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
   }
   .App {
     width: 70%;
     margin: 0 auto;
-    margin-top: 50px;
+    padding-top: 2%;
   }
   
   .slick-slide > div {
@@ -17,7 +19,7 @@ body {
   .card {
     
     width: 220px;
-    height: 321px;
+    height: 350px;
     background: #fff;
     border-top-right-radius: 10px;
     overflow: hidden;
@@ -35,6 +37,8 @@ body {
     transform: translateY(-5px) scale(1.005) translateZ(0);
     box-shadow: 0 24px 36px rgba(0,0,0,0.11),
       0 24px 46px var(--box-shadow-color);
+      background-color: blueviolet;
+      color: #fff;
   }
   
   .card:hover .overlay {
@@ -74,6 +78,7 @@ body {
   
   .card-bottom {
     margin: 10px 20px;
+    
   }
   
   .category {
