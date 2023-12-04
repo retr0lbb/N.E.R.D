@@ -1,2 +1,2 @@
 # N.E.R.D-edu
-E-commerce dde jogos digitais, para desktop
+A nerd é um e-commerce de jogos digitais. a plataforma é totalmente brasileira e é voltada a facilitar a postagem de jogos no mercado de desenvolvedores de jogos independentes.
