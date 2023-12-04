@@ -9,6 +9,8 @@ USA A PORRA DO PATH.NORMALIZE HENRIQUE
 
 const uploadsPath = path.relative("../", "../uploads/Games")
 
+
+//para de usar essa merda toda cagada cria vergonha na cara
 const storage = multer.diskStorage({
     destination: (req, file, cb) =>{
         const foldername = req.body.title
