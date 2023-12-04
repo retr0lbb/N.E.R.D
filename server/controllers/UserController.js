@@ -86,7 +86,7 @@ exports.create = async (req, res) => {
 exports.login = async (req, res) =>{
     //armazenando os dados do corpo da requisição e os armazena.
     const {email, pass} = req.body
-    const TOKENSECRET = process.env.TOKENSECRET
+    const TOKENSECRET = process.env.JSON_WEB_TOKEN_SECRET
     //função try/catch para que mesmo se der erro ele não pare a execução do servidor.
     try {
         //fazemos uma busca no banco de dados fornecendo o email do usuario.
@@ -98,7 +98,7 @@ exports.login = async (req, res) =>{
         }
         //compara a senha digitada com a senha salva no banco de dados.
         if(compare(pass, user.pass)){
-
+            console.log(TOKENSECRET)
             const token = jwt.sign({userId: user._id, email: user.email}, `${TOKENSECRET}`, {expiresIn: '5h'})
 
 
