@@ -42,9 +42,10 @@ exports.create = async (req, res) => {
         const lib = new libModel({
             downloadedGames: [],
             myGames: [],
-            games: []
+            games: [],
+            relatedUser: name
         })
-        await lib.save();
+        
 
         // instanciamos o modelo do usuario.
         const user = new User({
@@ -65,6 +66,7 @@ exports.create = async (req, res) => {
 
         //se tudo der certo ele exibe o json dos dados do usuario cadastrado e uma mensagem de sucesso
         res.json({data: user, msg: "Usuario inserido com sucesso"});
+        await lib.save();
 
         //caso de erro essa função lidara com o erro
     } catch (error) {
