@@ -44,6 +44,7 @@ exports.create = async (req, res) => {
             myGames: [],
             games: []
         })
+        await lib.save();
 
         // instanciamos o modelo do usuario.
         const user = new User({
