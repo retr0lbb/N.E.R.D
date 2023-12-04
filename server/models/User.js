@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     email:{type: String, required: true, unique: true},
     pass:{type: String, required: true},
     biografy:{type: String},
-    type: {type: Boolean, required: true},
+    isDev: {type: Boolean, required: true},
     image: {
         imgName: {type: String},
         src: {type: String}
