@@ -1,6 +1,7 @@
 import React, {useContext, useState, useEffect, } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
+
 //import dotenv from "dotenv"
 //dotenv.config()
 
@@ -24,6 +25,7 @@ import { Layout, Slide } from '../shared/components'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 export default function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
@@ -40,8 +42,12 @@ export default function Login() {
     await axios.post("https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/users/login", {email, pass}).then(result => {
       setEmail(""); 
       setPass("");  
-      console.log(result)
-      window.location.href = "/home";
+      const requestObject = JSON.parse(result.request.response)
+
+
+
+      console.log(requestObject.token);
+      navigate("/home")
     }).catch(error => {
       if(error){
         console.log(error)

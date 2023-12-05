@@ -4,7 +4,7 @@ import Login from './pages/Login'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from './pages/Home'
 import SingUp from './pages/Singup'
-import TemplatePage from "./components/shared/template/templatePage"
+import TemplatePage from "./app/pages/TestesHenrique/profilePage.jsx"
 import './global.css';
 import {UserContext} from "./components/userContext"
 import { ThemeProvider } from '@mui/material'
@@ -22,7 +22,7 @@ export default function App() {
           <Route element={<Login />} path="/" exact />
           <Route element={<Home />} path="home" />
           <Route element={<SingUp />} path='cadastro0' />
-          <Route element={<TemplatePage />} path='profile'/>
+          <Route element={<TemplatePage />} path='profile01'/>
           <Route path="*" element={<Navigate to='/' />} />
         </Routes>
       </ThemeProvider>
