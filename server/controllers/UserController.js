@@ -53,11 +53,11 @@ exports.create = async (req, res) => {
             email: email,
             //encriptamos a senha antes de enviar para a base de dados 
             pass: encriptPass(pass, 10),
-            isDev: type,
+            isDev: type || false,
             image: imageData,
             lib: lib,
-            biografy: biografy,
-            SimpleAge: age
+            biografy: biografy || "none",
+            SimpleAge: age || 18
         })
 
         //enviamos para a base de dados
