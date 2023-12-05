@@ -1,16 +1,40 @@
-import React from "react";
-import ProfileBanner from "../components/ProfileBanner"
-import {styled} from "../components/index"
-import NavBar from "../components/shared/navBar";
-import HeaderM from "../components/shared/Header"
+import React from 'react'
+import { Layout } from "../shared/components/"
+import PrimarySearchAppBar from '../shared/components/appBar'
+import CardCover from '@mui/joy/CardCover';
+import profileImg from '../shared/assets/img/profileImg.png'
+import anonimous from '../shared/assets/img/anonimous.png'
+import { Box, Card } from '@mui/material';
 
+export default function Profile() {
+	return (
+		<Layout>
 
-export default function ProfileScreen(){
-    return (
-        <styled.ProfileMainWrapper>
-            <HeaderM></HeaderM>
-            <NavBar></NavBar>
-            <ProfileBanner></ProfileBanner>
-        </styled.ProfileMainWrapper>
-    )
+			<Card sx={{
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center'
+			}}>
+				<CardCover sx={{
+					width: ' 100vw',
+				}}>
+					<PrimarySearchAppBar />
+					<img src={profileImg} style={{ height: '20vh', width: '100vw', paddingTop: 5 }} />
+				</CardCover>
+				<CardCover sx={{
+					paddingRight: '70%',
+					paddingBottom: 30
+					
+				}}>
+					<Box >
+						<img src={anonimous} style={{
+							width: '150px',
+							height: '150px',
+						}} />
+					</Box>
+				</CardCover>
+			</Card>
+
+		</Layout >
+	)
 }

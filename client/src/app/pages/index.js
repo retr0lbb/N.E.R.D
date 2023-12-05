@@ -4,6 +4,7 @@ import SingUp from './Singup'
 import Teste  from './teste carousel/teste'
 import AsNavFor from './teste/teste2'
 import Overview from './Overview'
+import Profile from './profile'
 import {} from "../shared/components/"
 
 export {
@@ -12,5 +13,6 @@ export {
     Login,
     SingUp,
     Teste,
-    Overview
+    Overview,
+    Profile
 }
