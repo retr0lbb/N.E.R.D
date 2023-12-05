@@ -19,10 +19,11 @@ export const Wrapper = styled.div`
     border: 5px solid white;
     border-top: 70px solid white;
     border-radius: 25px;
+    overflow-x: hidden;
+    overflow: hidden;
 `;
 
 export const Span = styled.span`
-
     width: 100%;
     display: flex;
     align-items: center;
@@ -135,12 +136,7 @@ export const TerminalInput = styled.input`
 ///parte do negocio ai
 
 export const borderTerminal = styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border: 5px solid white;
-    border-top: 70px solid white;
-    border-radius: 15px;
+
 `
 export const navBarTerminal = styled.nav`
     position: absolute;
