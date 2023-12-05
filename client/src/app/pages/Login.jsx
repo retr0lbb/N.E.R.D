@@ -37,12 +37,14 @@ export default function Login() {
     }
     const secondHttp = "http://localhost:3000";
     //const primeHttp = process.env.HTTPURL;
-    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
+    await axios.post("https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/users/login", {email, pass}).then(result => {
       setEmail(""); 
       setPass("");  
+      console.log(result)
       window.location.href = "/home";
     }).catch(error => {
       if(error){
+        console.log(error)
         alert(error)
         setEmail("");
         setPass("");

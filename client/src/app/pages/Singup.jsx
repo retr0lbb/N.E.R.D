@@ -1,4 +1,5 @@
 import react from "react";
+import axios from "axios"
 import { useState, useRef, useEffect } from "react";
 import {BsFillTerminalFill} from "react-icons/bs";
 import * as styled from "./styles";
@@ -69,13 +70,13 @@ export default function Singup(){
         if(!userName || !email || !pass){
             return(alert("Faltam dados"));
         }
-        try {axios.post("http://localhost:3000/users", {email: email, name: userName, pass: pass}).then(response => {
+        try {axios.post("https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/users", {email: email, name: userName, pass: pass}).then(response => {
             if(response.status==200){
                 setInputValue("");
                 setStep(200);
                 setTimeout(() => {
-                    localStorage.setItem("user", JSON.stringify(response.data.user))
-                    navigate("/home")
+                    localStorage.setItem("user", JSON.stringify(response.user))
+                    window.location.href = "/home"
                   }, 1500);
             }
         }).catch((err)=>{
