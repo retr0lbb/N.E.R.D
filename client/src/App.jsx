@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Login from './pages/Login'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from './pages/Home'
+import HeaderEdu from "./app/shared/components/eduComponents/header.jsx"
 import SingUp from './pages/Singup'
 import TemplatePage from "./app/pages/TestesHenrique/profilePage.jsx"
 import './global.css';
@@ -19,8 +20,10 @@ export default function App() {
     <BrowserRouter>
       <ThemeProvider theme={authTheme}>
         <Routes>
-          <Route element={<Login />} path="/" exact />
+          
+          <Route element={<HeaderEdu />} path="/" exact />
           <Route element={<Home />} path="home" />
+          <Route element={<Home />} path="edu" />
           <Route element={<SingUp />} path='cadastro0' />
           <Route element={<TemplatePage />} path='profile01'/>
           <Route path="*" element={<Navigate to='/' />} />
