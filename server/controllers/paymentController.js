@@ -110,6 +110,7 @@ exports.createWebHook = async(req, res)=>{
       } else {
         // O pagamento não foi bem-sucedido, trate de acordo.
         console.log(`Pagamento não foi bem-sucedido para a sessão: ${sessionId}`);
+
       }
   
       res.status(200).send("Webhook recebido com sucesso");
