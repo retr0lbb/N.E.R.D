@@ -1,9 +1,11 @@
 import { Login, Home, SingUp, Teste, Overview, AsNavFor } from '../pages'
+import Header from "../shared/components/eduComponents/header"
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 export const AddRoutes = () => {
     return(
         <Routes>
+          <Route element={<Header />} path="edu" />
           <Route element={<Login />} path="/" exact />
           <Route element={<Home />} path="home" />
           <Route element={<SingUp />} path='cadastro0' />

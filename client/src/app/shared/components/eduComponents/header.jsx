@@ -1,11 +1,9 @@
-// Importando as bibliotecas necessárias
-import React from 'react';
+import styled from "styled-components"
 
-// Componente principal que representa a aplicação
-class App extends React.Component {
-  render() {
-    return (
-      <div>
+
+export default function Header(){
+    return(
+        <div>
         {/* Cabeçalho com barra de pesquisa */}
         <header>
           <input type="text" placeholder="Pesquisar" />
@@ -28,9 +26,13 @@ class App extends React.Component {
 
         {/* Adicione aqui o restante do conteúdo da sua aplicação */}
       </div>
-    );
-  }
+    )
 }
 
-// Renderizando o componente principal no elemento root do HTML
-export default App;
+
+/// styled
+
+
+const mainWrapper = styled.div`
+    
+`
