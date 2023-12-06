@@ -9,7 +9,6 @@ import { Box, Card } from '@mui/material';
 export default function Profile() {
 	return (
 		<Layout>
-
 			<Card sx={{
 				display: 'flex',
 				alignItems: 'center',
@@ -22,9 +21,10 @@ export default function Profile() {
 					<img src={profileImg} style={{ height: '20vh', width: '100vw', paddingTop: 5 }} />
 				</CardCover>
 				<CardCover sx={{
-					paddingRight: '70%',
-					paddingBottom: 30
-					
+					width: '170px',
+					height: '170px',
+					marginTop: 15,
+					marginLeft: 10
 				}}>
 					<Box >
 						<img src={anonimous} style={{
@@ -34,7 +34,6 @@ export default function Profile() {
 					</Box>
 				</CardCover>
 			</Card>
-
 		</Layout >
 	)
 }
