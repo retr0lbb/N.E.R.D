@@ -2,25 +2,18 @@
     width: 100%;
     height: 350px;
     object-fit: cover;
+
+
   }
   .App {
     width: 70%;
     margin: 0 auto;
     padding-top: 2%;
   }
-  
-  .slick-slide > div {
-    margin: 0 10px;
-  }
-  .slick-list {
-    margin: 0 -10px;
-  }
-  
   .card {
-    
     width: 220px;
-    height: 350px;
-    background: #fff;
+    height: 200px;
+    background: #e01717;
     border-top-right-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -32,64 +25,45 @@
     transition: all 0.3s ease-out;
     text-decoration: none;
   }
+  .card-top{
+    width: 100%;
+    height: 200px;
+  }
   
+
+  .card-tittle  {
+    width: 100%;
+    font-size: 0.9rem;
+    margin: 20px;
+    background-color: rgb(17, 240, 240);
+    position: absolute;
+    bottom: 0;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+  }
+ 
   .card:hover {
     transform: translateY(-5px) scale(1.005) translateZ(0);
     box-shadow: 0 24px 36px rgba(0,0,0,0.11),
       0 24px 46px var(--box-shadow-color);
-      background-color: blueviolet;
-      color: #fff;
+
   }
   
   .card:hover .overlay {
     transform: scale(4) translateZ(0);
   }
-  
-  .card:hover .circle {
-    border-color: var(--bg-color-light);
-    background: var(--bg-color);
-  }
-  
-  .card:hover .circle:after {
-    background: var(--bg-color-light);
-  }
-  
-  .card:hover p {
-    color: var(--text-color-hover);
-  }
-  
   .card:active {
     transform: scale(1) translateZ(0);
     box-shadow: 0 15px 24px rgba(0,0,0,0.11),
       0 15px 24px var(--box-shadow-color);
   }
   
-  .card-top h1 {
-    font-size: 0.9rem;
-    margin: 20px;
-  }
   
-  .card-top > img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background: black;
+
+  .slick-slide > div {
+    margin: 0 10px;
   }
-  
-  .card-bottom {
-    margin: 10px 20px;
-    
-  }
-  
-  .category {
-    position: relative;
-  }
-  .category::before {
-    content: '';
-    background: rgb(255, 61, 61);
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    right: 0;
-    height: 2px;
+  .slick-list {
+    margin: 0 -10px;
   }

@@ -14,15 +14,16 @@ function filterCategory() {
 export default function Home() {
   return (
       <Box sx={{
-        height: '150vh',
+        height: '',
         width: '100vw',
         background: 'linear-gradient(to right, #330057, #2A018C, #941DE8)',
       }}>
         <PrimarySearchAppBar />
         <Container>
-            
-            <Teste/>
-          
+            <Category>
+              <Teste/>
+           </Category>
+        
         </Container>
      
       </Box> 
