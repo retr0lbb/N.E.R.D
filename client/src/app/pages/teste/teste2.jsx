@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import Layout from "../../shared/components/Layout";
 import { dataDigitalBestSeller } from '../teste carousel/data';
 
 
@@ -61,8 +60,8 @@ export default class AsNavFor extends Component {
           
         >
                   {dataDigitalBestSeller.map((capa) => (
-            <div className="card">
-              <div className="card-top">
+            <div className="card-banner">
+              <div className="card-top-banner">
                 <img
                   src={capa.linkImg}
                   alt={capa.title}

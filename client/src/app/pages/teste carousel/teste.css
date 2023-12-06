@@ -1,9 +1,57 @@
+  /* banner */
+  
   .cardimagem > img{
     width: 100%;
     height: 200px;
-
+  }
+  .card-banner{
+    width: 220px;
+    height: 100px;
+    background: #e01717;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+    
+  } 
+  .card-top-banner{
+    width: 100%;
+    height: 100px;
+  }
+  .card-top-banner img{
+    width: 100%;
+    height: 100px;
+  }
+  .card-banner:hover {
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+    box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+      0 24px 46px var(--box-shadow-color);
 
   }
+  
+  .card-banner:hover .overlay {
+    transform: scale(4) translateZ(0);
+  }
+  .card-banner:active {
+    transform: scale(1) translateZ(0);
+    box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+      0 15px 24px var(--box-shadow-color);
+  }
+
+
+
+
+
+
+
+
+  /* carousel  */
   .App {
     width: 90%;
     margin: 0 auto;
@@ -11,6 +59,7 @@
   }
   .App h2{
     align-items: flex-start;
+    color: rgb(167, 173, 179);
   }
   .card {
     width: 220px;
