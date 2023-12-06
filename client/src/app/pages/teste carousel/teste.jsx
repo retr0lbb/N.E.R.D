@@ -9,7 +9,7 @@ import './teste.css';
 
 
 
-export default function Teste(){
+export default function Teste({category}){
     const [defaultImage, setDefaultImage] = useState({});
     const settings = {
       className: "center",
@@ -18,10 +18,9 @@ export default function Teste(){
       centerPadding: "60px",
       slidesToShow: 3,
       speed: 500,
-      dots: true,
       slidesToScroll: 3,
       initialSlide: 0,
-      autoplay: false,
+      autoplay: true,
       spees: 500,
       responsive: [
         {
@@ -61,6 +60,7 @@ export default function Teste(){
   
     return (
       <div className="App">
+        <h2>{category}</h2>
         <Slider {...settings}>
          {dataDigitalBestSeller.map((item) => (
             <div className="card">

@@ -5,6 +5,7 @@ import Teste from "./teste carousel/teste";
 import { Container } from "../shared/components/Container/Container";
 import { Category } from "../shared/components/Category";
 import { dataDigitalBestSeller } from './teste carousel/data';
+import AsNavFor from "./teste/teste2";
 
 
 function filterCategory() {
@@ -19,10 +20,20 @@ export default function Home() {
         background: 'linear-gradient(to right, #330057, #2A018C, #941DE8)',
       }}>
         <PrimarySearchAppBar />
+      
         <Container>
-            <Category>
-              <Teste/>
-           </Category>
+
+              <AsNavFor/>
+
+              <Teste category="Corrida"/>
+          
+            
+              <Teste category="FPS"/>
+        
+       
+
+              <Teste category="Terror"/>
+        
         
         </Container>
      
