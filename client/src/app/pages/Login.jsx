@@ -59,8 +59,6 @@ export default function Login() {
           <Carousel
             width={750}
             autoPlay
-            centerMode
-            centerSlidePercentage={75}
             autoFocus
             infiniteLoop
             interval={3000}
