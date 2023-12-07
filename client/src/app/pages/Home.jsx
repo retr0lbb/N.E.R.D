@@ -21,10 +21,6 @@ function getAllGames(){
 }
 
 export default function Home() {
-
-  useEffect(()=>{
-    getAllGames()
-  }, [])
   return (
       <Box sx={{
         height: '',

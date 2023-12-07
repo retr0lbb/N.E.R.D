@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Slider from 'react-slick';
+import getAllGameImagesAndData from './axiosFetch.js';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
@@ -10,6 +11,14 @@ import './teste.css';
 
 
 export default function Teste({category}){
+  let gameData;
+  useEffect(()=>{
+    const fetchData = async () =>{
+      gameData = await getAllGameImagesAndData();
+      console.log(gameData)
+    }
+    fetchData();
+  }, [])
     const [defaultImage, setDefaultImage] = useState({});
     const settings = {
       className: "center",
