@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Box } from "@mui/system";
 import PrimarySearchAppBar from "../shared/components/appBar";
 import Teste from "./teste carousel/teste";
 import { Container } from "../shared/components/Container/Container";
 import { Category } from "../shared/components/Category";
+import axios from "axios";
 import { dataDigitalBestSeller } from './teste carousel/data';
 import AsNavFor from "./teste/teste2";
 
@@ -12,7 +13,18 @@ function filterCategory() {
   return dataDigitalBestSeller.filter(video => video.category)
 }
 
+function getAllGames(){
+  axios.get("http://localhost:3000/games").then(response => {
+    const gameArray = response.data.data
+    console.log(gameArray[0])
+  })
+}
+
 export default function Home() {
+
+  useEffect(()=>{
+    getAllGames()
+  }, [])
   return (
       <Box sx={{
         height: '',
