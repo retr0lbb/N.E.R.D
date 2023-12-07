@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect, } from "react";
+import React, { useContext, useState, useEffect, } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 //import dotenv from "dotenv"
@@ -27,28 +27,28 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = async() =>{
-    if(!email || !pass){
+  const handleSubmit = async () => {
+    if (!email || !pass) {
       console.log("Insira os campos corretamente");
       alert("Insira os campos corretamente");
-        setEmail("");
-        setPass("");
+      setEmail("");
+      setPass("");
       return;
     }
     const secondHttp = "http://localhost:3000";
     //const primeHttp = process.env.HTTPURL;
-    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", {email, pass}).then(result => {
-      setEmail(""); 
-      setPass("");  
+    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", { email, pass }).then(result => {
+      setEmail("");
+      setPass("");
       window.location.href = "/home";
     }).catch(error => {
-      if(error){
+      if (error) {
         alert(error)
         setEmail("");
         setPass("");
       }
     })
-    
+
   }
 
 
@@ -59,8 +59,6 @@ export default function Login() {
           <Carousel
             width={750}
             autoPlay
-            centerMode
-            centerSlidePercentage={75}
             autoFocus
             infiniteLoop
             interval={3000}
@@ -112,20 +110,20 @@ export default function Login() {
                         flexDirection: "column",
                       }}
                     >
-                      <Typography mb={1} variant="h3" pt={3} >
-                        <img src={NerdLogo} width={150} className="logo" />
-                      </Typography>
+                      <Box>
+                        <img src={NerdLogo} style={{ width: '200px', height: '200px', }} />
+                      </Box>
                     </Container>
                   </Box>
                   <Box color={"white"}>
                     <TextField
-                    value={email}
+                      value={email}
                       fullWidth
                       InputLabelProps={{ required: false }}
                       variant="standard"
                       label="Email"
                       type={"email"}
-                      onChange={ e => {
+                      onChange={e => {
                         setEmail(e.target.value)
                         console.log("Email " + email)
                       }}
@@ -134,13 +132,13 @@ export default function Login() {
                     />
 
                     <TextField
-                    value={pass}
+                      value={pass}
                       fullWidth
                       variant="standard"
                       label="Pass"
                       type={"password"}
                       InputLabelProps={{ required: false }}
-                      onChange={ (e) => {
+                      onChange={(e) => {
                         setPass(e.target.value)
                         console.log(e.target.value)
                       }}
@@ -152,27 +150,41 @@ export default function Login() {
                       required
                     />
                   </Box>
-                  <Button
-                    sx={{
+                  <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    alignItems: 'center'
+                  }}>
+                    <Button
+                      sx={{
+                        width: 100,
+                        mt: 2.5,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        color: "primary.light",
+                      }}
+                      onClick={handleSubmit}
+                      variant="contained"
+                    >
+                      Entrar
+                    </Button>
+                    <Button sx={{
+                      width: 100,
                       mt: 2.5,
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                       color: "primary.light",
                     }}
-                    onClick={handleSubmit}
-                    variant="contained"
-                  >
-                    Entrar
-                  </Button>
-                  <Typography mt={2.5}>
-                  <p>
-                    Não possui uma conta?
-                  </p>
-                    <a href="cadastro0">
-                      Clique aqui
-                    </a>
-                  </Typography>
+                      variant="contained"
+                      href="/"
+                    >
+
+                      Voltar
+                    </Button>
+                  </Box>
+
                 </CardContent>
               </Card>
             </Container>
