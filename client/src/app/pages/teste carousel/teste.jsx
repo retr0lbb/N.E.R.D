@@ -3,13 +3,13 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
-import imgGirl from './assets/images/defaultImage.jpg';
+import imgd from './assets/images/default.jpg';
 import { dataDigitalBestSeller } from './data';
 import './teste.css';
 
 
 
-export default function Teste(){
+export default function Teste({category}){
     const [defaultImage, setDefaultImage] = useState({});
     const settings = {
       className: "center",
@@ -18,10 +18,9 @@ export default function Teste(){
       centerPadding: "60px",
       slidesToShow: 3,
       speed: 500,
-      dots: true,
       slidesToScroll: 3,
       initialSlide: 0,
-      autoplay: false,
+      autoplay: true,
       spees: 500,
       responsive: [
         {
@@ -55,17 +54,18 @@ export default function Teste(){
       setDefaultImage((prev) => ({
         ...prev,
         [data.target.alt]: data.target.alt,
-        linkDefault: imgGirl,
+        linkDefault: imgd,
       }));
     };
   
     return (
       <div className="App">
+        <h2>{category}</h2>
         <Slider {...settings}>
          {dataDigitalBestSeller.map((item) => (
             <div className="card">
-              <div className="card-top">
-                <img
+              <div className="card-top">            
+              <img 
                   src={
                     defaultImage[item.title] === item.title
                       ? defaultImage.linkDefault
@@ -74,11 +74,9 @@ export default function Teste(){
                   alt={item.title}
                   onError={handleErrorImage}
                 />
-                <h1>{item.title}</h1>
-              </div>
-              <div className="card-bottom">
-                <h3>{item.price}</h3>
-                <span className="category">{item.category}</span>
+                  <div className='card-tittle'>
+                    <h1>{item.title}</h1>
+                  </div>
               </div>
             </div>
           ))}

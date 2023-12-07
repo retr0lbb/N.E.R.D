@@ -47,7 +47,7 @@ export default function SwipeableTemporaryDrawer() {
       
       <List>
           <ListItem  disablePadding>
-            <ListItemButton>
+            <ListItemButton  href='/home' >
               <ListItemIcon>
                 <HomeIcon/>
               </ListItemIcon>

@@ -8,7 +8,7 @@ export default function Layout({ children }) {
         width: '100vw',
         overflow: 'auto',
         border: 'none',
-        background: 'linear-gradient(270deg, #941DE8 0.43%, #2A018C 50.58%, #330057 99.7%)'
+        background: 'linear-gradient(to right, #330057, #2A018C, #941DE8)',
     }}>
         {children} 
     </Box>

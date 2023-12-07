@@ -52,7 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function PrimarySearchAppBar() {
 
   return (
-    <Box sx={{flexGrow: 1}}>
+    <Box sx={{flexGrow: 1,}}>
     <AppBar position="static" sx={{ background: 'linear-gradient(to right, #330057, #2A018C, #941DE8 )',width:'100vw', height:'10vh' }}>
       <Toolbar>
         <IconButton
