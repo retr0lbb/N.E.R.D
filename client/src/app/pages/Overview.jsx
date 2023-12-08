@@ -3,7 +3,7 @@ import CardCover from '@mui/joy/CardCover';
 import { Box, Button, Card } from '@mui/material'
 import tcc from '../shared/assets/img/tcc.jpg'
 
-import NerdLogo from "../assets/img/NerdLogo.png"
+import NerdLogo from "../shared/assets/img/NerdLogo.png"
 
 export default function Overview() {
   return (
