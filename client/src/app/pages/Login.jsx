@@ -24,6 +24,16 @@ import {
 import { Layout, Slide } from '../shared/components'
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+function verifyLocalstorage(name, value){
+  if(!localStorage.getItem(`${name}`)){
+    localStorage.setItem(`${name}`, value);
+    return;
+  }
+  localStorage.clear();
+  localStorage.setItem(name, value)
+}
+
 export default function Login() {
   const navigate = useNavigate()
   const [email, setEmail] = useState("");
@@ -39,10 +49,15 @@ export default function Login() {
     }
     const secondHttp = "http://localhost:3000";
     //const primeHttp = process.env.HTTPURL;
-    await axios.post("https://3000-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io/users/login", { email, pass }).then(result => {
+    await axios.post("http://localhost:3000/users/login", { email, pass }).then(result => {
       setEmail("");
+      console.log(result.data)
+      verifyLocalstorage("Token", result.data.token)
+      verifyLocalstorage("userId", result.data.data._id);
       setPass("");
+
       window.location.href = "/home";
+      
     }).catch(error => {
       if (error) {
         alert(error)

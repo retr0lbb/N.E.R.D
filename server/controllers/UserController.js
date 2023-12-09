@@ -84,7 +84,26 @@ exports.create = async (req, res) => {
         console.log(error)
     }
 }
+exports.findUserById = async(req, res) =>{
+    const id = req.params
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    try {
+        if(!id){
+            return res.status(401).send("insira o parametro id")
+        }
+        const user = await User.findById(id.id, -pass);
+        if(!user){
+            return res.status(404).send("usuario não encontrado");
+        }
 
+        res.status(200).json({Data: user});
+    } catch (error) {
+        if(error){
+            res.status(500).send("Erro no servidor")
+            console.log(error)
+        }
+    }
+}
 //função de login do usuario.
 exports.login = async (req, res) =>{
     //armazenando os dados do corpo da requisição e os armazena.

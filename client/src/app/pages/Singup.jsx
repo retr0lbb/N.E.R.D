@@ -70,7 +70,7 @@ export default function Singup(){
         if(!userName || !email || !pass){
             return(alert("Faltam dados"));
         }
-        try {axios.post("https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/users", {email: email, name: userName, pass: pass}).then(response => {
+        try {axios.post("http://localhost:3000/users", {email: email, name: userName, pass: pass}).then(response => {
             if(response.status==200){
                 setInputValue("");
                 setStep(200);

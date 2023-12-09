@@ -1,18 +1,31 @@
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PrimarySearchAppBar from "../app/shared/components/appBar";
 import MicroGames from "../app/shared/components/MicroGamesLibModelPageExample";
 import axios from "axios";
 
-const BuscarLibDeUsuario = async(token)=>{
-
+const BuscarLibDeUsuario = async(token, userId)=>{
+    const config = {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    }
+    await axios.get(`http://localhost:3000/users/userFindId/${userId}`, config)
+    .then((response) =>{
+        console.log(response)
+    })
 }
 
 
 export default function LibPage(){
     useEffect(()=>{
-        axios.get("")
-    }, [])
+        const fetchData = async() =>{
+            const token =  localStorage.getItem("Token")
+            const userId =  localStorage.getItem("userId")
+            await BuscarLibDeUsuario(token, userId)
+        };
+        fetchData();
+    }, []);
     return(
         <MainWrapper>
             <PrimarySearchAppBar />
@@ -44,11 +57,13 @@ const LibMainDiv = styled.div`
 const SideGamesMenu = styled.div`
     width: 25%;
     height: 100%;
+    background-color: red;
 `
 const BodyFlex = styled.div`
     width: 100%;
     height: 90vh;
     padding: 50px;
+    gap: 2em;
     display: flex;
     align-items: center;
     justify-content: center;

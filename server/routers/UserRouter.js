@@ -10,6 +10,7 @@ router.delete("/:id", userController.delet);
 router.patch("/:id", upload.single("file"),userController.update);
 router.post("/login/", userController.login);
 router.post("/add/friend", userController.addFriends);
+router.get("/userFindId/:id", verifyToken,userController.findUserById)
 
 
 
