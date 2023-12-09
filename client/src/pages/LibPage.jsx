@@ -28,7 +28,7 @@ export default function LibPage(){
         fetchData();
     }, []);
 
-    console.log("Renderização do componente. Valor atual do user:", user);
+
 
     return(
         <MainWrapper>
