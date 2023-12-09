@@ -91,7 +91,7 @@ exports.findUserById = async(req, res) =>{
         if(!id){
             return res.status(401).send("insira o parametro id")
         }
-        const user = await User.findById(id.id, -pass);
+        const user = await User.findById(id.id);
         if(!user){
             return res.status(404).send("usuario não encontrado");
         }

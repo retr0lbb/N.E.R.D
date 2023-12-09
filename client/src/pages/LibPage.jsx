@@ -4,7 +4,7 @@ import PrimarySearchAppBar from "../app/shared/components/appBar";
 import MicroGames from "../app/shared/components/MicroGamesLibModelPageExample";
 import axios from "axios";
 
-const BuscarLibDeUsuario = async(token, userId)=>{
+const BuscarLibDeUsuario = async(token, userId, setUser)=>{
     const config = {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -12,28 +12,32 @@ const BuscarLibDeUsuario = async(token, userId)=>{
     }
     await axios.get(`http://localhost:3000/users/userFindId/${userId}`, config)
     .then((response) =>{
-        console.log(response)
+        setUser(response.data.Data)
     })
 }
 
 
 export default function LibPage(){
+    const [user, setUser] = useState(null)
     useEffect(()=>{
         const fetchData = async() =>{
             const token =  localStorage.getItem("Token")
             const userId =  localStorage.getItem("userId")
-            await BuscarLibDeUsuario(token, userId)
+            await BuscarLibDeUsuario(token, userId, setUser)
         };
         fetchData();
     }, []);
+
+    console.log("Renderização do componente. Valor atual do user:", user);
+
     return(
         <MainWrapper>
             <PrimarySearchAppBar />
             <BodyFlex>
-            <SideGamesMenu>sideBAr</SideGamesMenu>
+            <SideGamesMenu>{user ? user.name : 'Carregando...'}</SideGamesMenu>
 
             <LibMainDiv>
-                <MicroGames name="gta" />
+                <MicroGames />
                 <MicroGames />
                 <MicroGames />
             </LibMainDiv>
