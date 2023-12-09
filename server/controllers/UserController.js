@@ -127,6 +127,7 @@ exports.findAll = async (req, res) => {
             return res.status(404).send("Usuarios não encontrados");
         }
         res.status(200).send(user);
+        console.log(req.user)
     } catch (error) {
         res.status(500).json({ message: "Erro ao listar usuarios"});
     }

@@ -40,7 +40,13 @@ app.get("/", async(req, res)=>{
 });
 connection((connection) => {
   app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on port ${port}
+                  EndPoints:
+                  /users
+                  /games
+                  /pay
+                  
+    `);
     console.log('Conectado à base de dados');
   });
 }).catch((err) => {
