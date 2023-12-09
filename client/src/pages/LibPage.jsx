@@ -28,7 +28,13 @@ export default function LibPage(){
         fetchData();
     }, []);
 
-    console.log("Renderização do componente. Valor atual do user:", user.lib);
+    console.log("Renderização do componente. Valor atual do user:", user);
+
+    if(user){
+        user.lib["games"].map((event, index)=>{
+            console.log("Test", event[index].name)
+        })
+    }
 
     return(
         <MainWrapper>
