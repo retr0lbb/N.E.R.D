@@ -2,11 +2,11 @@ import styled from "styled-components"
 
 import DeviceConfig from "./pagesForChildGenerator/DeviceConfig"
 import ProfilesConfig from "./pagesForChildGenerator/ProfilesConfig"
-export default function ChildConfigGenerator({settingstype}){
+export default function ChildConfigGenerator({settingsType}){
     return(
         <ChildConfigGeneratorWrapper>
-            {settingstype ==="profile" && <ProfilesConfig />}
-            <button onClick={() => console.log(settingstype)}>test</button>
+            {settingsType  ==="profile" && <ProfilesConfig />}
+            {settingsType === "device" && <DeviceConfig />}
         </ChildConfigGeneratorWrapper>
     )
 }
@@ -14,6 +14,7 @@ export default function ChildConfigGenerator({settingstype}){
 const ChildConfigGeneratorWrapper = styled.div`
     width: 100%;
     height: 100%;
-    background-color: red;
+    display: flex;
+    justify-content: center;
     padding: 40px 100px 40px 100px;
 `

@@ -1,11 +1,13 @@
 import styled from "styled-components"
 import PrimarySearchAppBar from "../app/shared/components/appBar.jsx"
 import NavbarConfig from "../app/shared/components/navbarConfig.jsx"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ChildConfigGenerator from "../app/shared/components/ChildConfigGenerator.jsx"
 export default function ConfigurationPage(){
     const [settingsType, setSettingsType] = useState(null);
-    
+    useEffect(()=>{
+        setSettingsType("profile")
+    },[])
     const showSettings = (type) =>{
         setSettingsType(type)
     }

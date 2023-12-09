@@ -4,8 +4,7 @@ export default function NavbarConfig({showSettings}){
     return (
         <NavWrapper>
             <ListStyle>
-                <ULLIStyled><ButtonsConfig onClick={() => {showSettings("profile")
-                console.log("memes2323")}}>perfil</ButtonsConfig></ULLIStyled>
+                <ULLIStyled><ButtonsConfig onClick={() => showSettings("profile")}>perfil</ButtonsConfig></ULLIStyled>
                 <ULLIStyled><ButtonsConfig onClick={() => showSettings("device")}>dispositivo</ButtonsConfig></ULLIStyled>
             </ListStyle>
         </NavWrapper>
