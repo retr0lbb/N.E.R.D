@@ -24,30 +24,33 @@ export default function Teste({category}){
     fetchData();
   }, []);
 
-  function BreakeALeg(dataArray){
-    dataArray.map((game, index)=>{
-      const gamePlainURL = game.GameImage.BannerImage.src
+  function BreakeALeg(dataArray) {
+    return dataArray.map((game, index) => {
+      const id = game._id;
+      console.log(id)
+      const gamePlainURL = game.GameImage.BannerImage.src;
       const stringSemPrefixo = gamePlainURL.replace(/^(\.\.\/)+/, '');
-     
-      const totalPathForImage = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`
+      const totalPathForImage = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`;
 
-    return(
-    <div key={index} className="card">
-    <div className="card-top">
-          <img 
-              src={
-                 totalPathForImage
-              }
+      const handleClick =() =>{
+        console.log(id)
+      }
+  
+      return (
+        <div key={index} onClick={handleClick} className="card">
+          <div className="card-top">
+            <img
+              src={totalPathForImage}
               alt={game.name}
+              onError={handleErrorImage}
             />
-              <div className='card-tittle'>
-                <h1>{game.name}</h1>
-              </div>
-
-
-    </div>
-  </div>)
-    })
+            <div className='card-tittle'>
+              <h1>{game.name}</h1>
+            </div>
+          </div>
+        </div>
+      );
+    });
   }
 
 
