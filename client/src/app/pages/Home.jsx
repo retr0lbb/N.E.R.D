@@ -13,13 +13,6 @@ function filterCategory() {
   return dataDigitalBestSeller.filter(video => video.category)
 }
 
-function getAllGames(){
-  axios.get("http://localhost:3000/games").then(response => {
-    const gameArray = response.data.data
-    console.log(gameArray[0])
-  })
-}
-
 export default function Home() {
   return (
       <Box sx={{

@@ -11,7 +11,7 @@ import './teste.css';
 
 
 export default function Teste({category}){
-  let gameData;
+  var gameData;
   useEffect(()=>{
     const fetchData = async () =>{
       gameData = await getAllGameImagesAndData();
@@ -19,6 +19,8 @@ export default function Teste({category}){
     }
     fetchData();
   }, [])
+
+
     const [defaultImage, setDefaultImage] = useState({});
     const settings = {
       className: "center",
@@ -71,24 +73,24 @@ export default function Teste({category}){
       <div className="App">
         <h2>{category}</h2>
         <Slider {...settings}>
-         {dataDigitalBestSeller.map((item) => (
-            <div className="card">
+         {/*gameData.map((game, index) => (
+            <div key={index} className="card">
               <div className="card-top">            
               <img 
                   src={
-                    defaultImage[item.title] === item.title
+                    defaultImage[game.name] === game.name
                       ? defaultImage.linkDefault
-                      : item.linkImg
+                      : game.GameImage.BannerImage
                   }
-                  alt={item.title}
+                  alt={game.name}
                   onError={handleErrorImage}
                 />
                   <div className='card-tittle'>
-                    <h1>{item.title}</h1>
+                    <h1>{game.name}</h1>
                   </div>
               </div>
             </div>
-          ))}
+          ))*/}
         </Slider>
       </div>
     );
