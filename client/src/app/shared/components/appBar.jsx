@@ -8,7 +8,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import SwipeableTemporaryDrawer from './sidebar';
-import BasicModal from './CartModal';
+import GameCart from '../../pages/GameCart';
 
 const Search = styled('div')(({ theme }) => ({
   
@@ -84,7 +84,7 @@ export default function PrimarySearchAppBar() {
         </Search>
         <Box sx={{ flexGrow: 1 }} />
         <IconButton>
-          <BasicModal />
+          <GameCart />
         </IconButton>
       </Toolbar>
     </AppBar>
