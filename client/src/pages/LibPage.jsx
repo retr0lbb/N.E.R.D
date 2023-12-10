@@ -10,7 +10,7 @@ const BuscarLibDeUsuario = async(token, userId, setUser)=>{
             'Authorization': `Bearer ${token}`
         }
     }
-    await axios.get(`http://localhost:3000/users/userFindId/${userId}`, config)
+    await axios.get(`https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/users/userFindId/${userId}`, config)
     .then((response) =>{
         setUser(response.data.Data)
     })
@@ -29,6 +29,12 @@ export default function LibPage(){
     }, []);
 
 
+
+    if(user){
+        user.lib["games"].map((event, index)=>{
+            console.log("Test", event[index].name)
+        })
+    }
 
     return(
         <MainWrapper>
