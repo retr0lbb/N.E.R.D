@@ -43,6 +43,7 @@ export default function Teste({category}){
               src={totalPathForImage}
               alt={game.name}
               onError={handleErrorImage}
+              loading="lazy"
             />
             <div className='card-tittle'>
               <h1>{game.name}</h1>
@@ -61,11 +62,10 @@ export default function Teste({category}){
       infinite: true,
       centerPadding: "60px",
       slidesToShow: 3,
-      speed: 500,
       slidesToScroll: 3,
       initialSlide: 0,
       autoplay: true,
-      spees: 500,
+      speed: 500,
       responsive: [
         {
           breakpoint: 1024,

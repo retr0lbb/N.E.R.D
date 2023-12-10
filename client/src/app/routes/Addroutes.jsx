@@ -1,5 +1,6 @@
-import { Login, Home, SingUp, Teste, Overview, AsNavFor, Profile, GameDetail, } from '../pages'
+import { Login, Home, SingUp, Teste, Overview, AsNavFor, Profile } from '../pages'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import GameDetail from '../pages/gamedetail/GameDetail'
 import ConfigurationPage from '../../pages/Config'
 import LibPage from '../../pages/LibPage'
 import ModalProvider from '../shared/components/ModalProvider';

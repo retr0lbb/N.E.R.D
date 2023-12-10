@@ -19,6 +19,10 @@ export default function GameCart({ cartItems, removeItem, handlePayment }) {
   const { isModalOpen, openModal, closeModal } = useModal();
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
+  const generateCart = ()=>{
+    
+  }
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -84,66 +88,8 @@ export default function GameCart({ cartItems, removeItem, handlePayment }) {
                 <Box>
                   {" "}
                   {/* box das imagens do jogo e tals */}
-                  <Box
-                    marginBottom={5}
-                    display="flex"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    sx={{
-                      bgcolor: "#3F059E",
-                      height: "200px",
-                      width: "900px",
-                    }}
-                  >
-                    <img
-                      src={red}
-                      alt="hello"
-                      style={{
-                        maxWidth: "300px",
-                        marginRight: "10px",
-                        marginLeft: "20px",
-                      }}
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                        Red Dead Redemption 2
-                      </Typography>
-                      <Typography variant="subtitle1">Preço: R$ 200</Typography>
-                      <Button variant="outlined" color="secondary">
-                        remover
-                      </Button>
-                    </Box>
-                  </Box>
-                  <Box
-                    marginBottom={5}
-                    display="flex"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    sx={{
-                      bgcolor: "#3F059E",
-                      height: "200px",
-                      width: "900px",
-                    }}
-                  >
-                    <img
-                      src={red}
-                      alt="hello"
-                      style={{
-                        maxWidth: "300px",
-                        marginRight: "10px",
-                        marginLeft: "20px",
-                      }}
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                        Red Dead Redemption 2
-                      </Typography>
-                      <Typography variant="subtitle1">Preço: R$ 200</Typography>
-                      <Button variant="outlined" color="secondary">
-                        remover
-                      </Button>
-                    </Box>
-                  </Box>
+                  
+                  
                   <Box
                     marginBottom={5}
                     display="flex"
