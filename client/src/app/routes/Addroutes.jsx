@@ -2,10 +2,12 @@ import { Login, Home, SingUp, Teste, Overview, AsNavFor, Profile, GameDetail, } 
 import { Navigate, Route, Routes } from 'react-router-dom'
 import ConfigurationPage from '../../pages/Config'
 import LibPage from '../../pages/LibPage'
+import ModalProvider from '../shared/components/ModalProvider';
 
 export const AddRoutes = () => {
     return(
-        <Routes>
+      <ModalProvider>
+         <Routes>
           <Route element={<Overview />} path="/" exact />
           <Route element={<ConfigurationPage />} path="/users/config" />
           <Route element={<Login />} path='login' />
@@ -17,7 +19,8 @@ export const AddRoutes = () => {
           <Route element={<LibPage />} path="lib" />
           <Route element={<GameDetail/>} path="gamedetail" />
           <Route path="*" element={<Navigate to='/' />}/>
-
         </Routes>
+      </ModalProvider>
+       
     )
 }
