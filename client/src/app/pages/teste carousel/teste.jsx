@@ -5,20 +5,53 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
 import imgd from './assets/images/default.jpg';
-import { dataDigitalBestSeller } from './data';
 import './teste.css';
 
 
 
 export default function Teste({category}){
-  var gameData;
-  useEffect(()=>{
-    const fetchData = async () =>{
-      gameData = await getAllGameImagesAndData();
-      console.log(gameData)
-    }
+  const [gameData, setGameData] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAllGameImagesAndData();
+        setGameData(data);
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    };
+
     fetchData();
-  }, [])
+  }, []);
+
+  function BreakeALeg(dataArray){
+    return dataArray.map((game, index)=>{
+      const gamePlainURL = game.GameImage.BannerImage.src
+      const stringSemPrefixo = gamePlainURL.replace(/^(\.\.\/)+/, '');
+     
+      const totalPathForImage = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`
+
+      console.log(totalPathForImage)
+      /*<div key={index} className="card">
+        <div className="card-top">
+
+              <img 
+                  src={
+                    defaultImage[game.name] === game.name
+                      ? defaultImage.linkDefault
+                      : game.GameImage.BannerImage
+                  }
+                  alt={game.name}
+                />
+                  <div className='card-tittle'>
+                    <h1>{game.name}</h1>
+                  </div>
+
+
+        </div>
+      </div> */
+    })
+  }
 
 
     const [defaultImage, setDefaultImage] = useState({});
@@ -73,24 +106,9 @@ export default function Teste({category}){
       <div className="App">
         <h2>{category}</h2>
         <Slider {...settings}>
-         {/*gameData.map((game, index) => (
-            <div key={index} className="card">
-              <div className="card-top">            
-              <img 
-                  src={
-                    defaultImage[game.name] === game.name
-                      ? defaultImage.linkDefault
-                      : game.GameImage.BannerImage
-                  }
-                  alt={game.name}
-                  onError={handleErrorImage}
-                />
-                  <div className='card-tittle'>
-                    <h1>{game.name}</h1>
-                  </div>
-              </div>
-            </div>
-          ))*/}
+         {
+          BreakeALeg(gameData)
+          }
         </Slider>
       </div>
     );
