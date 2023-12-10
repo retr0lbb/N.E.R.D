@@ -25,31 +25,28 @@ export default function Teste({category}){
   }, []);
 
   function BreakeALeg(dataArray){
-    return dataArray.map((game, index)=>{
+    dataArray.map((game, index)=>{
       const gamePlainURL = game.GameImage.BannerImage.src
       const stringSemPrefixo = gamePlainURL.replace(/^(\.\.\/)+/, '');
      
       const totalPathForImage = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`
 
-      console.log(totalPathForImage)
-      /*<div key={index} className="card">
-        <div className="card-top">
-
-              <img 
-                  src={
-                    defaultImage[game.name] === game.name
-                      ? defaultImage.linkDefault
-                      : game.GameImage.BannerImage
-                  }
-                  alt={game.name}
-                />
-                  <div className='card-tittle'>
-                    <h1>{game.name}</h1>
-                  </div>
+    return(
+    <div key={index} className="card">
+    <div className="card-top">
+          <img 
+              src={
+                 totalPathForImage
+              }
+              alt={game.name}
+            />
+              <div className='card-tittle'>
+                <h1>{game.name}</h1>
+              </div>
 
 
-        </div>
-      </div> */
+    </div>
+  </div>)
     })
   }
 
