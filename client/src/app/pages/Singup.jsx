@@ -75,7 +75,17 @@ export default function Singup(){
                 setInputValue("");
                 setStep(200);
                 setTimeout(() => {
-                    localStorage.setItem("user", JSON.stringify(response.user))
+                    function verifyLocalstorage(name, value){
+                        if(!localStorage.getItem(`${name}`)){
+                          localStorage.setItem(`${name}`, value);
+                          return;
+                        }
+                        localStorage.clear();
+                        localStorage.setItem(name, value)
+                      }
+                      console.log(response)
+                      verifyLocalstorage("Token", response.data.token)
+                      verifyLocalstorage("userId", response.data.data._id);
                     window.location.href = "/home"
                   }, 1500);
             }

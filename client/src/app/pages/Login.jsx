@@ -139,7 +139,7 @@ export default function Login() {
                       InputLabelProps={{ required: false }}
                       variant="standard"
                       label="Email"
-                      type={"email"}
+                      type= "email"
                       onChange={e => {
                         setEmail(e.target.value)
                         console.log("Email " + email)
