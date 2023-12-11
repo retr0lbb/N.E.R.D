@@ -20,43 +20,11 @@ export default function GameCart({ cartItems, removeItem, handlePayment, userTop
   const { isModalOpen, openModal, closeModal } = useModal();
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [game, SetGame] = useState(null)
-  useEffect(()=>{
-    if(cartItems){
-      const fetchData = async()=>{
-        const stringconnection = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/games/findId/${cartItems[0]}`
-        await axios.post(stringconnection)
-        .then(response=>{console.log(response)
-          const gameData = response.data.Data;
-          SetGame(gameData)
-        })
-
-      }
-
-      fetchData()
-    }else{
-      console.log("marrom")
-    }
-  }, [cartItems])
 
   const generateCart = ()=>{
     
 
-    const httpEndpoint = "https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/pay"
-    const variables = {
-      userId: userTopay,
-      products: cartItems
-    }
-    axios.post(httpEndpoint, variables)
-    .then((response)=>{
-      const toHttp = response.data.url;
-      window.location.href = toHttp
-    })
-
-    if(cartItems.length > 0){
-      cartItems.map((item, index)=>{
-        console.log(item)
-      })
-    }
+    
   }
   const generateBody =() =>{
 
@@ -94,8 +62,7 @@ export default function GameCart({ cartItems, removeItem, handlePayment, userTop
           <Typography variant="subtitle1">Preço: R$ {game.price}</Typography>
           <Button onClick={() => {
             SetGame("")
-            cartItems = ""
-            console.log("o que era do carrinho", cartItems)
+            console.log("o que era do carrinho")
           }  
             } variant="outlined" color="secondary">
             remover

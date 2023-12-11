@@ -10,20 +10,25 @@ import axios from "axios";
 export default function GameDetail() {
   const { id } = useParams();
   const [game, setGame] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
 
-  const isGameInCart = (gameId) => {
-    return cartItems.includes(gameId);
-  };
+
+  
 
   const addToCart = (gameId) => {
-    if (!isGameInCart(gameId)) {
-      setCartItems((prevItems) => [...prevItems, gameId]);
-      console.log("jogo adicionado ao carrinho, ", cartItems)
-    }else{
-      console.log("jogo ja adicionado ao carrinho, ",cartItems)
-      setCartItems([gameId])
+    if(!game){
+      return
     }
+
+    const httpEndpoint = "https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/pay"
+    const variables = {
+      userId: localStorage.getItem("userId"),
+      products: new Array(game._id)
+    }
+    axios.post(httpEndpoint, variables)
+    .then((response)=>{
+      const toHttp = response.data.url;
+      window.location.href = toHttp
+    })
   };
 
   useEffect(() => {
@@ -61,7 +66,7 @@ export default function GameDetail() {
             <h2>{game.name}</h2>
             <h3>preço: R${game.price}</h3>
             <button onClick={() => addToCart(game._id)} className={style.botao}>
-              +Carrinho
+              Comprar
             </button>
             <button className={style.botao}>Favoritar</button>
             <button className={style.botao}>Compartilhar</button>
@@ -99,7 +104,7 @@ export default function GameDetail() {
         background: "linear-gradient(to right, #330057, #2A018C, #941DE8)",
       }}
     >
-      <PrimarySearchAppBar cartItems={cartItems} />
+      <PrimarySearchAppBar />
 
       {returnGameMapping(game)}
     </Box>

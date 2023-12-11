@@ -29,7 +29,6 @@ export default function Teste({category}){
   function BreakeALeg(dataArray) {
     return dataArray.map((game, index) => {
       const id = game._id;
-      console.log(id)
       const gamePlainURL = game.GameImage.BannerImage.src;
       const stringSemPrefixo = gamePlainURL.replace(/^(\.\.\/)+/, '');
       const totalPathForImage = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`;

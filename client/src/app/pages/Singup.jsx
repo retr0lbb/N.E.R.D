@@ -177,7 +177,7 @@ export default function Singup(){
                         <BsFillTerminalFill color="black" scale={50} size={50}/>
                 <styled.interiorNavBartTerminalminText>Registo N.E.R.D</styled.interiorNavBartTerminalminText>
                 </styled.interiorNavBartTerminal>
-            <styled.buttonWrapper><styled.buttonExit onClick={()=>{window.location.href = "*"}}>X</styled.buttonExit></styled.buttonWrapper>
+            <styled.buttonWrapper><styled.buttonExit onClick={()=>{window.location.href = "/"}}>X</styled.buttonExit></styled.buttonWrapper>
             
         </styled.navBarTerminal>
             <styled.Span>
