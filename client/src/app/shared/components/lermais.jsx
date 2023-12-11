@@ -51,6 +51,7 @@ export default function CustomizedAccordions({description}) {
         <AccordionDetails>
           <Typography>
             {description}
+            
           </Typography>
         </AccordionDetails>
       </Accordion>
