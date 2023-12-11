@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Slider from 'react-slick';
+import { useNavigate  } from 'react-router-dom';
 import getAllGameImagesAndData from './axiosFetch.js';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
@@ -10,6 +11,7 @@ import './teste.css';
 
 
 export default function Teste({category}){
+  const navigate = useNavigate()
   const [gameData, setGameData] = useState([])
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +35,7 @@ export default function Teste({category}){
       const totalPathForImage = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`;
 
       const handleClick =() =>{
-        console.log(id)
+        navigate(`/gamedetail/${id}`)
       }
   
       return (

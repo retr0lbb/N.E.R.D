@@ -18,18 +18,11 @@ const paymentRouter = require("./routers/PaymentRouter.js")
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const validOrigins = ["https://5173-retr0lbb-nerd-vtbe03zy0uy.ws-us105.gitpod.io", "http://localhost:3000", "http://localhost:5173", "https://5173-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io"];
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || validOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Acesso não permitido por CORS'));
-      }
-    },
-    methods: "GET, POST, PATCH, DELETE",
-    allowedHeaders: "Content-Type, Authorization"
+    origin: '*',
+    methods: '*',
+    allowedHeaders: '*',
   })
 );
 

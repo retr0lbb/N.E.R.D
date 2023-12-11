@@ -10,17 +10,103 @@ import {
   Modal,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import axios from "axios"
+import React, { useState, useEffect } from "react";
 import red from "../shared/assets/img/red.jpg";
 import { useModal } from "../shared/components/ModalProvider";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 
-export default function GameCart({ cartItems, removeItem, handlePayment }) {
+export default function GameCart({ cartItems, removeItem, handlePayment, userTopay}) {
   const { isModalOpen, openModal, closeModal } = useModal();
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [game, SetGame] = useState(null)
+  useEffect(()=>{
+    if(cartItems){
+      const fetchData = async()=>{
+        const stringconnection = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/games/findId/${cartItems[0]}`
+        await axios.post(stringconnection)
+        .then(response=>{console.log(response)
+          const gameData = response.data.Data;
+          SetGame(gameData)
+        })
+
+      }
+
+      fetchData()
+    }else{
+      console.log("marrom")
+    }
+  }, [cartItems])
 
   const generateCart = ()=>{
     
+
+    const httpEndpoint = "https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/pay"
+    const variables = {
+      userId: userTopay,
+      products: cartItems
+    }
+    axios.post(httpEndpoint, variables)
+    .then((response)=>{
+      const toHttp = response.data.url;
+      window.location.href = toHttp
+    })
+
+    if(cartItems.length > 0){
+      cartItems.map((item, index)=>{
+        console.log(item)
+      })
+    }
+  }
+  const generateBody =() =>{
+
+    if(game){
+
+      const imgString = game.GameImage.BannerImage.src;
+      const stringSemPrefixo = imgString.replace(/^(\.\.\/)+/, "");
+      const GameImgSrc = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`;
+
+      return(
+        <Box
+        marginBottom={5}
+        display="flex"
+        justifyContent="flex-start"
+        alignItems="center"
+        sx={{
+          bgcolor: "#3F059E",
+          height: "200px",
+          width: "900px",
+        }}
+      >
+        <img
+          src={GameImgSrc}
+          alt="hello"
+          style={{
+            maxWidth: "300px",
+            marginRight: "10px",
+            marginLeft: "20px",
+          }}
+        />
+        <Box>
+          <Typography variant="h6">
+            {game.name}
+          </Typography>
+          <Typography variant="subtitle1">Preço: R$ {game.price}</Typography>
+          <Button onClick={() => {
+            SetGame("")
+            cartItems = ""
+            console.log("o que era do carrinho", cartItems)
+          }  
+            } variant="outlined" color="secondary">
+            remover
+          </Button>
+        </Box>
+      </Box>
+  
+      )
+    }
+    
+
   }
 
   const handleOpenModal = () => {
@@ -36,12 +122,12 @@ export default function GameCart({ cartItems, removeItem, handlePayment }) {
   };
 
   const handlePaymentAndClose = () => {
-    if (agreedToTerms) {
-      handlePayment();
-      handleCloseModal();
+    if (agreedToTerms && cartItems !="") {
+      console.log(cartItems)
+      generateCart()
     } else {
       alert(
-        "Você deve concordar com os termos para prosseguir com o pagamento."
+        "Você deve concordar com os termos para prosseguir com o pagamento. e adicionar um jogo ao se carrinho"
       );
     }
   };
@@ -90,36 +176,7 @@ export default function GameCart({ cartItems, removeItem, handlePayment }) {
                   {/* box das imagens do jogo e tals */}
                   
                   
-                  <Box
-                    marginBottom={5}
-                    display="flex"
-                    justifyContent="flex-start"
-                    alignItems="center"
-                    sx={{
-                      bgcolor: "#3F059E",
-                      height: "200px",
-                      width: "900px",
-                    }}
-                  >
-                    <img
-                      src={red}
-                      alt="hello"
-                      style={{
-                        maxWidth: "300px",
-                        marginRight: "10px",
-                        marginLeft: "20px",
-                      }}
-                    />
-                    <Box>
-                      <Typography variant="h6">
-                        Red Dead Redemption 2
-                      </Typography>
-                      <Typography variant="subtitle1">Preço: R$ 200</Typography>
-                      <Button variant="outlined" color="secondary">
-                        remover
-                      </Button>
-                    </Box>
-                  </Box>
+                 {generateBody()}
                 </Box>
                 <Box
                   sx={{

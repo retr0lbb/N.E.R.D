@@ -40,7 +40,7 @@ exports.createPayment = async(req, res) =>{
         }
 
         const gamePromises = cleanProducts.map( element =>{
-            return gameController.findById(element);
+            return gameController.findByIdb(element);
         })
         const gameResults = await Promise.all(gamePromises);
         const gameBundle = gameResults.filter((e)=> e !== null);
@@ -76,7 +76,7 @@ exports.createPayment = async(req, res) =>{
             })),
             mode: "payment",
             success_url: "https://www.youtube.com/",
-            cancel_url: "https://www.amazon.com.br/ref=nav_logo",
+            cancel_url: "https://5173-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/home",
         })
         res.status(200).json({session: userPaymentSession.id, products: payment, url: userPaymentSession.url})
 

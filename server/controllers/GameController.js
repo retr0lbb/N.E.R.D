@@ -93,19 +93,34 @@ exports.findByName = async(req, res) =>{
         }
     }
 }
-exports.findById = async(id)=>{
-    const GameId = id
+exports.findById = async(req, res)=>{
+    const id = req.params.id
     try {
-        const game = await Game.findById(GameId);
+        const game = await Game.findById(id);
         if(!game){
-            return console.log("jogo não encontrado")
+            res.send("erro ao encontrar o jogo")
+            return console.log("jogo não encontrado") 
         }
-
-        return game
+        res.status(200).json({Data: game})
     } catch (error) {
         if(error){
-            console;log(error)
+            console.log(error)
             return;
         }
     }
 } 
+exports.findByIdb = async(gameId)=>{
+    try {
+        const game = await Game.findById(gameId);
+        if(!game){
+            console.log("Jogo não encontrado")
+            return
+        }
+        return game
+    } catch (error) {
+        if(error){
+            console.log(error)
+            return;
+        }
+    }
+}

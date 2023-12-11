@@ -18,8 +18,8 @@ export const AddRoutes = () => {
           <Route element={<Profile />} path='profile' />
           <Route element={<AsNavFor/>} path='teste2' />
           <Route element={<LibPage />} path="lib" />
-          <Route element={<GameDetail/>} path="gamedetail" />
-          <Route path="*" element={<Navigate to='/' />}/>
+          <Route element={<GameDetail/>} path="gamedetail/:id" />
+          {/*<Route path="*" element={<Navigate to='/' />}/> */}
         </Routes>
       </ModalProvider>
        

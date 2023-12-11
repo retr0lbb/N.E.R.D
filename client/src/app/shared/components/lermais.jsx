@@ -35,7 +35,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   background:'linear-gradient(to right, #330057, #2A018C, #941DE8)',
 }));
 
-export default function CustomizedAccordions() {
+export default function CustomizedAccordions({description}) {
   const [expanded, setExpanded] = React.useState('panel1');
 
   const handleChange = (panel) => (event, newExpanded) => {
@@ -50,10 +50,7 @@ export default function CustomizedAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget. Lorem ipsum dolor
-            sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+            {description}
           </Typography>
         </AccordionDetails>
       </Accordion>
