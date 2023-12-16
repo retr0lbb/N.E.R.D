@@ -8,24 +8,8 @@ const connection = require('./db');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(
-  cors({
-    origin: '*',
-    methods: '*',
-    allowedHeaders: '*',
-    credentials: "*",
-  })
-);
-app.options('*', cors());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://5173-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io');
-  res.header('Access-Control-Allow-Methods', 'POST');
-  res.header('Access-Control-Allow-Headers', '*');
-  res.header('Access-Control-Allow-Credentials', true);
-  next();
-});
 
-
+app.use(cors())
 
 // Adicione esta linha antes do app.use('/users', userRouter);
 const userRouter = require('./routers/UserRouter.js');
