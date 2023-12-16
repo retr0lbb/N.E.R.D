@@ -59,7 +59,7 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List>
           <ListItem  disablePadding>
-            <ListItemButton>
+            <ListItemButton href ="/lib">
               <ListItemIcon>
                 <FolderIcon/>
               </ListItemIcon>
@@ -71,7 +71,7 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List>
           <ListItem  disablePadding>
-            <ListItemButton>
+            <ListItemButton href="/music">
               <ListItemIcon>
                 <LibraryMusicIcon/>
               </ListItemIcon>
@@ -83,7 +83,7 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List>
           <ListItem  disablePadding>
-            <ListItemButton>
+            <ListItemButton href="/friends">
               <ListItemIcon>
                 <ChatIcon/>
               </ListItemIcon>
@@ -95,7 +95,7 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List>
           <ListItem  disablePadding>
-            <ListItemButton>
+            <ListItemButton href='/comus'>
               <ListItemIcon>
                 <ApartmentIcon/>
               </ListItemIcon>
@@ -106,7 +106,7 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List>
           <ListItem  disablePadding>
-            <ListItemButton>
+            <ListItemButton href='users/config'>
               <ListItemIcon>
                 <SettingsIcon/>
               </ListItemIcon>

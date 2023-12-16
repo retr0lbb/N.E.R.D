@@ -5,7 +5,9 @@ import Teste  from './teste carousel/teste'
 import AsNavFor from './teste/teste2'
 import Overview from './Overview'
 import Profile from './profile'
+import GameCart from './GameCart'
 import {} from "../shared/components/"
+import GameDetail from '../pages/gamedetail/GameDetail'
 
 export {
     AsNavFor,

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import {useState} from "react"
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import SwipeableTemporaryDrawer from './sidebar';
-import BasicModal from './CartModal';
+import GameCart from '../../pages/GameCart';
 
 const Search = styled('div')(({ theme }) => ({
   
@@ -49,11 +50,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
-
+export default function PrimarySearchAppBar({gamesArray}) {
   return (
     <Box sx={{flexGrow: 1,}}>
-    <AppBar position="static" sx={{ background: 'linear-gradient(to right, #330057, #2A018C, #941DE8 )',width:'100vw', height:'10vh' }}>
+    <AppBar position="sticky" sx={{ background: 'linear-gradient(to right, #330057, #2A018C, #941DE8 )',width:'100vw', height:'10vh' }}>
       <Toolbar>
         <IconButton
           size="small"
@@ -84,7 +84,7 @@ export default function PrimarySearchAppBar() {
         </Search>
         <Box sx={{ flexGrow: 1 }} />
         <IconButton>
-          <BasicModal />
+          <GameCart/>
         </IconButton>
       </Toolbar>
     </AppBar>
