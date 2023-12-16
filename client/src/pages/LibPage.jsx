@@ -104,7 +104,7 @@ const LibMainDiv = styled.div`
     height: 100%;
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 `
 const SideGamesMenu = styled.div`

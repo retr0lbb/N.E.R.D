@@ -75,8 +75,8 @@ exports.createPayment = async(req, res) =>{
                 quantity: 1
             })),
             mode: "payment",
-            success_url: "https://5173-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/lib",
-            cancel_url: "https://5173-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/home",
+            success_url: "https://5173-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/lib",
+            cancel_url: "https://5173-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/home",
         })
         res.status(200).json({session: userPaymentSession.id, products: payment, url: userPaymentSession.url})
 
