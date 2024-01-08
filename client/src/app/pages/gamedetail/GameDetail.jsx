@@ -19,7 +19,7 @@ export default function GameDetail() {
       return
     }
 
-    const httpEndpoint = "https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/pay"
+    const httpEndpoint = "https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/pay"
     const variables = {
       userId: localStorage.getItem("userId"),
       products: new Array(game._id)
@@ -37,7 +37,7 @@ export default function GameDetail() {
         return;
       }
       await axios
-        .post(`https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/games/findId/${id}`)
+        .post(`https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/games/findId/${id}`)
         .then((response) => {
           const gams = response.data.Data;
           setGame(gams);
@@ -56,7 +56,7 @@ export default function GameDetail() {
 
     const imgString = game.GameImage.BannerImage.src;
     const stringSemPrefixo = imgString.replace(/^(\.\.\/)+/, "");
-    const GameImgSrc = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`;
+    const GameImgSrc = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/${stringSemPrefixo}`;
 
     return (
       <Container>

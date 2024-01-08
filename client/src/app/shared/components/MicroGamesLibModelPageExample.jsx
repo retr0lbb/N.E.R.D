@@ -6,7 +6,7 @@ export default function MicroGames({name, src, gameFiles}){
             const gambinoString = gameFiles.src
             const cleanString = gambinoString.replace(/^(\.\.\/)+/, '')
             
-            const fileUrl = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${cleanString}`
+            const fileUrl = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/${cleanString}`
             console.log(fileUrl)
 
 
@@ -31,11 +31,12 @@ export default function MicroGames({name, src, gameFiles}){
 }
 
 const GameWrapper = styled.div`
-    width: 575px;
-    height: 323px;
+    width: 95%;
+    height: 75%;
     border-radius: 20px;
     border: 1px solid black;
     cursor: pointer;
+    overflow: auto;
 `
 const GameImageCover = styled.img`
     width: 100%;

@@ -11,7 +11,7 @@ const BuscarLibDeUsuario = async(token, userId, setUser)=>{
             'Authorization': `Bearer ${token}`
         }
     }
-    await axios.get(`https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/users/userFindId/${userId}`, config)
+    await axios.get(`https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/users/userFindId/${userId}`, config)
     .then((response) =>{
         setUser(prevUser => ({ ...prevUser, ...response.data.Data }));
     })
@@ -36,7 +36,7 @@ export default function LibPage(){
             if (game) {
               const MongoUri = game[0].GameImage.BannerImage.src;
               const stringSemPrefixo = MongoUri.replace(/^(\.\.\/)+/, '');
-              const imageUrl = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us106.gitpod.io/${stringSemPrefixo}`;
+              const imageUrl = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/${stringSemPrefixo}`;
     
               const UserGameData = {
                 name: game[0].name,
@@ -104,7 +104,7 @@ const LibMainDiv = styled.div`
     height: 100%;
     display: grid;
     place-items: center;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 `
 const SideGamesMenu = styled.div`
