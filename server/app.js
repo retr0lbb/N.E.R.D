@@ -19,7 +19,6 @@ const paymentRouter = require("./routers/PaymentRouter.js")
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 // Configuração do CORS para '/users'
 app.use('/users', userRouter);

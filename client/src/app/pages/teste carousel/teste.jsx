@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Slider from 'react-slick';
+import {localUrl} from "../../../../nerdConfig.json"
+import SkeletonBones from '../../shared/components/SkeletonBones/skeleton.jsx';
 import { useNavigate  } from 'react-router-dom';
-import getAllGameImagesAndData from './axiosFetch.js';
+import gameDataH from "../../../dataHandler/data.js"
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
@@ -13,25 +15,36 @@ import './teste.css';
 export default function Teste({category}){
   const navigate = useNavigate()
   const [gameData, setGameData] = useState([])
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getAllGameImagesAndData();
-        setGameData(data);
-      } catch (error) {
-        console.error('Erro ao buscar dados:', error);
+    try {
+      const getData = async() =>{
+        const transData = await gameDataH
+        setGameData(transData)
       }
-    };
-
-    fetchData();
-  }, []);
+      getData()
+    } catch (error) {
+      alert("an error has occorred")
+    }finally{
+      setLoading(false)
+    }
+    
+  }, [gameData]);
+  console.log(gameData)
+  function generateBones(numberOf) {
+    let bones = [];
+    for (let i = 0; i < numberOf; i++) {
+      bones.push(<SkeletonBones key={i} />);
+    }
+    return bones;
+  }
 
   function BreakeALeg(dataArray) {
     return dataArray.map((game, index) => {
       const id = game._id;
       const gamePlainURL = game.GameImage.BannerImage.src;
-      const stringSemPrefixo = gamePlainURL.replace(/^(\.\.\/)+/, '');
-      const totalPathForImage = `https://3000-retr0lbb-nerd-9poa79tp0d0.ws-us107.gitpod.io/${stringSemPrefixo}`;
+      const stringSemPrefixo = gamePlainURL.replace(/^(\.\.\\)+/, '');
+      const totalPathForImage = `${localUrl}/${stringSemPrefixo}`;
 
       const handleClick =() =>{
         navigate(`/gamedetail/${id}`)
@@ -107,9 +120,9 @@ export default function Teste({category}){
       <div className="App">
         <h2>{category}</h2>
         <Slider {...settings}>
-         {
-          BreakeALeg(gameData)
-          }
+        {
+          loading? generateBones(10) :  BreakeALeg(gameData)
+        }
         </Slider>
       </div>
     );
