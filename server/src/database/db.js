@@ -1,6 +1,6 @@
 // importa o mongoose
-const mongoose = require("mongoose");
-require('dotenv').config();
+import mongoose from "mongoose";
+import "dotenv/config"
 
 //cria uma variavel de conexão com o banco de dados
 let connection;
@@ -12,7 +12,7 @@ const uri = `mongodb+srv://${DBNAME}:${DBPASS}@tcc.ffk0wj3.mongodb.net/?retryWri
 
 
 //funcção asincrona que aceita uma callback de conexão
-async function connect(cb){
+export default async function connect(cb){
     if(connection){
         cb(connection);
         return;
@@ -28,4 +28,4 @@ async function connect(cb){
 }
 
 
-module.exports = connect;
+

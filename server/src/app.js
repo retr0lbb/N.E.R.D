@@ -1,26 +1,22 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const path = require("path")
-require('dotenv').config();
-const connection = require('./db');
+import express from 'express';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import path from "path";
+import "dotenv/config.js";
+import {connection} from "./database/db.js" ;
+import gameRouter from './routers/GameRouter.js';
+import userRouter from './routers/UserRouter.js';
+import paymentRouter from "./routers/PaymentRouter.js";
+
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 
 app.use(cors())
-
-// Adicione esta linha antes do app.use('/users', userRouter);
-const userRouter = require('./routers/UserRouter.js');
-const gameRouter = require('./routers/GameRouter.js');
-const paymentRouter = require("./routers/PaymentRouter.js")
-
-
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-// Configuração do CORS para '/users'
 app.use('/users', userRouter);
 app.use('/games', gameRouter);
 app.use("/pay", paymentRouter)

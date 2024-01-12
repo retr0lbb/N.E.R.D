@@ -1,10 +1,10 @@
-const Payment = require("../models/payment.model");
+const Payment = require("../database/models/payment.model");
 const gameController = require("./GameController");
 require("dotenv").config();
 const SECRET_KEY = "sk_test_51NNHwlByYleOMp8r9a2pDNQzMHeVuatq3vnZN6AwWjmag7XJ6rUEZgC46soOuVzoQwRkq3jcfpLCuLNwmwHOwJ3b00djiZzEqL";
 const PUBLIC_KEY = "";
 const Stripe = require("stripe")(SECRET_KEY);
-const User = require("../models/User");
+const User = require("../database/models/User");
 
 
 

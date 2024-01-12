@@ -1,5 +1,5 @@
 //importa o nosso modelo do jogo.
-const Game = require('../models/Game.model');
+const Game = require('../database/models/Game.model');
 const path = require("path")
 const normalize = require("./utils/NormalizePath/normalize")
 
