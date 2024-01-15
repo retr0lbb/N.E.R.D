@@ -3,7 +3,7 @@ import Login from './Login'
 import SingUp from './Singup'
 import Teste  from './teste carousel/teste'
 import AsNavFor from './teste/teste2'
-import Overview from './Overview'
+import Overview from '../../pages/Overview'
 import Profile from './profile'
 import GameCart from './GameCart'
 import {} from "../shared/components/"
