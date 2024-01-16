@@ -7,3 +7,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.group{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.group:hover{
+    transform: scale(1.1);
+}
