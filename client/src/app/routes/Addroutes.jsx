@@ -5,6 +5,7 @@ import ConfigurationPage from '../../pages/Config'
 import LibPage from '../../pages/LibPage'
 import ModalProvider from '../shared/components/ModalProvider';
 import Future from '../pages/Future'
+import NavBarHeader from '../../components/Navbar'
 
 export const AddRoutes = () => {
     return(
@@ -23,6 +24,7 @@ export const AddRoutes = () => {
           <Route element={<AsNavFor/>} path='teste2' />
           <Route element={<LibPage />} path="lib" />
           <Route element={<GameDetail/>} path="gamedetail/:id" />
+          <Route element ={<NavBarHeader />} path='testH' />
           <Route path="*" element={<Navigate to='/' />}/>
         </Routes>
       </ModalProvider>

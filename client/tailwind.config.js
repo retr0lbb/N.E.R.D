@@ -16,7 +16,9 @@ export default {
         'lg': '12px', // Grande intensidade de desfoque
       },
       colors: {
-        text_color: "#FAFAFA"
+        text_color: "#FAFAFA",
+        header_color_1: "#48317A",
+        header_color_2: "#131636"
       }
     },
   },

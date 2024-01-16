@@ -11,7 +11,6 @@ export default function Overview() {
   }
   return (
     <>
-
     <img onDragStart={handleDrag} src={tcc} 
     className="
     bg-black
