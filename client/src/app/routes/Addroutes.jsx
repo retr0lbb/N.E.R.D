@@ -24,7 +24,6 @@ export const AddRoutes = () => {
           <Route element={<AsNavFor/>} path='teste2' />
           <Route element={<LibPage />} path="lib" />
           <Route element={<GameDetail/>} path="gamedetail/:id" />
-          <Route element ={<NavBarHeader />} path='testH' />
           <Route path="*" element={<Navigate to='/' />}/>
         </Routes>
       </ModalProvider>

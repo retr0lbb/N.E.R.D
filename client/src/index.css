@@ -20,3 +20,7 @@
 .group:hover{
     transform: scale(1.1);
 }
+
+.move{
+    transform: translateX(-200%);
+}

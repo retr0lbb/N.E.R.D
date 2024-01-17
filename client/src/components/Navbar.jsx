@@ -4,9 +4,18 @@ import {FaBars, FaShoppingCart } from "react-icons/fa"
 import SlideMenu from "./SlideMenu";
 
 export default function NavBarHeader(){
+    const [isClicked, setIsclicked] = useState(true)
+
+    function handleClick(){
+        setIsclicked(!isClicked)
+    }
+    function preventDefalt(e){
+        e.preventDefalt()
+    }
+
     return(
         <>
-        <SlideMenu />
+        <SlideMenu handleClick={handleClick} isClicked={isClicked} />
         <div className="
         fixed top-0
         left-0 h-24
@@ -23,14 +32,13 @@ export default function NavBarHeader(){
             text-5xl text-text_color 
             hover:scale-110 transition-all
             cursor-pointer">
-                <FaBars  />
+                <FaBars onClick={handleClick} />
             </div>
                 <div className="rounded-full bg-slate-600 
                                 w-16 h-16 flex items-center 
                                 justify-center overflow-hidden
                                 flex-shrink-0
-                                ">    
-                    Sem Usuarios    
+                                ">     
                 </div>
             </div>
             

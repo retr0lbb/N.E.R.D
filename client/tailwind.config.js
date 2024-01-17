@@ -18,7 +18,9 @@ export default {
       colors: {
         text_color: "#FAFAFA",
         header_color_1: "#48317A",
-        header_color_2: "#131636"
+        header_color_2: "#131636",
+        navMenu: "#564895",
+        navMenu2: "#3914B1"
       }
     },
   },
