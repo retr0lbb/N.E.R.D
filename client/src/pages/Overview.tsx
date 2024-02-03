@@ -1,12 +1,12 @@
 import React from "react";
-import tcc from "../app/shared/assets/img/tcc.jpg";
-import NerdLogo from "../app/shared/assets/img/NerdLogo.png";
+import tcc from "../static/tcc.jpg"
+import NerdLogo from "../static/NerdLogo.png" 
 import { useNavigate } from "react-router-dom";
 
 
 export default function Overview() {
   const navigator = useNavigate()
-  const handleDrag = (e) =>{
+  const handleDrag = (e: any) =>{
     e.preventDefault()
   }
   return (
@@ -26,7 +26,7 @@ export default function Overview() {
 
 
     <div className="absolute inset-0 flex justify-center items-center flex-col gap-10 ">
-      <img src={NerdLogo}  alt="nerd logo with is as nerdemoji written nerd below" />
+      <img src={NerdLogo} alt="nerd logo with is as nerdemoji written nerd below" />
       <button onClick={() => navigator("/home")} className="
       pt-7 pb-7 pl-10 pr-10 
       bg-gradient-to-tl 
