@@ -17,9 +17,14 @@
     "@mui/joy": "^5.0.0-beta.15",
     "@mui/material": "^5.14.14",
     "@nextui-org/react": "^2.2.9",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.0.2",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "dotenv": "^16.3.1",
+    "embla-carousel-react": "^8.0.0-rc22",
     "framer-motion": "^11.0.3",
     "localforage": "^1.10.0",
     "lucide-react": "^0.321.0",
@@ -37,7 +42,8 @@
     "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.0",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.11.16",

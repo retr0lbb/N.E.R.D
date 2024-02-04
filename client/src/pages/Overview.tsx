@@ -6,6 +6,7 @@ import { LogIn as LogInIcon, User2 } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 
+
 export const Overview: React.FC = () => {
   const navigator = useNavigate()
   return(
@@ -37,7 +38,7 @@ export const Overview: React.FC = () => {
 
 
       <div className="absolute top-0 right-0 p-10 flex items-center justify-center gap-5 text-xl z-50">
-          <Button color="secondary" radius="lg" variant="ghost" className="p-7 text-slate-50" startContent={<User2 />}>Entrar</Button>
+          <Button onClick={() => navigator("/login")} color="secondary" radius="lg" variant="ghost" className="p-7 text-slate-50" startContent={<User2 />}>Entrar</Button>
           <Button color="secondary" radius="lg" variant="ghost" className="p-7 text-slate-50" startContent={<LogInIcon />}>Registrar</Button>
       </div>
 
