@@ -1,6 +1,6 @@
 import React from "react"
 import NerdLogo from "../static/NerdLogo.png"
-import { Button, Input } from "@nextui-org/react"
+import { Button } from "@nextui-org/react"
 import { Mail, Lock } from "lucide-react"
 import { InputComp } from "../components/Input"
 import { ImageCarrose } from "@/components/ImageCarrose"

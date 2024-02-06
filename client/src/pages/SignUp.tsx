@@ -1,9 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {XSquare} from "lucide-react"
 import NERDLOGO from "@/static/NerdLogo.png"
+import { LabelSignUp } from "@/components/LabelSignUp";
 
 export const SignUp: React.FC = () => {
     const [isHover, setIsHover] = useState(false)
+    const inputRef = useRef<any>()
+    useEffect(() =>{
+        inputRef.current.focus()
+    }, [])
+
+    const [email, SetEmail] = useState("")
+    const [pass, setPass] = useState("")
+    const [userName, setUserName] = useState("")
+
+const mainImage = `                                                                 
+                                                                 
+                           .::::::::..                           
+                     .:-=-::........::-=-:.                      
+                  .-=-.                  .:--:                   
+                :=-                          :=-                 
+              :=:                              .=-               
+            .=+:.............       .............==.             
+          :+-::--------------=-..:=--------------:::=-           
+          :+. -=::::::=-::::+..:::.+-..:-=-:....-= .=-           
+          =-=--=    :=:-=   +.     +.  -=.=-    :+.+:+           
+         :+ -=:+    =-  +. .+.==-=.=-  +. .+    ---= --          
+         =- .+.+.   .=-=-  -=:+  ---=  :=-=:    =:=- .+          
+         +:  +--=----------=:=-  .+:==---------==:+.  +.         
+         +:   -=-----------==:    .-=-----------=-.   +.         
+         =-                                          .+          
+      .       .::::.     :::::::::    .::::::::     ::::::.      
+    :+++:     =++++-   :=+++++++++  .=+++++++++=    +++++++=.    
+   =+++++=:   =++++-  ------------  .........-++-   -----++++=.  
+    :++++++=: =++++-  ............           -++=  ::     =+++:  
+  :=: :=+++++=+++++- -++++++++++++    .+++++++++.         =+++:  
+  :+++: :++++++++++- -+++=========     +++++---.   ..     =+++:  
+  :+++++  :++++++++- -++-               :++++:      .    :++++:  
+  :+++++    :+++++=.  :+++++++++++        -++++:    ++++++++=:   
+  :+++++      :==.      :+++++++++          :+++=:  ++++++=:     
+                                                                 
+                                                                 
+                                                                 
+                                                                 
+                                                                 
+`
     return(
         <div className="w-screen border-8 border-slate-50 h-screen flex flex-col items-center  bg-slate-950">
             <div className="p-2 w-full bg-slate-50 grid place-items-center">
@@ -19,13 +60,23 @@ export const SignUp: React.FC = () => {
                         setIsHover(false)
                     }} className="cursor-pointer 
                     hover:bg-red-600 hover:rounded-md 
-                    hover:scale-125 transition-all" 
+                    hover:scale-105 transition-all" 
                     size={64} 
                     color={`${isHover? "white" : "red"}`}/>
                 </header>
             </div> 
-            <div className="flex-1 w-full p-4">
-                <input className="w-full font-mono p-2 border-none bg-transparent select-none outline-none text-slate-50" />
+            <div onClick={() => {
+
+            }} className="flex-1 items-center justify-between flex w-full">
+                <div className="w-full grid place-items-center h-full">
+                    <pre className="text-slate-50 shadow-xl font-black text-center">
+                        {mainImage}
+                    </pre>     
+                </div>
+                <div className="w-full h-full">
+                    <input ref={inputRef} className="w-full text-xl font-mono p-4 border-none bg-transparent select-none outline-none text-slate-50" />
+                    <LabelSignUp onChange={(e) => {SetEmail(e.target.value); console.log(email)} } label="Por favor Insira o seu" highLightText="Email" inputType="email" />
+                </div>
             </div>
         </div>
     )

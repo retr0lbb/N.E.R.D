@@ -14,7 +14,7 @@ export const ImageCarrose: React.FC<ImageCarroseProps> = ({title, price, src}) =
             <div className="text-slate-50 
                 absolute bottom-0 left-0 w-full
                 bg-black/70 p-16 pb-24
-                bg-gradient-to-t from-black/80 to-black/20
+                bg-gradient-to-t from-black/80 to-transparent
                 z-10 text-2xl font-bold
                 flex flex-col
                 gap-5 rouded 
