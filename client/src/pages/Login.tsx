@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import NerdLogo from "../static/NerdLogo.png"
 import { Button } from "@nextui-org/react"
-import { Mail, Lock } from "lucide-react"
+import { Mail, Lock, ArrowLeft } from "lucide-react"
 import { InputComp } from "../components/Input"
 import { ImageCarrose } from "@/components/ImageCarrose"
 import fw from "@/static/fw.webp"
@@ -11,17 +11,15 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-  } from "@/components/ui/carousel"
-  import AutoPlay from "embla-carousel-autoplay"
-  
+} from "@/components/ui/carousel"
+import AutoPlay from "embla-carousel-autoplay"
+import { useNavigate } from "react-router-dom"
 
 
 export const Login: React.FC = () => {
+    const navigator = useNavigate()
 
-
-
+    //fever means its hot baby, four pops makes a chain
     return(
         <div className="w-screen h-screen flex">
             <div className="h-full w-full flex items-center relative justify-center">
@@ -45,7 +43,12 @@ export const Login: React.FC = () => {
             </Carousel>
             </div>
 
-            <div className="h-full w-2/6 bg-gradient-to-b from-[#11001c] to-[#190028] flex flex-col items-center justify-center px-4 gap-8">
+            <div className="relative h-full w-2/6 bg-gradient-to-b from-[#11001c] to-[#190028] flex flex-col items-center justify-center px-4 gap-8">
+                <div className="absolute text-purple-800 cursor-pointer top-10 left-5 hover:scale-105 hover:text-fuchsia-700 transition-all" onClick={() => {
+                    navigator("/")
+                }}>
+                    <ArrowLeft size={58} />
+                </div>
                 <img className="w-96 h-96" src={NerdLogo} alt="Logo da empresa nerd que é focada em jogos digitais logo é uma logo roxa com o emoji de nerd cara redonda com oculos grande e dentes grandes" />
 
                 <div className="w-full grid place-items-center">
@@ -55,8 +58,6 @@ export const Login: React.FC = () => {
                         <Button type="submit" variant="solid" color="secondary" className="text-2xl px-28 py-8 mt-2">Logar</Button>
                     </form>
                 </div>
-
-                
             </div>
         </div>
     )
