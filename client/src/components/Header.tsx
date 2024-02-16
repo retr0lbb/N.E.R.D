@@ -1,6 +1,10 @@
 import React from "react"
 import { Avatar, Input } from "@nextui-org/react"
 import { Menu, ShoppingCart, Search } from "lucide-react"
+
+
+
+
 export const Header: React.FC = () => {
     return(
         <header className="w-screen h-24 bg-gradient-to-b from-[#38265f] to-[#191d48] transition-all">
@@ -11,7 +15,7 @@ export const Header: React.FC = () => {
                         <Menu size={58} /> 
                     </div>
                     <div className="cursor-pointer flex text-zinc-950 gap-1 flex-col items-center justify-center hover:scale-85 transition-all">
-                        <Avatar isBordered color="default" showFallback name="Login" size="lg">LL</Avatar>
+                        <Avatar isBordered color="default" size="lg"></Avatar>
                     </div>
                 </div>
                 

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import NerdLogo from "../static/NerdLogo.png"
 import { Button } from "@nextui-org/react"
 import { Mail, Lock, ArrowLeft } from "lucide-react"
