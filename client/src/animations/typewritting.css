@@ -1,0 +1,17 @@
+.typeWritter{
+    border-right: 10px solid white;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: 
+        typing 4s,
+        cursor .7s step-end infinite alternate;
+}
+
+@keyframes cursor {
+    50% { border-color: transparent }
+}
+
+@keyframes typing {
+    from {width: 0}
+}

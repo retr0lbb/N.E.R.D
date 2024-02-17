@@ -1,24 +1,21 @@
-import { Header } from "@/components/Header"
 import React from "react"
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
 } from "@/components/ui/carousel";
-import { CalendarHeart } from 'lucide-react';
+import { CalendarHeart, ThumbsUp, TicketPercent } from 'lucide-react';
 import { DevilMayCry, ForbiddenWest, NoMansSky, batima, ghost, good, tsushima } from "@/static/index"
 import AutoPlay from "embla-carousel-autoplay"
 import { CarouselImage } from "@/components/shared/CarouselImage";
 import { Game } from "@/components/games";
+import { HomeSection } from "@/components/shared/homeSection";
 
-
-
-const repeteco = [DevilMayCry, ForbiddenWest, NoMansSky, batima, ghost, good, tsushima]
+//data Handler For now
 interface games{
     image: string
     name: string
     price: number
-
 }
 let gamesObject: games[]
 gamesObject = [
@@ -51,19 +48,27 @@ gamesObject = [
         image: good,
         name: "Good Of war 3",
         price: 59.99
+    },
+    {
+        image: ghost,
+        name: "Ghostwire",
+        price: 67.92
     }
 ]
 
+const iconSize = 44
 export const Home: React.FC = () => {
     return(
         <div className="w-screen min-h-screen flex items-center flex-col bg-gradient-to-r 
         from-[#330057] to-[#941DE8]">
             <div className="w-full flex p-4">
                 <h1 className="text-4xl w-auto flex items-center justify-center gap-2 text-purple-300">
-                    <div className="">
+                    <div>
                         <CalendarHeart />
                     </div> 
-                    Novidades Da Semana
+                    <p>
+                        Novidades Da Semana
+                    </p>
                 </h1>
             </div>
             <main className="flex flex-col w-full items-center h-full gap-2">
@@ -87,14 +92,10 @@ export const Home: React.FC = () => {
                         </CarouselContent>
                     </Carousel>
                 </div>
-                <div className="w-full flex items-center justify-center">
-                    <h1 className="text-5xl font-bold mt-5 text-purple-300">
-                        Mais Votados
-                    </h1>
-                </div>
-                <div className="w-full">
+
+                <HomeSection title="Mais Vendidos" Icon={<ThumbsUp size={iconSize}/>}>
                     <Game.Wrapper>
-                        {gamesObject.map((gameItem: games, index: number) => {
+                    {gamesObject.map((gameItem: games, index: number) => {
                             return(
                                 <Game.Component 
                                 src={gameItem.image} 
@@ -105,7 +106,23 @@ export const Home: React.FC = () => {
                             )
                         })}
                     </Game.Wrapper>
-                </div>
+                </HomeSection>
+
+                <HomeSection title="Em Oferta" Icon={<TicketPercent size={iconSize}/>}>
+                    <Game.Wrapper>
+                    {gamesObject.map((gameItem: games, index: number) => {
+                            return(
+                                <Game.Component 
+                                src={gameItem.image} 
+                                price={gameItem.price} 
+                                title={gameItem.name} 
+                                key={index}
+                                />
+                            )
+                        })}
+                    </Game.Wrapper>
+                </HomeSection>
+
             </main>
         </div>
     )

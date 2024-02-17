@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 export const Overview: React.FC = () => {
   const navigator = useNavigate()
   return(
-    <div className="w-screen h-screen flex flex-col bg-purple-500">
+    <div className=" w-screen h-screen flex flex-col bg-purple-500">
       <img src={tcc} 
       alt="" 
       onDragStart={(e) => {e.preventDefault()}} 
