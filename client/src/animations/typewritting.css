@@ -1,12 +1,13 @@
-.typeWritter{
+.type-cursor{
     border-right: 10px solid white;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
     animation: 
-        typing 4s,
+        typing 3s steps(50),
         cursor .7s step-end infinite alternate;
 }
+
 
 @keyframes cursor {
     50% { border-color: transparent }

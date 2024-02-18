@@ -16,7 +16,7 @@ export const LabelSignUp: React.FC<LabelSignUpProps> = ({label, inputType, onCha
         <div className="w-full text-center text-3xl items-center p-1 flex flex-col gap-1">
             <label className="flex text-left text-slate-50 overflow-hidden" htmlFor="inputA">
                 
-                {strArray.map((item, index) => { 
+                {strArray.map((item, _) => { 
                         return(
                             <pre className="">
                                 {item}
