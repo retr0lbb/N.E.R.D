@@ -10,16 +10,16 @@ import { useNavigate } from "react-router-dom"
 export const Overview: React.FC = () => {
   const navigator = useNavigate()
   return(
-    <div className=" w-screen h-screen flex flex-col bg-purple-500">
+    <div className=" w-screen absoute z-50 inset-0 h-screen flex flex-col bg-purple-500">
       <img src={tcc} 
       alt="" 
       onDragStart={(e) => {e.preventDefault()}} 
-      className="absolute w-full h-full object-fill inset-0 blur-sm"/>
-      <div className="absolute inset-0 w-full h-full z-10 bg-gradient-to-r from-purple-900 to-blue-900 opacity-50"></div>
-      <div className="absolute inset-0 w-full h-full z-[11] bg-black/40"></div>
+      className="absolute z-30 w-full h-full object-fill inset-0 blur-sm"/>
+      <div className="absolute z-40 inset-0 w-full h-full bg-gradient-to-r from-purple-900 to-blue-900 opacity-50"></div>
+      <div className="absolute z-[41] inset-0 w-full h-full bg-black/40"></div>
 
 
-      <div className="w-full h-full flex flex-col justify-center items-center z-30">
+      <div className="w-full z-50 h-full flex flex-col justify-center items-center">
         <img src={NerdLogo} alt="Botão para entrar no catalogo da nossa loja virtual nerd"/>
         <ButtonGroup>
           <Button 

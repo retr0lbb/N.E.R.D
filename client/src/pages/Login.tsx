@@ -21,7 +21,7 @@ export const Login: React.FC = () => {
 
     //fever means its hot baby, four pops makes a chain
     return(
-        <div className="w-screen h-screen flex">
+        <div className="w-screen h-screen flex absolute z-50">
             <div className="h-full w-full flex items-center relative justify-center">
                 <div className="absolute inset-0 w-full h-full z-20"></div>
             <Carousel

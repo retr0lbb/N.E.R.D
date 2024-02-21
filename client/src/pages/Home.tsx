@@ -59,7 +59,7 @@ gamesObject = [
 const iconSize = 44
 export const Home: React.FC = () => {
     return(
-        <div className="w-screen min-h-screen flex items-center flex-col bg-gradient-to-r 
+        <div className="w-screen mt-[10vh] min-h-screen flex items-center flex-col bg-gradient-to-r 
         from-[#330057] to-[#941DE8]">
             <div className="w-full flex p-4">
                 <h1 className="text-4xl w-auto flex items-center justify-center gap-2 text-purple-300">

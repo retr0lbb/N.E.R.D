@@ -7,8 +7,10 @@ export default function App() {
   return (
     <>
     <NextUIProvider>
-      {/*<Header />*/}
-      <LoginRouter/>
+      <div>
+        <Header />
+        <LoginRouter/>
+      </div>
     </NextUIProvider>
     </>
   )

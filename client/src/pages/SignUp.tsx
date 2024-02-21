@@ -171,7 +171,7 @@ export const SignUp: React.FC = () => {
 
 
     return(
-        <div className="relative w-screen overflow-hidden grid place-content-center h-screen bg-[#14091e]">
+        <div className="relative w-screen z-50 overflow-hidden grid place-content-center h-screen bg-[#14091e]">
             <div className="blur-sm w-full grid place-items-center h-full absolute top-0 left-0 right-0 text-[#4b2f67]">
                 <pre className="w-full grid place-items-center select-none">
                     {asciiImage}
