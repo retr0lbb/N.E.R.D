@@ -1,16 +1,14 @@
 import React from "react"
 import { twMerge } from "tailwind-merge"
 interface MenuProps{
-    children: React.ReactNode,
     className?: string
+    isMenuClicked: boolean
+    children: React.ReactNode
 }
-export const Menu: React.FC<MenuProps> = ({children, className}) => {
+export const Menu: React.FC<MenuProps> = ({isMenuClicked, children, className}) => {
     return(
-        <ul className={twMerge("w-full h-[90vh] py-10 bg-green-500 flex flex-col items-center justify-around", className)}>
-                    
-                    {children}
-                    
-                    {/**/}
-        </ul>
+        <div className={twMerge(`bg-black transition-all w-96 ${isMenuClicked? "translate-x-[0]" : "translate-x-[-200%]"}`, className)}>
+            {children}
+        </div>
     )
 }

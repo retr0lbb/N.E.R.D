@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Button } from "@nextui-org/react";
+import { Button, useNavbar } from "@nextui-org/react";
 import { BlockOfWritting } from "@/components/shared/BlockOfWritting";
 import { asciiImage } from "@/lib/asciiHandler";
 import "@/animations/typewritting.css";
 import { InputComp } from "@/components/Input";
-import { Eye, User2, Mail, Pencil, Lock } from "lucide-react";
+import { Eye, User2, Mail, Pencil, Lock, ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp: React.FC = () => {
     const [isInit, setIsInit] = useState(false)
@@ -16,6 +17,7 @@ export const SignUp: React.FC = () => {
     const [pass, setPass] = useState("")
     const [confirmPass, setConfirmPass] = useState("")
     const [editable, setEditable] = useState(false)
+    const navigator = useNavigate()
 
 
     function generateSwitch(step: number){
@@ -171,24 +173,41 @@ export const SignUp: React.FC = () => {
 
 
     return(
+    <>
         <div className="relative w-screen z-50 overflow-hidden grid place-content-center h-screen bg-[#14091e]">
+
             <div className="blur-sm w-full grid place-items-center h-full absolute top-0 left-0 right-0 text-[#4b2f67]">
                 <pre className="w-full grid place-items-center select-none">
                     {asciiImage}
                 </pre>
             </div>
 
+            
+
             <div className="absolute flex items-center justify-center inset-0 w-full h-full bg-black/10">
                 
             {isInit=== false? (
                 <BlockOfWritting text="Bem Vindo a melhor plataforma de jogos digitais a" HasLightText lightText="NERD">
+                    
+                    <div className="flex gap-5">
+                    
+                    <Button 
+                    onClick={() => navigator("/")} 
+                    variant="shadow" color="danger" 
+                    className="p-4 text-xl" size="lg" isIconOnly><ArrowLeft size={48} /></Button>
+
                     <Button 
                     onClick={() => setIsInit(true)} 
                     variant="ghost" color="secondary" 
                     className="p-4" size="lg">Iniciar Cadastro</Button>
+                    
+                    
+                    </div>
+                    
                 </BlockOfWritting>
             ): (generateSwitch(steps))}
             </div>
         </div>
+        </>
     )
 }

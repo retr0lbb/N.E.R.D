@@ -36,5 +36,6 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), nextui()],
+  plugins: [
+    require("tailwindcss-animate"), nextui(),],
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { Avatar, Input } from "@nextui-org/react"
-import { X, Menu, ShoppingCart, Search } from "lucide-react"
-import { Menu as AsideMenu } from "@/components/SideMenuList/index"
+import { Avatar, Input, User } from "@nextui-org/react"
+import {  ShoppingCart, Search, Home, Library, ListMusic, Users, Megaphone, PocketKnife, LogOut } from "lucide-react"
+import {Menu as AsideMenu} from "@/components/SideMenuList/index"
 import { MenuCloseButton } from "./microComponents/MenuCloseButton"
 
 
@@ -34,15 +34,27 @@ export const Header: React.FC = () => {
                     <ShoppingCart size={58}/>
                 </div>
             </div>
-            <div className={`bg-red-800 transition-all w-96 ${isMenuClicked? "translate-x-[0]" : "translate-x-[-200%]"}`}>
-                <AsideMenu.Wrapper>
-                <li className="bg-violet-600 cursor-pointer w-full h-full">Aqui vc navega</li>
-                    <li className="bg-violet-600 cursor-pointer w-full h-full">Fever means ist hot</li>
-                    <li className="bg-violet-600 cursor-pointer w-full h-full">Baby four Pops makes a chain</li>
-                    <li className="bg-violet-600 cursor-pointer w-full h-full">Things just fall together</li>
-                    <li className="bg-violet-600 cursor-pointer w-full h-full">When they'r dropping like the rain</li>
-                </AsideMenu.Wrapper>
-            </div>
+            <AsideMenu.Main isMenuClicked={isMenuClicked}>
+                <AsideMenu.Header >
+                    <User
+                        className="text-zinc-200"
+                        name= "Default User"
+                        description = "Playing Dayz"
+                        avatarProps={{
+                            src: "https://i.pravatar.cc/150?u=a04258114e29026702d"
+                          }}
+                    />
+                    <LogOut size={32} className="cursor-pointer" color="white" />
+                </AsideMenu.Header>
+                <AsideMenu.Content>
+                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><Home /> Home</AsideMenu.Item>
+                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><Library /> Biblioteca</AsideMenu.Item>
+                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
+                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
+                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><Megaphone /> Comunidades</AsideMenu.Item>
+                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
+                </AsideMenu.Content>
+            </AsideMenu.Main>
         </header>
     )
 }
