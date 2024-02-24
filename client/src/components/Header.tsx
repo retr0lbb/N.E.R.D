@@ -3,6 +3,7 @@ import { Avatar, Input, User } from "@nextui-org/react"
 import {  ShoppingCart, Search, Home, Library, ListMusic, Users, Megaphone, PocketKnife, LogOut } from "lucide-react"
 import {Menu as AsideMenu} from "@/components/SideMenuList/index"
 import { MenuCloseButton } from "./microComponents/MenuCloseButton"
+import paulhaco from "@/static/palhaco.jpg"
 
 
 
@@ -37,12 +38,13 @@ export const Header: React.FC = () => {
             <AsideMenu.Main isMenuClicked={isMenuClicked}>
                 <AsideMenu.Header >
                     <User
-                        className="text-zinc-200"
-                        name= "Default User"
-                        description = "Playing Dayz"
+                        className="text-zinc-200 w-full flex justify-start h-12"
+                        name= "Paulhaço"
+                        description = "I 💗 Palhaxota"
                         avatarProps={{
-                            src: "https://i.pravatar.cc/150?u=a04258114e29026702d"
+                            src: paulhaco
                           }}
+                          isFocusable
                     />
                     <LogOut size={32} className="cursor-pointer" color="white" />
                 </AsideMenu.Header>

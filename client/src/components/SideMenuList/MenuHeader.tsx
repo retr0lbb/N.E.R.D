@@ -7,7 +7,7 @@ interface MenuHeaderProps{
 
 export const MenuHeader: React.FC<MenuHeaderProps> = ({children, className}) => {
     return(
-        <div className={twMerge("w-full p-2 px-4 flex items-center justify-between", className)}>
+        <div className={twMerge("w-full p-2 px-4 flex items-center justify-around", className)}>
             {children}
         </div>
     )

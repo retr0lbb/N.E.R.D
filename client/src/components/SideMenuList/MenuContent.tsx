@@ -6,11 +6,8 @@ interface MenuProps{
 }
 export const MenuContent: React.FC<MenuProps> = ({children, className}) => {
     return(
-        <ul className={twMerge("w-full bg-green-500 flex flex-col", className)}>
-                    
-                    {children}
-                    
-                    {/**/}
+        <ul className={twMerge("w-full flex flex-col gap-1 py-5", className)}>
+            {children}
         </ul>
     )
 }
