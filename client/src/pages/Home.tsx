@@ -7,8 +7,8 @@ import {
 import { CalendarHeart, ThumbsUp, TicketPercent } from 'lucide-react';
 import { DevilMayCry, ForbiddenWest, NoMansSky, batima, ghost, good, tsushima } from "@/static/index"
 import AutoPlay from "embla-carousel-autoplay"
-import { CarouselImage } from "@/components/shared/CarouselImage";
-import { Game } from "@/components/games";
+import { CarouselImage } from "@/components/shared/HomeSlides";
+import { Game } from "@/components/composition-components/games";
 import { HomeSection } from "@/components/shared/homeSection";
 import { useNavigate } from "react-router-dom";
 

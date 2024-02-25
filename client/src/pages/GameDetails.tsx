@@ -15,7 +15,9 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 import ds1 from "@/static/ds1.jpg"
 import ds2 from "@/static/ds2.jpg"
 import ds3 from "@/static/ds4.webp"
-import { Separator } from "@/components/ui/separator"
+import { ForbiddenWest, NoMansSky, good } from "@/static"
+import { PromotionLabel } from "@/components/microComponents/PromotionLabel"
+import Recomendations from "@/components/composition-components/AlsoLike/index"
 
 
 export const GameDetails: React.FC = () => {
@@ -47,11 +49,31 @@ export const GameDetails: React.FC = () => {
                     </Carousel>
                 </div>
                 <div className="w-[40%] flex flex-col p-4 px-6 gap-4 bg-gradient-to-l from-black/90 to-zinc-950/50">
-                    <h1 className="text-6xl font-bold shadow-md text-zinc-200">Dark Souls 3</h1>
-                    <p className="text-purple-500/60"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ab nobis, in ea iste, 
-                        vero, vitae a quidem vel recusandae laboriosam doloremque mollitia dolor possimus tempora 
-                        sequi ducimus maiores!
-                    </p>
+                    <div className="flex flex-col gap-4">
+                        <h1 className="text-6xl font-bold shadow-md text-zinc-200">Dark Souls 3</h1>
+                        <p className="text-purple-500/60"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ab nobis, in ea iste, 
+                            vero, vitae a quidem vel recusandae laboriosam doloremque mollitia dolor possimus tempora 
+                            sequi ducimus maiores!
+                        </p>
+                        <PromotionLabel hasPromotion price={199.99} newPricePromotion={78.39} />
+                    </div>
+
+                    <div>
+                        <button className="bg-zinc-500">Comprar agora</button>
+                    </div>
+
+                    <div>
+                        <Recomendations.root>
+                            <Recomendations.Title className="text-zinc-600">
+                                Você também pode gostar de: 
+                            </Recomendations.Title>
+                            <Recomendations.Content>
+                                <Recomendations.Item name="Horizon Forbidden West" imageSrc={ForbiddenWest}/>
+                                <Recomendations.Item name="No Man's Sky" imageSrc={NoMansSky}/>
+                                <Recomendations.Item name="God Of War 3 Remaster" imageSrc={good}/>
+                            </Recomendations.Content>
+                        </Recomendations.root>
+                    </div>
                 </div>
             </div>
             <section className="mt-10">

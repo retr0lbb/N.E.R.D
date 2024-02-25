@@ -3,7 +3,7 @@ import { Button, useNavbar } from "@nextui-org/react";
 import { BlockOfWritting } from "@/components/shared/BlockOfWritting";
 import { asciiImage } from "@/lib/asciiHandler";
 import "@/animations/typewritting.css";
-import { InputComp } from "@/components/Input";
+import { InputComp } from "@/components/shared/Input";
 import { Eye, User2, Mail, Pencil, Lock, ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@nextui-org/react";

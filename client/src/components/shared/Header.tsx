@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { Avatar, Input, User } from "@nextui-org/react"
 import { ShoppingCart, Search, Home, Library, ListMusic, Users, Megaphone, PocketKnife, LogOut } from "lucide-react"
-import {Menu as AsideMenu} from "@/components/SideMenuList/index"
-import { MenuCloseButton } from "./microComponents/MenuCloseButton"
+import {Menu as AsideMenu} from "@/components/composition-components/SideMenuList/index"
+import { MenuCloseButton } from "../microComponents/MenuCloseButton"
 import paulhaco from "@/static/palhaco.jpg"
 
 

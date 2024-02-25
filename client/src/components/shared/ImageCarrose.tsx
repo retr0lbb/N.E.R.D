@@ -1,5 +1,4 @@
 import React from "react"
-import Mario from "@/static/mario.webp"
 
 
 interface ImageCarroseProps{
