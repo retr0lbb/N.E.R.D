@@ -14,7 +14,7 @@ export const LoginRouter: React.FC = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/cadastro" element={<SignUp />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/details" element={<GameDetails />} />
+                <Route path="/details/:id" element={<GameDetails />} />
             </Routes>
         </Roteador>
     )

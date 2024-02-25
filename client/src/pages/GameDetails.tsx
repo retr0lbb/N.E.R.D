@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import {
     Carousel,
     CarouselContent,
@@ -9,8 +9,7 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
-  } from "@/components/ui/accordion"
-  
+} from "@/components/ui/accordion"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import ds1 from "@/static/ds1.jpg"
 import ds2 from "@/static/ds2.jpg"
@@ -18,6 +17,7 @@ import ds3 from "@/static/ds4.webp"
 import { ForbiddenWest, NoMansSky, good } from "@/static"
 import { PromotionLabel } from "@/components/microComponents/PromotionLabel"
 import Recomendations from "@/components/composition-components/AlsoLike/index"
+import { BuyButtons } from "@/components/shared/BuyButtons"
 
 
 export const GameDetails: React.FC = () => {
@@ -48,23 +48,23 @@ export const GameDetails: React.FC = () => {
                         </CarouselContent>
                     </Carousel>
                 </div>
-                <div className="w-[40%] flex flex-col p-4 px-6 gap-4 bg-gradient-to-l from-black/90 to-zinc-950/50">
-                    <div className="flex flex-col gap-4">
+                <div className="w-[40%] flex flex-col p-4 px-6 gap-2 bg-gradient-to-l from-black/90 to-zinc-950/50">
+                    <div className="flex flex-col gap-4 mb-3">
                         <h1 className="text-6xl font-bold shadow-md text-zinc-200">Dark Souls 3</h1>
-                        <p className="text-purple-500/60"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem earum ab nobis, in ea iste, 
-                            vero, vitae a quidem vel recusandae laboriosam doloremque mollitia dolor possimus tempora 
-                            sequi ducimus maiores!
-                        </p>
+                        <p className="text-zinc-500">
+                            Dark Souls 3 é um RPG de ação implacável, imerso em um mundo sombrio e decadente. 
+                            Os jogadores enfrentam desafios mortais, exploram ambientes intricados e enfrentam chefes 
+                            épicos em uma busca desesperada por redenção e poder.
+                       </p>
                         <PromotionLabel hasPromotion price={199.99} newPricePromotion={78.39} />
                     </div>
 
-                    <div>
-                        <button className="bg-zinc-500">Comprar agora</button>
-                    </div>
+                    
+                    <BuyButtons />
 
                     <div>
                         <Recomendations.root>
-                            <Recomendations.Title className="text-zinc-600">
+                            <Recomendations.Title className="text-zinc-500">
                                 Você também pode gostar de: 
                             </Recomendations.Title>
                             <Recomendations.Content>
@@ -106,29 +106,29 @@ export const GameDetails: React.FC = () => {
                         <AccordionItem value="item-2">
                             <AccordionTrigger className="text-zinc-200">Dados Relevantes:</AccordionTrigger>
                             <AccordionContent>
-                                <div className="w-full text-zinc-400 flex items-center flex-col gap-5 justify-around text-xl">
+                                <div className="w-full text-zinc-400 flex items-start flex-col gap-5 justify-around text-xl">
                                     <div>
-                                        <h1>Data de lançamento:</h1>
+                                        <h1 className="text-zinc-200">Data de lançamento:</h1>
                                         <p>10 de setembro de 2016</p>
                                     </div>
 
                                     <div>
-                                        <h1>Desenvolvedora</h1>
+                                        <h1 className="text-zinc-200">Desenvolvedora</h1>
                                         <p>From Software</p>
                                     </div>
 
                                     <div>
-                                        <h1>Conquistas:</h1>
+                                        <h1 className="text-zinc-200">Conquistas:</h1>
                                         <p>21</p>
                                     </div>
 
                                     <div>
-                                        <h1>Idiomas Disponiveis:</h1>
+                                        <h1 className="text-zinc-200">Idiomas Disponiveis:</h1>
                                         <p>Inglês, Espanhol, Português</p>
                                     </div>
 
                                     <div>
-                                        <h1>Tags</h1>
+                                        <h1 className="text-zinc-200">Tags</h1>
                                         <p>Ação, Rpg, Aventura, Souls-like, Action-rpg</p>
                                     </div>
                                 </div>

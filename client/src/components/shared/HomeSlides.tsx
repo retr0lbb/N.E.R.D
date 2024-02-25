@@ -17,7 +17,7 @@ interface CarouselImageProps{
 
 export const CarouselImage: React.FC<CarouselImageProps> = ({srcImage, className, gameTitle, price, hasPromotion, promotionPercentage, PromotionValue = 1}) => {
     return(
-        <div className="relative group overflow-hidden bg-slate-50 cursor-pointer">
+        <div className="relative rounded-md group overflow-hidden bg-slate-50 cursor-pointer">
             <img className={twMerge("w-[1300px] h-auto aspect-video object-cover", className)} 
             src={srcImage} />
             <div className="absolute transition-all bottom-0 p-4 bg-black/60 

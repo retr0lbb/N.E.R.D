@@ -5,7 +5,7 @@ interface AlsoLikeChildren{
 }
 export const AlsoLikeRoot: React.FC<AlsoLikeChildren> = ({ children }) => {
     return(
-        <div className="flex flex-col items-start justify-center gap-2">
+        <div className="my-5 flex flex-col items-start justify-center gap-2">
             { children }
         </div>
     )

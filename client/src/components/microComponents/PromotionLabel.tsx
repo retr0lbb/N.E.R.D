@@ -24,7 +24,7 @@ export const PromotionLabel: React.FC<PromotionLabelProps> = ({ hasPromotion = f
                             {price? `R$ ${price}` : ""}
                         </p>
                         <p className="relative text-lime-600 font-semibold text-xl">
-                            {newPricePromotion}
+                            R$ {newPricePromotion}
                         </p>
                     </div>
                     <span className="absolute bg-lime-500 h-0.5 w-[5.5rem] rotate-12 top-1/2 left-0 z-0"></span>

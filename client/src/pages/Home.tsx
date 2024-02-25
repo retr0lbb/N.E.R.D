@@ -120,7 +120,7 @@ export const Home: React.FC = () => {
                                 title={gameItem.name} 
                                 key={index}
                                 onClick={() => {
-                                    navigator(`/details`)
+                                    navigator(`/details/1`)
                                 }}
                                 />
                             )
