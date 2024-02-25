@@ -10,6 +10,7 @@ import AutoPlay from "embla-carousel-autoplay"
 import { CarouselImage } from "@/components/shared/CarouselImage";
 import { Game } from "@/components/games";
 import { HomeSection } from "@/components/shared/homeSection";
+import { useNavigate } from "react-router-dom";
 
 //data Handler For now
 interface games{
@@ -58,6 +59,7 @@ gamesObject = [
 
 const iconSize = 44
 export const Home: React.FC = () => {
+    const navigator = useNavigate()
     return(
         <div className="w-screen mt-[10vh] min-h-screen flex items-center flex-col bg-gradient-to-r 
         from-[#330057] to-[#941DE8]">
@@ -117,6 +119,9 @@ export const Home: React.FC = () => {
                                 price={gameItem.price} 
                                 title={gameItem.name} 
                                 key={index}
+                                onClick={() => {
+                                    navigator(`/details`)
+                                }}
                                 />
                             )
                         })}
