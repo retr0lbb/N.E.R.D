@@ -1,5 +1,4 @@
 const { nextui } = require('@nextui-org/react');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -21,6 +20,26 @@ module.exports = {
     },
     extend: {
       keyframes: {
+        "close-top": {
+          "0%": {
+            transform: "rotate(0deg)",
+            position: "relative"
+          },
+          "100%": {
+            transform: "rotate(45deg)",
+            position: "absolute",
+          }
+        },
+        "close-bottom": {
+          "0%": {
+            transform: "rotate(0deg)",
+            position: "relative"
+          },
+          "100%": {
+            transform: "rotate(-45deg)", 
+            position: "absolute",
+          }
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -31,8 +50,10 @@ module.exports = {
         },
       },
       animation: {
+        "close-top": "close-top .3s ease-in-out forwards ",
+        "close-bottom": "close-bottom .3s ease-in-out forwards",
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out forwards",
       },
     },
   },

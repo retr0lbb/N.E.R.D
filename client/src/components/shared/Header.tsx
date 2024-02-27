@@ -3,24 +3,21 @@ import { User, Link } from "@nextui-org/react"
 import { Home, Library, ListMusic, Users, Megaphone, PocketKnife, ChevronDown, Search, ShoppingBag } from "lucide-react"
 import {Menu as AsideMenu} from "@/components/composition-components/SideMenuList/index"
 import { MenuCloseButton } from "../microComponents/MenuCloseButton"
+import { Cart } from "../microComponents/Cart"
 
-
-export const Header: React.FC = () => {
-    const [isMenuClicked, setMenuClicked] = useState(false)
+interface HeaderProps{
+    navigateTo: (route: string)=> void
+}
+export const Header: React.FC<HeaderProps> = ({ navigateTo }) => {
+    const [isMenuClicked, setMenuClicked] = useState(true)
     return(
         <header className="w-screen top-0 h-[10vh] fixed z-30 bg-gradient-to-br from-purple-800 to-purple-950 transition-all">
             <div className="w-full h-full flex items-center justify-between px-10 gap-4">
                 <div className="flex items-center justify-center">
-                    <div className="relative text-purple-100 cursor-pointer">
-                        <ShoppingBag size={48}/>
-                        <div className="absolute top-0 
-                        right-0 bg-red-500 rounded-full 
-                        w-4 h-4 flex items-center justify-center p-3
-                        text-white font-bold
-                        ">
-                            1
-                        </div>
-                    </div>
+                    <MenuCloseButton isActive={isMenuClicked} onClick={() => {
+                        setMenuClicked(!isMenuClicked)
+                    }} />
+                    <Cart />
                 </div>
 
                 <div className="flex items-center justify-around gap-10">
@@ -54,12 +51,12 @@ export const Header: React.FC = () => {
             {/* Asside Componente area */}
             <AsideMenu.Main isMenuClicked={isMenuClicked}>
                 <AsideMenu.Content>
-                    <AsideMenu.Item navigateTo="/home"  className="flex items-center pl-10 gap-2"><Home /> Home</AsideMenu.Item>
-                    <AsideMenu.Item navigateTo="/login" className="flex items-center pl-10 gap-2"><Library /> Biblioteca</AsideMenu.Item>
-                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
-                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
-                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><Megaphone /> Comunidades</AsideMenu.Item>
-                    <AsideMenu.Item className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
+                    <AsideMenu.Item onClick={() => {navigateTo("/")}} className="flex items-center pl-10 gap-2"><Home /> Home</AsideMenu.Item>
+                    <AsideMenu.Item onClick={() => {navigateTo("/")}} className="flex items-center pl-10 gap-2"><Library /> Biblioteca</AsideMenu.Item>
+                    <AsideMenu.Item onClick={() => {navigateTo("/")}} className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
+                    <AsideMenu.Item onClick={() => {navigateTo("/")}} className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
+                    <AsideMenu.Item onClick={() => {navigateTo("/")}} className="flex items-center pl-10 gap-2"><Megaphone /> Comunidades</AsideMenu.Item>
+                    <AsideMenu.Item onClick={() => {navigateTo("/")}} className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
                 </AsideMenu.Content>
             </AsideMenu.Main>
         </header>
