@@ -7,7 +7,8 @@ interface MenuProps{
 }
 export const Menu: React.FC<MenuProps> = ({isMenuClicked, children, className}) => {
     return(
-        <div className={twMerge(`transition-all bg-black/80 w-96 py-5 ${isMenuClicked? "translate-x-[0]" : "translate-x-[-200%]"}`, className)}>
+        <div className={twMerge(`relative transition-all overflow-hidden bg-black/80 w-96 py-5 ${isMenuClicked? "translate-x-[0]" : "translate-x-[-200%]"}`, className)}>
+            
             {children}
         </div>
     )

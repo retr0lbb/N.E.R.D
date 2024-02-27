@@ -18,11 +18,14 @@ import { ForbiddenWest, NoMansSky, good } from "@/static"
 import { PromotionLabel } from "@/components/microComponents/PromotionLabel"
 import Recomendations from "@/components/composition-components/AlsoLike/index"
 import { BuyButtons } from "@/components/shared/BuyButtons"
+import { Cpu, Gamepad } from "lucide-react"
+import { Chip } from "@nextui-org/react"
 
 
 export const GameDetails: React.FC = () => {
+    const chipTagsList = ["rpg", "souls-like", "action-rpg", "medieval", "hardcore", "fantasy"]
     return(
-        <div className="w-screen bg-zinc-900 mt-[10vh]">
+        <div className="w-screen bg-zinc-900 mt-[10vh] min-h-[90vh]">
             <div className="w-full flex ">
                 <div className=" w-[60%]">
                     <Carousel className="relative" opts={{
@@ -58,11 +61,9 @@ export const GameDetails: React.FC = () => {
                        </p>
                         <PromotionLabel hasPromotion price={199.99} newPricePromotion={78.39} />
                     </div>
-
                     
-                    <BuyButtons />
+                        <BuyButtons />
 
-                    <div>
                         <Recomendations.root>
                             <Recomendations.Title className="text-zinc-500">
                                 Você também pode gostar de: 
@@ -73,7 +74,6 @@ export const GameDetails: React.FC = () => {
                                 <Recomendations.Item name="God Of War 3 Remaster" imageSrc={good}/>
                             </Recomendations.Content>
                         </Recomendations.root>
-                    </div>
                 </div>
             </div>
             <section className="mt-10">
@@ -83,7 +83,7 @@ export const GameDetails: React.FC = () => {
                     </h1>
                     <Accordion className="w-full text-2xl" type="multiple">
                         <AccordionItem value="item-1">
-                            <AccordionTrigger className="text-zinc-200">Requisitos do Sistema:</AccordionTrigger>
+                            <AccordionTrigger className="text-zinc-200 text-left flex items-start"><div className="flex items-center gap-4"><Cpu /> Requisitos do sistema</div></AccordionTrigger>
                             <AccordionContent>
                                 <div className="w-full text-zinc-400 flex items-center justify-around text-xl">
                                     <div>
@@ -104,7 +104,7 @@ export const GameDetails: React.FC = () => {
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="item-2">
-                            <AccordionTrigger className="text-zinc-200">Dados Relevantes:</AccordionTrigger>
+                            <AccordionTrigger className="text-zinc-200"><div className="flex items-center gap-4"><Gamepad />Informações Adicionais</div></AccordionTrigger>
                             <AccordionContent>
                                 <div className="w-full text-zinc-400 flex items-start flex-col gap-5 justify-around text-xl">
                                     <div>
@@ -128,8 +128,16 @@ export const GameDetails: React.FC = () => {
                                     </div>
 
                                     <div>
-                                        <h1 className="text-zinc-200">Tags</h1>
-                                        <p>Ação, Rpg, Aventura, Souls-like, Action-rpg</p>
+                                        <h1 className="text-zinc-200">Tags:</h1>
+                                        <div className="flex items-center gap-2 mt-2">
+                                            {chipTagsList.map((tag, index)=>{
+                                                return(
+                                                    <Chip key={index} className="text-zinc-400 cursor-pointer" variant="dot" color={tag=="hardcore"? "danger": "secondary"}>
+                                                        { tag }
+                                                    </Chip>
+                                                )
+                                            })}
+                                        </div>
                                     </div>
                                 </div>
                             </AccordionContent>

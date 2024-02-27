@@ -1,6 +1,5 @@
 import React from "react";
 import { twMerge } from "tailwind-merge";
-import { useNavigate } from "react-router-dom";
 
 interface MenuItemProps{
     className?: string
