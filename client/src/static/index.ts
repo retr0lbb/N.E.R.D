@@ -5,6 +5,7 @@ import batima from "./batima.jpg"
 import good from "./good.webp"
 import ghost from "./ghots.jpg"
 import tsushima from "./tsushima.webp" 
+import profilewalpaper from "./profileImg.png"
 
 export{
     ForbiddenWest,
@@ -13,5 +14,6 @@ export{
     batima,
     good,
     ghost,
-    tsushima
+    tsushima,
+    profilewalpaper
 }

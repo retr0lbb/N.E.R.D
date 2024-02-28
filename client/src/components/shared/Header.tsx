@@ -32,11 +32,7 @@ export const Header: React.FC = () => {
                     <div className="h-16 rounded-md w-1 bg-purple-200" ></div>
 
                     <div className=" bg-purple-950 shadow-md shadow-black flex items-center rounded-full justify-center gap-5 px-4 py-2 text-zinc-200">
-                        
-                            
-                    
-                            
-                            <Dropdown >
+                        <Dropdown >
                             <DropdownTrigger>
                             <User className="text-zinc-200" name="Malu GGEZ"
                             description={
@@ -50,7 +46,7 @@ export const Header: React.FC = () => {
                                 />
                                </DropdownTrigger>
                             <DropdownMenu aria-label="Static Action">
-                                <DropdownItem key={"Profile Page"}>profile</DropdownItem>
+                                <DropdownItem onClick={() => {navigator("/profile/1")}} key={"Profile Page"}>My Profile</DropdownItem>
                                 <DropdownItem key={"offline"}>Go Offline</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
