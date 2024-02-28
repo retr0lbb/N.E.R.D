@@ -5,10 +5,13 @@ import { Login } from "../pages/Login"
 import { SignUp } from "@/pages/SignUp"
 import { Home } from "@/pages/Home"
 import { GameDetails } from "@/pages/GameDetails"
+import { Header } from "@/components/shared/Header"
 
 export const LoginRouter: React.FC = () => {
+    
     return(
         <Roteador>
+            <Header />
             <Routes>
                 <Route path="/" element={<Overview />}/>
                 <Route path="/login" element={<Login />} />
