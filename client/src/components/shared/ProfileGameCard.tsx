@@ -10,10 +10,10 @@ interface ProfileGameCartProps{
 
 export const ProfileGameCard: React.FC<ProfileGameCartProps> = ({GameName, conquests, myConquests, src, totalPlayedTime}) => {
     return(
-        <div className="flex items-center justify-center w-full overflow-hidden">
-            <img className="object-cover object-center w-2/3 h-60" src={src} alt="Game image"/>
-            <div>
-                <h1>{GameName}</h1>
+        <div className="flex gap-8 bg-[#8152CD]/50 w-full overflow-hidden">
+            <img className="object-cover object-center w-auto h-72" src={src} alt="Game image"/>
+            <div className="text-zinc-200 flex flex-col gap-10 pt-6">
+                <h1 className="text-3xl font-bold">{GameName}</h1>
                 <p>Tempo de jogo: {totalPlayedTime}</p>
                 <p>Conquistas: {myConquests} de {conquests}</p>
             </div>

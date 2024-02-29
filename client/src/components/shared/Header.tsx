@@ -59,12 +59,12 @@ export const Header: React.FC = () => {
             {/* Asside Componente area */}
             <AsideMenu.Main isMenuClicked={isMenuClicked}>
                 <AsideMenu.Content>
-                    <AsideMenu.Item onClick={()=> navigator("/home", {preventScrollReset: true})} className="flex items-center pl-10 gap-2"><Home /> Home </AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> navigator("/home", {preventScrollReset: true})} className="flex items-center pl-10 gap-2"><Library /> Biblioteca</AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> navigator("/home", {preventScrollReset: true})} className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> navigator("/home", {preventScrollReset: true})} className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> navigator("/home", {preventScrollReset: true})} className="flex items-center pl-10 gap-2"><Megaphone /> Comunidades</AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> navigator("/home", {preventScrollReset: true})} className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Home /> Home </AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Library /> Biblioteca</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Megaphone /> Comunidades</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
                 </AsideMenu.Content>
             </AsideMenu.Main>
         </header>
