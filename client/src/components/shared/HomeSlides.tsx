@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { twMerge } from "tailwind-merge"
-import { PromotionLabel } from "../microComponents/PromotionLabel"
+import { PromotionLabel } from "./PromotionLabel"
 
 
 

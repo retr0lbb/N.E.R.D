@@ -15,11 +15,12 @@ import ds1 from "@/static/ds1.jpg"
 import ds2 from "@/static/ds2.jpg"
 import ds3 from "@/static/ds4.webp"
 import { ForbiddenWest, NoMansSky, good } from "@/static"
-import { PromotionLabel } from "@/components/microComponents/PromotionLabel"
+import { PromotionLabel } from "@/components/shared/PromotionLabel"
 import Recomendations from "@/components/composition-components/AlsoLike/index"
 import { BuyButtons } from "@/components/shared/BuyButtons"
 import { Cpu, Gamepad } from "lucide-react"
 import { Chip } from "@nextui-org/react"
+import NewPriceLabel from "@/components/composition-components/PriceLabel"
 
 
 export const GameDetails: React.FC = () => {
@@ -59,7 +60,10 @@ export const GameDetails: React.FC = () => {
                             Os jogadores enfrentam desafios mortais, exploram ambientes intricados e enfrentam chefes 
                             épicos em uma busca desesperada por redenção e poder.
                        </p>
-                        <PromotionLabel hasPromotion price={199.99} newPricePromotion={78.39} />
+
+                     <NewPriceLabel.Root>
+                        <NewPriceLabel.Promotion size="lg" price={199.99} newPricePromotion={78.98} />
+                     </NewPriceLabel.Root>
                     </div>
                     
                         <BuyButtons />
@@ -69,9 +73,29 @@ export const GameDetails: React.FC = () => {
                                 Você também pode gostar de: 
                             </Recomendations.Title>
                             <Recomendations.Content>
-                                <Recomendations.Item name="Horizon Forbidden West" imageSrc={ForbiddenWest}/>
-                                <Recomendations.Item name="No Man's Sky" imageSrc={NoMansSky}/>
-                                <Recomendations.Item name="God Of War 3 Remaster" imageSrc={good}/>
+
+                                <Recomendations.Item name="Horizon Forbidden West" imageSrc={ForbiddenWest}>
+                                    <NewPriceLabel.Root>
+                                       <NewPriceLabel.Promotion simplePromotion size="md" price={109.99} newPricePromotion={68.92} />
+                                    </NewPriceLabel.Root>
+                                </Recomendations.Item>
+
+                                <Recomendations.Item name="No Man's Sky" imageSrc={NoMansSky}>
+                                    <NewPriceLabel.Root>
+                                        <NewPriceLabel.Price size="md"  color="default">
+                                            R$ 199.99
+                                        </NewPriceLabel.Price>
+                                    </NewPriceLabel.Root>
+                                </Recomendations.Item>
+
+                                <Recomendations.Item name="God Of War 3 Remaster" imageSrc={good}>
+                                    <NewPriceLabel.Root>
+                                        <NewPriceLabel.Price size="md" color="default">
+                                            R$ 199.99
+                                        </NewPriceLabel.Price>
+                                    </NewPriceLabel.Root>
+                                </Recomendations.Item>
+
                             </Recomendations.Content>
                         </Recomendations.root>
                 </div>

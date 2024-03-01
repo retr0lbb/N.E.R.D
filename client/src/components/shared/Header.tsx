@@ -6,7 +6,9 @@ import {Menu as AsideMenu} from "@/components/composition-components/SideMenuLis
 import { MenuCloseButton } from "../microComponents/MenuCloseButton"
 import { Cart } from "../microComponents/Cart"
 import { useNavigate } from "react-router-dom"
-
+import { ForbiddenWest } from "@/static"
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger} from "@/components/ui/sheet"
+import GameItemsOnCart from "@/components/composition-components/AlsoLike/index"
 export const Header: React.FC = () => {
     const [isMenuClicked, setMenuClicked] = useState(false)
     const navigator = useNavigate()
@@ -20,7 +22,30 @@ export const Header: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-around gap-10">
-                    <Cart />
+
+                    <Sheet>
+                        <SheetTrigger>
+                            <Cart />
+                        </SheetTrigger>
+                        <SheetContent className="bg-zinc-950 border-none">
+                            <SheetHeader>
+                                <SheetTitle className="text-3xl text-zinc-200">Carrinho de compras</SheetTitle>
+                                <SheetDescription className="text-zinc-400">
+                                    Todos os jogos salvos em Adicionar ao carrinho ficaram salvos aqui
+                                </SheetDescription>
+                            </SheetHeader>
+                            <div className="w-full h-full flex flex-col items-center">
+                                <GameItemsOnCart.root>
+                                    <GameItemsOnCart.Content>
+                                        <GameItemsOnCart.Item name="Horizon Forbidden West" imageSrc={ForbiddenWest} >
+
+                                        </GameItemsOnCart.Item>
+                                    </GameItemsOnCart.Content>
+                                </GameItemsOnCart.root>
+                                <button className="text-zinc-200">Entrar</button>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
                     
                     <div className="flex items-center bg-fuchsia-200 shadow-2xl shadow-black px-2 rounded-full justify-center">
                         <input type="text" className="outline-none text-xl rounded-full bg-transparent p-3" />
@@ -50,7 +75,7 @@ export const Header: React.FC = () => {
                                 <DropdownItem key={"offline"}>Go Offline</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-                        <ChevronDown className="cursor-pointer hover:scale-105 text-zinc-500 hover:text-zinc-300" />
+                        <div />
                     </div>
                 </div>
             </div>
