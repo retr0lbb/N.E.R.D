@@ -19,7 +19,6 @@ export const Trigger: React.FC<TriggerProps> = ({UserLink, href, avatarImgSrc}) 
                     src: avatarImgSrc
                 }}
                 />
-            
         </DropdownTrigger>
     )
 }

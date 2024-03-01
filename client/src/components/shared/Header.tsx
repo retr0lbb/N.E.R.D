@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownSection,  DropdownItem} from "@nextui-org/react";
-import { Home, Library, ListMusic, Users, Megaphone, PocketKnife, ChevronDown, Search, ShoppingBag, X, Import } from "lucide-react"
+import { Home, Library, ListMusic, Users, Megaphone, PocketKnife, ChevronDown, Search, ShoppingBag, X, User as UserIcon, Circle} from "lucide-react"
 import {Menu as AsideMenu} from "@/components/composition-components/SideMenuList/index"
 import { MenuCloseButton } from "../microComponents/MenuCloseButton"
 import { Cart } from "../microComponents/Cart"
@@ -63,7 +63,8 @@ export const Header: React.FC = () => {
                     <User.Root>
                         <User.Trigger UserLink="@9912" href="#" avatarImgSrc="https://i.pravatar.cc/150?u=a04258114e29026702d"/>
                         <User.Menu>
-                           <DropdownItem key={"profile Button"} onClick={() => navigator("/profile/1")}>Perfil</DropdownItem>
+                           <DropdownItem key={"profile Button"} onClick={() => navigator("/profile/1")} startContent={<UserIcon />}>Perfil</DropdownItem>
+                           <DropdownItem key={"online Button"} startContent={<Circle color="green" />} >Status: Online</DropdownItem>
                         </User.Menu>
                     </User.Root>
                     
