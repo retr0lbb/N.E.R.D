@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import { User, Link } from "@nextui-org/react"
+import { User, Link, divider } from "@nextui-org/react"
 import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownSection,  DropdownItem} from "@nextui-org/react";
-import { Home, Library, ListMusic, Users, Megaphone, PocketKnife, ChevronDown, Search, ShoppingBag } from "lucide-react"
+import { Home, Library, ListMusic, Users, Megaphone, PocketKnife, ChevronDown, Search, ShoppingBag, X } from "lucide-react"
 import {Menu as AsideMenu} from "@/components/composition-components/SideMenuList/index"
 import { MenuCloseButton } from "../microComponents/MenuCloseButton"
 import { Cart } from "../microComponents/Cart"
@@ -37,7 +37,7 @@ export const Header: React.FC = () => {
                             <div className="w-full h-full flex flex-col items-center">
                                 <GameItemsOnCart.root>
                                     <GameItemsOnCart.Content>
-                                        <GameItemsOnCart.Item name="Horizon Forbidden West" imageSrc={ForbiddenWest} >
+                                        <GameItemsOnCart.Item name="Horizon Forbidden West" disableHover imageSrc={ForbiddenWest} endContent={<div className="h-full grid place-items-center text-red-800 p-2"><X/></div>} >
 
                                         </GameItemsOnCart.Item>
                                     </GameItemsOnCart.Content>
