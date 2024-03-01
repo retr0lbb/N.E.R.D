@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import { User, Link, divider } from "@nextui-org/react"
 import {  Dropdown,  DropdownTrigger,  DropdownMenu,  DropdownSection,  DropdownItem} from "@nextui-org/react";
-import { Home, Library, ListMusic, Users, Megaphone, PocketKnife, ChevronDown, Search, ShoppingBag, X } from "lucide-react"
+import { Home, Library, ListMusic, Users, Megaphone, PocketKnife, ChevronDown, Search, ShoppingBag, X, Import } from "lucide-react"
 import {Menu as AsideMenu} from "@/components/composition-components/SideMenuList/index"
 import { MenuCloseButton } from "../microComponents/MenuCloseButton"
 import { Cart } from "../microComponents/Cart"
 import { useNavigate } from "react-router-dom"
 import { ForbiddenWest } from "@/static"
+import User from "@/components/composition-components/UserCard"
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger} from "@/components/ui/sheet"
 import GameItemsOnCart from "@/components/composition-components/AlsoLike/index"
 export const Header: React.FC = () => {
@@ -37,7 +37,11 @@ export const Header: React.FC = () => {
                             <div className="w-full h-full flex flex-col items-center">
                                 <GameItemsOnCart.root>
                                     <GameItemsOnCart.Content>
-                                        <GameItemsOnCart.Item name="Horizon Forbidden West" disableHover imageSrc={ForbiddenWest} endContent={<div className="h-full grid place-items-center text-red-800 p-2"><X/></div>} >
+                                        <GameItemsOnCart.Item name="Horizon Forbidden West" 
+                                        hover={false} 
+                                        imageSrc={ForbiddenWest} 
+                                        size="md"
+                                        endContent={<div className="h-full grid place-items-center text-red-800 p-2"><X/></div>}>
 
                                         </GameItemsOnCart.Item>
                                     </GameItemsOnCart.Content>
@@ -56,29 +60,15 @@ export const Header: React.FC = () => {
 
                     <div className="h-16 rounded-md w-1 bg-purple-200" ></div>
 
-                    <div className=" bg-purple-950 shadow-md shadow-black flex items-center rounded-full justify-center gap-5 px-4 py-2 text-zinc-200">
-                        <Dropdown >
-                            <DropdownTrigger>
-                            <User className="text-zinc-200" name="Malu GGEZ"
-                            description={
-                                    (<Link size="md" href="https://github.com/retr0lbb">
-                                        @2210
-                                    </Link>)
-                                }
-                                avatarProps={{
-                                    src: "https://i.pravatar.cc/150?u=a04258114e29026702d"
-                                }}
-                                />
-                               </DropdownTrigger>
-                            <DropdownMenu aria-label="Static Action">
-                                <DropdownItem onClick={() => {navigator("/profile/1")}} key={"Profile Page"}>My Profile</DropdownItem>
-                                <DropdownItem key={"offline"}>Go Offline</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                        <div />
+                    <User.Root>
+                        <User.Trigger UserLink="@9912" href="#" avatarImgSrc="https://i.pravatar.cc/150?u=a04258114e29026702d"/>
+                        <User.Menu>
+                           <DropdownItem key={"profile Button"} onClick={() => navigator("/profile/1")}>Perfil</DropdownItem>
+                        </User.Menu>
+                    </User.Root>
+                    
                     </div>
                 </div>
-            </div>
 
 
             {/* Asside Componente area */}
