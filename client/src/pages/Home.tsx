@@ -1,64 +1,24 @@
-import React from "react"
+import React, { useContext } from "react"
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
 } from "@/components/ui/carousel";
 import { CalendarHeart, ThumbsUp, TicketPercent } from 'lucide-react';
-import { DevilMayCry, ForbiddenWest, NoMansSky, batima, ghost, good, tsushima } from "@/static/index"
-import AutoPlay from "embla-carousel-autoplay"
+import { DevilMayCry, ForbiddenWest, NoMansSky, batima, ghost, good, tsushima } from "../static"
+import AutoPlay from "embla-carousel-autoplay";
 import { CarouselImage } from "@/components/shared/HomeSlides";
 import { Game } from "@/components/composition-components/games";
 import { HomeSection } from "@/components/shared/homeSection";
 import { useNavigate } from "react-router-dom";
+import { gameDatasContext } from "../../data";
+import { Game as GameInterface } from "../../data"
+
 
 //data Handler For now
-interface games{
-    image: string
-    name: string
-    price: number
-}
-let gamesObject: games[]
-gamesObject = [
-    {
-        image: DevilMayCry,
-        name: "Devil May Cry 5",
-        price: 199.99
-    },
-    {
-        image: ForbiddenWest,
-        name: "Horizon Forbidden West",
-        price: 209.99
-    },
-    {
-        image: NoMansSky,
-        name: "No Man's Sky",
-        price: 89.99
-    },
-    {
-        image: batima,
-        name: "Batman Arkan Knight",
-        price: 39.99
-    },
-    {
-        image: tsushima,
-        name: "Ghost Of Tsushima",
-        price: 109.99
-    },
-    {
-        image: good,
-        name: "Good Of war 3",
-        price: 59.99
-    },
-    {
-        image: ghost,
-        name: "Ghostwire",
-        price: 67.92
-    }
-]
-
 const iconSize = 44
 export const Home: React.FC = () => {
+    const gameData = useContext(gameDatasContext)
     const navigator = useNavigate()
     return(
         <div className="w-screen mt-[10vh] min-h-screen flex items-center flex-col bg-gradient-to-r 
@@ -97,10 +57,10 @@ export const Home: React.FC = () => {
 
                 <HomeSection title="Mais Vendidos" Icon={<ThumbsUp size={iconSize}/>}>
                     <Game.Wrapper>
-                    {gamesObject.map((gameItem: games, index: number) => {
+                    {gameData.map((gameItem: GameInterface, index: number) => {
                             return(
                                 <Game.Component 
-                                src={gameItem.image} 
+                                src={gameItem.src || ""} 
                                 price={gameItem.price} 
                                 title={gameItem.name} 
                                 key={index}
@@ -112,10 +72,10 @@ export const Home: React.FC = () => {
 
                 <HomeSection title="Em Oferta" Icon={<TicketPercent size={iconSize}/>}>
                     <Game.Wrapper>
-                    {gamesObject.map((gameItem: games, index: number) => {
+                    {gameData.map((gameItem: GameInterface, index: number) => {
                             return(
                                 <Game.Component 
-                                src={gameItem.image} 
+                                src={"gameItem.image"} 
                                 price={gameItem.price} 
                                 title={gameItem.name} 
                                 key={index}

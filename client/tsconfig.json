@@ -20,5 +20,5 @@
   "include": [
     "src/**/*",
     "src/images.d.ts"
-  ]
+, "src/static"  ]
 }

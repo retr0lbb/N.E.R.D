@@ -1,7 +1,7 @@
 import React from "react"
-import tcc from "../static/tcc.jpg"
+import tcc from "@/static/tcc.jpg"
 import { Button, ButtonGroup } from "@nextui-org/react"
-import NerdLogo from "../static/NerdLogo.png"
+import NerdLogo from "@/static/NerdLogo.png"
 import { LogIn as LogInIcon, User2 } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
