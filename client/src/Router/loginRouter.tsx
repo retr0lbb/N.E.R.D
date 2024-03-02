@@ -1,8 +1,7 @@
 import React from "react"
 import {BrowserRouter as Roteador, Routes, Route} from "react-router-dom"
 import { Header } from "@/components/shared/Header"
-import { GameDetails, Home, Login, Overview, Profile, SignUp } from "@/pages"
-import UseData from "@/hooks/gamesData"
+import { GameDetails, Home, Login, Overview, Profile, SignUp, Library } from "@/pages"
 export const LoginRouter: React.FC = () => {
     
     return(
@@ -10,11 +9,12 @@ export const LoginRouter: React.FC = () => {
             <Header />
             <Routes>
                 <Route path="/" element={<Overview />}/>
-                <Route path="/login" element={<Login />} />
-                <Route path="/cadastro" element={<SignUp />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/details/:id" element={<GameDetails />} />
+                <Route path="/login" element={<Login />}/>
+                <Route path="/cadastro" element={<SignUp />}/>
+                <Route path="/home" element={<Home />}/>
+                <Route path="/details/:id" element={<GameDetails />}/>
                 <Route path="/profile/:id" element={<Profile />}/>
+                <Route path="/lib" element={<Library />}/> 
             </Routes>
         </Roteador>
     )

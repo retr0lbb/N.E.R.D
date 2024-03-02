@@ -29,7 +29,7 @@ interface GameFiletProps extends VariantProps<typeof filetTv>{
 
 export const GameFilet: React.FC<GameFiletProps> = ({ imageSrc, name, children, className, endContent, size, hover }) => {
     return(
-        <div className={filetTv({hover, size})}>
+        <div className={filetTv({hover, size, className})}>
 
             <img className="w-auto h-auto " src={imageSrc} />
             <div className="text-zinc-200 w-full px-4">
