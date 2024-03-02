@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Dark Souls 3",
+        "desc": "Dark Souls 3 é um RPG de ação implacável, imerso em um mundo sombrio e decadente. Os jogadores enfrentam desafios mortais, exploram ambientes intricados e enfrentam chefes épicos em uma busca desesperada por redenção e poder.",
+        "price": 199.99
+    },
+    {
+        "name": "Horizon Forbidden West",
+        "desc": "Explore um vasto mundo dominado por maquinas, Ajude Aloy em sua busca para descobrir sobre seu passado e sobre o que ela ira enfrenter",
+        "price": 249.99
+    },
+    {
+        "name": "Devil May Cry 5",
+        "desc": "Mate demonios e mantenha o estilo, Devil may cry é um hack n slash onde você controla 3 personagens, dante o caçador infernal, nero, e V.",
+        "price": 89.99
+    }
+]
