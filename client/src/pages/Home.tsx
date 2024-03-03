@@ -75,7 +75,7 @@ export const Home: React.FC = () => {
                     {gameData.map((gameItem: GameInterface, index: number) => {
                             return(
                                 <Game.Component 
-                                src={"gameItem.image"} 
+                                src={gameItem.src || "null"} 
                                 price={gameItem.price} 
                                 title={gameItem.name} 
                                 key={index}

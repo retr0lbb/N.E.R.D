@@ -14,11 +14,13 @@
     {
         "name": "Devil May Cry 5",
         "desc": "Mate demonios e mantenha o estilo, Devil may cry é um hack n slash onde você controla 3 personagens, dante o caçador infernal, nero, e V.",
-        "price": 89.99
+        "price": 89.99,
+        "src": "http://localhost:5173/static/dmc.jpeg"
     },
     {
-        "name": "Minecraft",
-        "desc": "Um mundo feito de blocos, crie o que quiser o limite é a sua imaginação, explore o nether e o the end e derrote todos os seus inimigos",
-        "price": 89.99
+        "name": "No Man's Sky",
+        "desc": "Explore incontaveis mundos cada um com seu ecoSistema proprio ultilize da exploraçãe e tecnologia ao seu favor e alcançe o artifice",
+        "price": 109.97,
+        "src":"http://localhost:5173/static/nm.png"
     }
 ]
