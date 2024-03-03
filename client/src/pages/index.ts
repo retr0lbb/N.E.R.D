@@ -5,6 +5,7 @@ import { Overview } from "./Overview"
 import { Profile } from "./Profile"
 import { SignUp } from "./SignUp"
 import { Library } from "./Library"
+import { Friends } from "./Friends"
 
 
 export {
@@ -14,5 +15,6 @@ export {
     Overview,
     Profile,
     SignUp,
-    Library
+    Library,
+    Friends
 }

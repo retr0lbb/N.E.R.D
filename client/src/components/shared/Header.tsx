@@ -109,8 +109,8 @@ export const Header: React.FC = () => {
                 <AsideMenu.Content>
                     <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Home /> Home </AsideMenu.Item>
                     <AsideMenu.Item onClick={()=> {navigator("/lib" , {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Library /> Biblioteca</AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/friends", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/friends", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
                     <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Megaphone /> Comunidades</AsideMenu.Item>
                     <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
                 </AsideMenu.Content>

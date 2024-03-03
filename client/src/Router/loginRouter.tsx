@@ -1,7 +1,7 @@
 import React from "react"
 import {BrowserRouter as Roteador, Routes, Route} from "react-router-dom"
 import { Header } from "@/components/shared/Header"
-import { GameDetails, Home, Login, Overview, Profile, SignUp, Library } from "@/pages"
+import { GameDetails, Home, Login, Overview, Profile, SignUp, Library, Friends } from "@/pages"
 export const LoginRouter: React.FC = () => {
     
     return(
@@ -15,6 +15,7 @@ export const LoginRouter: React.FC = () => {
                 <Route path="/details/:id" element={<GameDetails />}/>
                 <Route path="/profile/:id" element={<Profile />}/>
                 <Route path="/lib" element={<Library />}/> 
+                <Route path="/friends" element={<Friends />}/>
             </Routes>
         </Roteador>
     )

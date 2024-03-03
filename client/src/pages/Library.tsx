@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
-import AsideGames from "@/components/composition-components/AlsoLike"
-import {Game, gameDatasContext} from "../../data/index"
-import { Play } from "lucide-react"
+import AsideGames from "@/components/composition-components/AlsoLike";
+import { Game, gameDatasContext } from "../../data/index";
+import { Play } from "lucide-react";
+
 export const Library: React.FC = () => {
-    const GamesData: Game[] = useContext(gameDatasContext)
+    const GamesData: Game[] = useContext(gameDatasContext);
+
     return(
         <main className="w-screen min-h-[90vh] mt-[10vh] flex">
             <aside className="min-h-full w-96 bg-gradient-to-br from-zinc-800 to-neutral-900">
@@ -32,7 +34,7 @@ export const Library: React.FC = () => {
                                 group-hover:translate-y-0 
                                 transition-transform duration-75 
                                 ease-in-out flex items-center
-                                 justify-between px-5 bg-zinc-950/80">
+                                justify-between px-5 bg-zinc-950/80">
                                     
                                     <div className="text-2xl text-zinc-200"> {/*Header Components */}
                                         <h1>{game.name}</h1>
