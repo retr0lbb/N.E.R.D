@@ -1,44 +1,47 @@
-import { Avatar } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Send } from "lucide-react"
+import { Message } from "@/components/shared/Chat";
+import { Friend } from "@/components/shared/Friend";
+
+
+
 
 export const Friends: React.FC = () => {
+    const [chatSelected, setChatSelected] = useState("")    
+
+    
     return(
         <main className="w-screen mt-[10vh] min-h-[90vh] flex">
-            <aside className="min-h-full flex flex-col gap-1 py-4 w-80 bg-purple-700">
-                <div className="w-full h-20 flex items-center px-4 gap-3 bg-zinc-800">
-                    <Avatar />
-                    <div>
-                        <h1 className="text-white font-bold">Mario Games</h1>
-                        <p className="text-xs text-zinc-500">You: Go Fuck yourself</p>
-                    </div>
-                </div>
+            <aside className="min-h-full flex flex-col gap-1 py-4 w-80 bg-zinc-950">
+                <Friend name="MarioGames"  lastMessage="Olha o jogo que eu comprei 📷" isChatSelected={true}/>
+                <Friend name="Geraldo Mata20" lastMessage="Bora jogar valorant que eu vou de jett"/>
+                <Friend name="IlIlIl_Goz-draken_IlIl" lastMessage="X1?"/>
+                <Friend name="ゲイ毛皮ポルノ"  lastMessage="I dare you to translate my name back"/>
 
-                <div className="w-full h-20 flex items-center px-4 gap-3 bg-zinc-800">
-                    <Avatar />
-                    <div>
-                        <h1 className="text-white font-bold">Mario Games</h1>
-                        <p className="text-xs text-zinc-500">You: Go Fuck yourself</p>
-                    </div>
-                </div>
-
-                <div className="w-full h-20 flex items-center px-4 gap-3 bg-zinc-800">
-                    <Avatar />
-                    <div>
-                        <h1 className="text-white font-bold">Mario Games</h1>
-                        <p className="text-xs text-zinc-500">You: Go Fuck yourself</p>
-                    </div>
-                </div>
-
-                <div className="w-full h-20 flex items-center px-4 gap-3 bg-zinc-800">
-                    <Avatar />
-                    <div>
-                        <h1 className="text-white font-bold">Mario Games</h1>
-                        <p className="text-xs text-zinc-500">You: Go Fuck yourself</p>
-                    </div>
-                </div>
             </aside>
-            <section className="w-full min-h-full bg-cyan-950 p-20">
-                
+            <section className="w-full grid place-items-center min-h-full bg-zinc-900 px-40">
+                <div className="relative h-full w-full bg-zinc-900 py-10 px-32">
+                    <Message>
+                        Bora jogar seu pé rapado homi 🗿🍷
+                    </Message>
+                    <Message fromYou>
+                        Bora!.
+                    </Message>
+                    <Message fromYou>
+                        Só vou terminar de instalar
+                    </Message>
+                    <Message>
+                        Olha o jogo que eu comprei
+                        <img src="http://localhost:5173/static/fw.webp" alt="" />
+                    </Message>
+
+                    <div className="absolute bottom-0 right-0 left-0 w-full flex gap-2 bg-zinc-600 p-4">
+                        <Input type="text" placeholder="Send Your Message" className="bg-zinc-800 text-zinc-200 border-none" />
+                        <Button className="gap-4">Send <Send/></Button>
+                    </div>
+                </div>
             </section>
         </main>
     )
