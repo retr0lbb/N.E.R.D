@@ -11,6 +11,9 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    NERD: {
+
+    },
     container: {
       center: true,
       padding: "2rem",

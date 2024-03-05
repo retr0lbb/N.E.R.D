@@ -17,7 +17,7 @@ const PromotionVariant = tv({
             md: "text-sm gap-2 font-semibold",
             lg: "text-xl gap-3 font-bold"
         }
-    }, 
+    },
     defaultVariants: {
         size: "lg"
     }
@@ -28,25 +28,26 @@ interface PromotionProps{
     newPricePromotion: number
     size?: "sm" | "md" | "lg"
     simplePromotion?: boolean
+    textColor?: string
 }
 
-export const Promotion: React.FC<PromotionProps> = ({ price, newPricePromotion, size, simplePromotion }) => {
+export const Promotion: React.FC<PromotionProps> = ({ price, newPricePromotion, size, simplePromotion, textColor = "purple-500" }) => {
     return(
         <div className={PromotionVariant({size})}>
-            <div className="flex items-center justify-center gap-2">
+            <div className={`flex items-center justify-center gap-2 text-${textColor}`}>
                     <div className="relative">
                         <p className="text-zinc-600">
                             R$ {price}
                         </p>
-                        <span className="absolute bg-lime-500 h-0.5 w-full top-1/2 rotate-12 z-0"></span>
+                        <span className={`absolute bg-${textColor} h-0.5 w-full top-1/2 rotate-12 z-0`}></span>
                     </div>
-                <p className="text-lime-600">
+                <p>
                     R$ {newPricePromotion}
                 </p>
             </div>
             {simplePromotion? ("") : 
             (<div>
-                <p className="bg-lime-500 px-1.5 py-1 text-zinc-950">
+                <p className="bg-purple-500 px-1.5 py-1 text-zinc-950">
                     -{calcPercentValue(price, newPricePromotion).toFixed(2)}%
                 </p>
             </div>)}

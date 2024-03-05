@@ -1,16 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Send } from "lucide-react"
+import { Send, Paperclip, Image, FileText, FileVideo } from "lucide-react"
 import { Message } from "@/components/shared/Chat";
 import { Friend } from "@/components/shared/Friend";
+import {  
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
+
+interface MessageProps{
+    message: string;
+    image?: string
+}
 
 
 
 export const Friends: React.FC = () => {
-    const [chatSelected, setChatSelected] = useState("")    
+    const [message, setMessage] = useState<MessageProps[]>([{message: "Olha o jogo que eu comprei ", image: "http://localhost:5173/static/fw.webp"}]);
+    const [text, setText] = useState("");
 
+    const scrollAreaRef = useRef<HTMLDivElement>(null)
+
+    function handleMessageSubmit(e: React.FormEvent<HTMLFormElement>){
+        e.preventDefault()
+        if(text.trim() == ""){
+            return -1
+        }
+        setText("")
+        setMessage([...message, {message: text}])
+    }
+
+    useEffect(() => {
+        // Função para rolar para baixo sempre que as mensagens mudarem
+        if (scrollAreaRef.current) {
+            scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
+        }
+    }, [message]); // Rolar sempre que as mensagens mudarem
     
     return(
         <main className="w-screen mt-[10vh] min-h-[90vh] flex">
@@ -21,27 +50,44 @@ export const Friends: React.FC = () => {
                 <Friend name="ゲイ毛皮ポルノ"  lastMessage="I dare you to translate my name back"/>
 
             </aside>
-            <section className="w-full grid place-items-center min-h-full bg-zinc-900 px-40">
-                <div className="relative h-full w-full bg-zinc-900 py-10 px-32">
-                    <Message>
-                        Bora jogar seu pé rapado homi 🗿🍷
+            <section className="relative w-full flex flex-col items-center min-h-full bg-zinc-900 px-40">
+                <div ref={scrollAreaRef} className=" scroll-smooth flex-1 max-h-[80vh] w-full py-10 px-32 overflow-y-auto">
+                    
+                   {message.map((item: MessageProps, index) => (
+                    <Message fromYou={index%2 !== 0} key={index}>
+                        {item.message}
+                        {item.image? (
+                            <img src={item.image || ""} />
+                        ): ""}
                     </Message>
-                    <Message fromYou>
-                        Bora!.
-                    </Message>
-                    <Message fromYou>
-                        Só vou terminar de instalar
-                    </Message>
-                    <Message>
-                        Olha o jogo que eu comprei
-                        <img src="http://localhost:5173/static/fw.webp" alt="" />
-                    </Message>
-
-                    <div className="absolute bottom-0 right-0 left-0 w-full flex gap-2 bg-zinc-600 p-4">
-                        <Input type="text" placeholder="Send Your Message" className="bg-zinc-800 text-zinc-200 border-none" />
-                        <Button className="gap-4">Send <Send/></Button>
-                    </div>
+                   ))}
+                    
                 </div>
+                <form onSubmit={handleMessageSubmit} 
+                    className="w-full absolute bottom-0
+                    px-64 flex items-center gap-2 py-8 text-zinc-200">
+                        
+                        <Input type="text" 
+                        value={text} 
+                        onChange={(e) => setText(e.target.value) } 
+                        placeholder="Send Your Message" 
+                        className="bg-zinc-800  border-none py-7 px-4 text-xl" />
+                        <DropdownMenu>
+                            <DropdownMenuTrigger>
+                             <Button size="icon">
+                                <Paperclip />
+                             </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent className="bg-zinc-700 border-none text-zinc-400">
+                                <DropdownMenuItem className="cursor-pointer bg-zinc-700"><Image className="mr-2"/> Imagen </DropdownMenuItem>
+                                <DropdownMenuItem className="cursor-pointer bg-zinc-700"><FileText className="mr-2"/> Arquivo </DropdownMenuItem>
+                                <DropdownMenuItem className="cursor-pointer bg-zinc-700"><FileVideo className="mr-2"/> Gif </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                        <Button size="icon" type="submit" className="rounded-full">
+                            <Send/>
+                        </Button>
+                    </form>
             </section>
         </main>
     )
