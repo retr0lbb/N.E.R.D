@@ -18,6 +18,15 @@ interface MessageProps{
 }
 
 
+const MemoizedMessage = React.memo(({ message, img, index}: {message: string, img: string, index: number}) => {
+    return(
+        <Message fromYou={index%2 !== 0}>
+            {message}
+            {img && <img src={img} alt="Message Image" />}
+        </Message>
+    )
+})
+
 
 export const Friends: React.FC = () => {
     const [message, setMessage] = useState<MessageProps[]>([{message: "Olha o jogo que eu comprei ", image: "http://localhost:5173/static/fw.webp"}]);
@@ -54,12 +63,7 @@ export const Friends: React.FC = () => {
                 <div ref={scrollAreaRef} className=" scroll-smooth flex-1 max-h-[80vh] w-full py-10 px-32 overflow-y-auto">
                     
                    {message.map((item: MessageProps, index) => (
-                    <Message fromYou={index%2 !== 0} key={index}>
-                        {item.message}
-                        {item.image? (
-                            <img src={item.image || ""} />
-                        ): ""}
-                    </Message>
+                    <MemoizedMessage key={index} index={index} img={item.image || ""} message={item.message} />
                    ))}
                     
                 </div>
