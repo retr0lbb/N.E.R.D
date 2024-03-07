@@ -2,6 +2,7 @@ import React from "react"
 import {BrowserRouter as Roteador, Routes, Route} from "react-router-dom"
 import { Header } from "@/components/shared/Header"
 import { GameDetails, Home, Login, Overview, Profile, SignUp, Library, Friends } from "@/pages"
+import { Config } from "@/pages/Config"
 export const LoginRouter: React.FC = () => {
     
     return(
@@ -16,6 +17,7 @@ export const LoginRouter: React.FC = () => {
                 <Route path="/profile/:id" element={<Profile />}/>
                 <Route path="/lib" element={<Library />}/> 
                 <Route path="/friends" element={<Friends />}/>
+                <Route path="/config" element={<Config />}/>
             </Routes>
         </Roteador>
     )

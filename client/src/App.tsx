@@ -1,7 +1,8 @@
 import React from "react"
 import { LoginRouter } from "./Router/loginRouter"
 import {NextUIProvider} from "@nextui-org/react";
-import { Header } from "./components/shared/Header";
+//testGit modify
+
 
 export default function App() {
 
