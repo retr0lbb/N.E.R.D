@@ -1,14 +1,7 @@
 import React from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle
-} from "@/components/ui/card"
-import { Pencil } from "lucide-react"
+import TabConfigPage from "@/components/composition-components/ConfigPages"
+import {NormalInput, SquareInput, SwitchInput} from "@/components/composition-components/ConfigPages/LabelItem"
 
 export const Config: React.FC = () => {
     return(
@@ -22,28 +15,18 @@ export const Config: React.FC = () => {
                     <TabsTrigger value="compras">Ultimas Compras</TabsTrigger>
                     <TabsTrigger value="carteira">Carteira</TabsTrigger>
                 </TabsList>
-                <TabsContent value="perfil" className="bg-red-500">
-                    <Card className="border-none">
-                        <CardHeader className="p-0 relative w-full">
-                            <img className="max-h-36 w-full object-cover backdrop-filter" src="http://localhost:5173/static/ds1.jpg" alt="" />
-                            <Pencil className="absolute top-0 right-5 cursor-pointer hover:text-zinc-200 hover:scale-105 text-zinc-500" />
-                        </CardHeader>
-                        <CardContent className="flex flex-col">
-                            <div className="flex items-center justify-around mt-4">
-                                <div>
-                                    <h1 className="font-bold text-zinc-950">Foto de Perfil: </h1>
-                                    <p className="text-xs max-w-96 text-zinc-400">Essa foto sera sua foto de perfil publica pessoas podem te indentificar a pertir dessa foto</p>
-                                </div>
+                <TabConfigPage.Root value="perfil">
+                    <TabConfigPage.Header>
+                        <h1>Memez</h1>
+                    </TabConfigPage.Header>
+                    <TabConfigPage.Content>
+                        <TabConfigPage.Item label="Nome Do Usuario"><NormalInput isDisable value="Malu GGEZ"/></TabConfigPage.Item>
+                        <TabConfigPage.Item label="Tema de Cores"><SquareInput /></TabConfigPage.Item>
+                        <TabConfigPage.Item label="Biografia de Perfil"><NormalInput isDisable value="@9912"/></TabConfigPage.Item>
+                        <TabConfigPage.Item label="Permitir Pedidos de Amizade? "><SwitchInput className=""/></TabConfigPage.Item>
+                    </TabConfigPage.Content>
+                </TabConfigPage.Root>
 
-                                <img src="http://localhost:5173/static/ds1.jpg" className="w-16 h-16 object-center object-cover" alt="" />
-                            </div>
-
-                            <div>
-                            <h1 className="font-bold">Tema de cores</h1>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </TabsContent>
                 <TabsContent value="dispositivos">Hey Ima device maam</TabsContent>
                 <TabsContent value="email">Emailer mais main</TabsContent>
                 <TabsContent value="pagamento">Hey i'm a furry</TabsContent>

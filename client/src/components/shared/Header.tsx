@@ -112,7 +112,7 @@ export const Header: React.FC = () => {
                     <AsideMenu.Item onClick={()=> {navigator("/friends", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><ListMusic /> Minhas Musicas</AsideMenu.Item>
                     <AsideMenu.Item onClick={()=> {navigator("/friends", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Users /> Meus Amigos</AsideMenu.Item>
                     <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><Megaphone /> Comunidades</AsideMenu.Item>
-                    <AsideMenu.Item onClick={()=> {navigator("/home", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
+                    <AsideMenu.Item onClick={()=> {navigator("/config", {preventScrollReset: true}); setMenuClicked(false)}} className="flex items-center pl-10 gap-2"><PocketKnife/> Configurações</AsideMenu.Item>
                 </AsideMenu.Content>
             </AsideMenu.Main>
         </header>
