@@ -5,7 +5,8 @@ export const Preferencias: React.FC = () => {
     return(
         <PreferencesConfigTab.Root value="preferencias">
             <PreferencesConfigTab.Header>
-                <h1>Preferencias de conteudo</h1>
+                <h1 className="text-3xl font-semibold text-zinc-200">Preferências</h1>
+                <p className="text-zinc-500">configure suas preferencias de conteudos e notificações.</p>
             </PreferencesConfigTab.Header>
             <PreferencesConfigTab.Content>
 

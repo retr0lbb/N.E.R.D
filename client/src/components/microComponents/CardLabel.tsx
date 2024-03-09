@@ -1,24 +1,43 @@
-import React from "react"
-import { IconBaseProps } from "react-icons/lib";
+import React from "react";
+import { tv } from "tailwind-variants";
 
 
 interface CardLabelProps{
-    CardNumber: string,
+    CardNumber: number,
     Icon: any,
-    CardOwner: string
+    CardOwner: string,
+    blank?: boolean;
 }
 export const CardLabel: React.FC<CardLabelProps> = ({Icon, CardNumber, CardOwner}) => {
+    function separateInFour(cardNumber:String){
+        const string = cardNumber.trim()
+        let Array: string[] = [];
+        let currentStringSeparation = "";
+
+        for(let i=0; i<string.length; i++){
+            currentStringSeparation += string[i]
+            if(currentStringSeparation.length == 4){
+                Array.push(currentStringSeparation)
+                currentStringSeparation = "";
+            }
+        }
+
+        return Array
+    }
+    
     return(
         <div className="flex shadow-lg items-center justify-between bg-zinc-700 px-6 py-2">
             <div className="flex items-center justify-center gap-4">
                 <Icon size={48} className="text-zinc-300"/>
-
                 <div>
-                    <div className="flex gap-2 text-zinc-400">
-                        <span>****</span>
-                        <span>****</span>
-                        <span>****</span>
-                        <span>4242</span>
+                    <div className="flex gap-2 text-zinc-400 text-xl">
+                        {separateInFour(String(CardNumber)).map((element, index)=> {
+                            return(
+                                <span key={index}>
+                                    {index == 3? element: "*".repeat(element.length)}
+                                </span>
+                            )
+                        })}
                     </div>
                     <div className="text-xs text-zinc-400">
                         {CardOwner.toLocaleUpperCase()}

@@ -7,7 +7,8 @@ export const ProfileTab: React.FC = () => {
     return(
         <ProfileTabComponent.Root value="perfil">
             <ProfileTabComponent.Header>
-                <h1>Memez</h1>
+            <h1 className="text-3xl font-semibold text-zinc-200">Perfil e Aparencia</h1>
+                <p className="text-zinc-500">Personalize como que as pessoas que usam a plataforma te vêem e como você ve a plataforma</p>
             </ProfileTabComponent.Header>
             <ProfileTabComponent.Content>
 
