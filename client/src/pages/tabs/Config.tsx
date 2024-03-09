@@ -1,7 +1,8 @@
 import React from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import TabConfigPage from "@/components/composition-components/ConfigPages"
-import { NormalInput, SquareInput, SwitchInput } from "@/components/composition-components/ConfigPages"
+import { NormalInput, SwitchInput, CheckBoxInput, CheckBoxInputItem } from "@/components/composition-components/ConfigPages"
+import {ProfileTab} from "./Perfil.tab"
 
 export const Config: React.FC = () => {
     return(
@@ -15,19 +16,8 @@ export const Config: React.FC = () => {
                     <TabsTrigger value="compras">Ultimas Compras</TabsTrigger>
                     <TabsTrigger value="carteira">Carteira</TabsTrigger>
                 </TabsList>
-                <TabConfigPage.Root value="perfil">
-                    <TabConfigPage.Header>
-                        <h1>Memez</h1>
-                    </TabConfigPage.Header>
-                    <TabConfigPage.Content>
-                        <TabConfigPage.Item label="Foto de perfil" description="Essa sera sua foto publica de perfil, escolha com sabedoria"><SquareInput /></TabConfigPage.Item>
-                        <TabConfigPage.Item label="Tema de Cores" description="Personalize a NERD para que ela fique com a sua cara"><SquareInput /></TabConfigPage.Item>
-                        <TabConfigPage.Item label="Biografia de Perfil" description="Escreva uma pequena frase ou link que fale sobre você"><NormalInput isDisable value="@9912"/></TabConfigPage.Item>
-                        <TabConfigPage.Item label="Permitir Pedidos de Amizade?" description="ativa as notificações de pedidos de amizade. Oi, quer ser meu amigo?"><SwitchInput color="secondary" className=""/></TabConfigPage.Item>
-                        <TabConfigPage.Item label="É Desenvolvedor?" description="Ativa a opção 'Publicar Jogo' no perfil. Com grandes poderes vem grandes responsabilidades"><SwitchInput color="secondary" className=""/></TabConfigPage.Item>
-                    </TabConfigPage.Content> 
-                </TabConfigPage.Root>
-
+                
+                <ProfileTab></ProfileTab>
 
                 <TabConfigPage.Root value="preferencias">
                     <TabConfigPage.Header>
@@ -46,11 +36,22 @@ export const Config: React.FC = () => {
                         <h1>Preferencias de Login e email</h1>
                     </TabConfigPage.Header>
                     <TabConfigPage.Content>
-                        <TabConfigPage.Item label="Permitir Conteudo Adulto" description="Alterar Email"><NormalInput value="MaluGGEz@gmail.com" isDisable/></TabConfigPage.Item>
-                        <TabConfigPage.Item label="Permitir Conteudo Adulto" description="Jogos com a tag '+18' serão habilitadas. You'r Naught 😈"><SwitchInput color="secondary"/></TabConfigPage.Item>
+                        <TabConfigPage.Item label="Email Cadastrado" description="Alterar Email"><NormalInput value="MaluGGEz@gmail.com" isDisable/></TabConfigPage.Item>
+                        <TabConfigPage.Item label="Enviar promoções para email" description="Envia notificações de promoção por email. Seu proprio olho de Sauron 👀"><SwitchInput /></TabConfigPage.Item>
+                        <TabConfigPage.Item className="flex-col items-start gap-3" label="Notificar Por Email Quando: " description="Personalize o que você gostaria de receber por email. Não somos hipsters">
+                            <CheckBoxInput>
+                                <CheckBoxInputItem label="Citações feitas por @" />
+                                <CheckBoxInputItem label="Like Em Publicações" />
+                                <CheckBoxInputItem label="Pedidos de amizade" />
+                                <CheckBoxInputItem label="Ao receber mensagens" />
+                                <CheckBoxInputItem label="Ao comprarem o seu jogo" />
+                                <CheckBoxInputItem label="Posts de seguidores" />
+                            </CheckBoxInput>
+                        </TabConfigPage.Item>
                         
                     </TabConfigPage.Content> 
                 </TabConfigPage.Root>
+
                 <TabsContent value="pagamento">Hey i'm a furry</TabsContent>
                 <TabsContent value="compras">You bought a fursuit your weirdo</TabsContent>
                 <TabsContent value="carteira">You Have 1119 dollar UwU</TabsContent>

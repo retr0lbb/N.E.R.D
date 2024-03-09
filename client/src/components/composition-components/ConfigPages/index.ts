@@ -5,6 +5,7 @@ import { Root } from "./Root";
 import { NormalInput } from "./InputTypes/DefaultInput"
 import { SquareInput } from "./InputTypes/SquaredTypeInput"
 import { SwitchInput } from "./InputTypes/SwitchInput"
+import {CheckBoxInput, CheckBoxInputItem} from "./InputTypes/CheckBoxInput"
 export default {
     Root,
     Header,
@@ -15,5 +16,7 @@ export default {
 export {
     NormalInput,
     SquareInput,
-    SwitchInput
+    SwitchInput,
+    CheckBoxInput,
+    CheckBoxInputItem
 }

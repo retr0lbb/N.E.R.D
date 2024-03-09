@@ -2,7 +2,7 @@ import React from "react"
 import {BrowserRouter as Roteador, Routes, Route} from "react-router-dom"
 import { Header } from "@/components/shared/Header"
 import { GameDetails, Home, Login, Overview, Profile, SignUp, Library, Friends } from "@/pages"
-import { Config } from "@/pages/Config"
+import { Config } from "@/pages/tabs/Config"
 export const LoginRouter: React.FC = () => {
     
     return(
