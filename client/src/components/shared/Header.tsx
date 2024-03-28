@@ -10,6 +10,8 @@ import User from "@/components/composition-components/UserCard"
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetOverlay, SheetPortal, SheetTitle, SheetTrigger} from "@/components/ui/sheet"
 import GameItemsOnCart from "@/components/composition-components/AlsoLike/index"
 import PriceLabel from "@/components/composition-components/PriceLabel";
+
+
 export const Header: React.FC = () => {
     const [isMenuClicked, setMenuClicked] = useState(false)
     const navigator = useNavigate()
@@ -91,8 +93,7 @@ export const Header: React.FC = () => {
                             <Search size={28} className="scale-x-[-1] text-white font-bold" />
                         </div>
                     </div>
-
-                    <div className="h-16 rounded-md w-1 bg-purple-200" ></div>
+                    
                     <User.Root>
                         <User.Trigger UserLink="@9912" href="#" avatarImgSrc="https://i.pravatar.cc/150?u=a04258114e29026702d"/>
                         <User.Menu>
