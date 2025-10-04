@@ -15,14 +15,13 @@ import { gameDatasContext } from "../../data";
 import { Game as GameInterface } from "../../data"
 
 
-//data Handler For now
 const iconSize = 44
 export const Home: React.FC = () => {
     const gameData = useContext(gameDatasContext)
     const navigator = useNavigate()
     return(
         <div className="w-screen mt-[10vh] min-h-screen flex items-center flex-col bg-gradient-to-r 
-        from-[#330057] to-[#941DE8]">
+        from-[#230736] to-[#1c022f]">
             <div className="w-full flex p-4">
                 <h1 className="text-4xl w-auto flex items-center justify-center gap-2 text-purple-300">
                     <div>

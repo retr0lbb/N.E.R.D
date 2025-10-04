@@ -1,15 +1,13 @@
 import React from "react"
-import { LoginRouter } from "./Router/loginRouter"
+import { LoginRouter } from "./Router/router"
 import {NextUIProvider} from "@nextui-org/react";
-//testGit modify
 
 
 export default function App() {
 
-
   return (
     <NextUIProvider>
-        <LoginRouter/>
+      <LoginRouter/>
     </NextUIProvider>
   )
 }
